@@ -2,19 +2,6 @@
     <string name="app_name">История России</string>
     <string name="a_century">%s век</string>
     <string name="century">век</string>
-    <string name="ninth">девятый</string>
-    <string name="tenth">десятый</string>
-    <string name="eleventh">одиннадцатый</string>
-    <string name="twelfth">двенадцатый</string>
-    <string name="thirteenth">тринадцатый</string>
-    <string name="fourteenth">четырнадцатый</string>
-    <string name="fifteenth">пятнадцатый</string>
-    <string name="sixteenth">шестнадцатый</string>
-    <string name="seventeenth">семнадцатый</string>
-    <string name="eighteenth">восемнадцатый</string>
-    <string name="nineteenth">девятнадцатый</string>
-    <string name="twentieth">двадцатый</string>
-    <string name="twenty_first">двадцать первый</string>
     <string name="max_score">Максимум очков</string>
     <string name="choose_screen">Выбор века</string>
     <string name="century_quiz">Тест</string>
@@ -23,6 +10,7 @@
     <string name="profile">профиль</string>
     <string name="statistic_century_screen">статистика выбранного века</string>
     <string name="start">Начать</string>
+    <string name="question">вопрос</string>
 
     <string name="question_ninth_century_1">Когда началась эпоха правления Рюрика?</string>
     <string name="question_ninth_century_2">Какие события положили начало образованию Киевской Руси?</string>
@@ -75,10 +63,8 @@
     <string name="question_ninth_century_49">Какие последствия для Руси имели торговые отношения с Византией?</string>
     <string name="question_ninth_century_50">Какая роль принадлежала княгиням в политической жизни Руси?</string>
 
-    <string name="answer_ninth_century_1">862 год</string>
     <string name="answer_ninth_century_2">Призвание варягов, в том числе Рюрика, для установления порядка среди славянских племен.</string>
     <string name="answer_ninth_century_3">Рюрик</string>
-    <string name="answer_ninth_century_4">862 год</string>
     <string name="answer_ninth_century_5">Торговля, культурный обмен, принятие христианства.</string>
     <string name="answer_ninth_century_6">Летописи, в том числе «Повесть временных лет».</string>
     <string name="answer_ninth_century_7">Славяне, финно-угры, варяги</string>
@@ -178,7 +164,6 @@
     <string name="question_tenth_century_50">Какова была роль Киева в политике и экономике Восточной Европы в 10 веке?</string>
 
     <string name="answer_tenth_century_1">Династия Рюриковичей</string>
-    <string name="answer_tenth_century_2">955 год</string>
     <string name="answer_tenth_century_3">Заключение договора с Византией и введение христианства как государственной религии</string>
     <string name="answer_tenth_century_4">Успешные походы на Хазарский каганат</string>
     <string name="answer_tenth_century_5">Христианизация способствовала укреплению политической власти и культурному развитию</string>
@@ -192,7 +177,6 @@
     <string name="answer_tenth_century_13">Торговый путь «из варяг в греки»</string>
     <string name="answer_tenth_century_14">Создание кириллицы и распространение христианства на Руси</string>
     <string name="answer_tenth_century_15">Слияние славянских традиций с христианскими влияниями</string>
-    <string name="answer_tenth_century_16">957 год</string>
     <string name="answer_tenth_century_17">Принятие христианства привело к изменению социальной структуры и укреплению централизованной власти</string>
     <string name="answer_tenth_century_18">Первым правителем, принявшим христианство, был киевский князь</string>
     <string name="answer_tenth_century_19">Варяги обеспечивали стабильность через военные походы и торговлю, способствуя развитию государственности</string>

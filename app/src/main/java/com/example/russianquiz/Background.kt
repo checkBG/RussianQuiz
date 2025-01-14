@@ -45,7 +45,7 @@ fun Background(
         modifier = modifier
             .fillMaxSize()
     ) {
-        translate(top = screenWidthPx - 1500) {
+        translate(top = screenWidthPx - 1450) {
             drawPath(path = path, color = color)
             path.reset()
             val halfWaveWidth = waveWidth / 2

@@ -1,5 +1,7 @@
 package com.example.russianquiz.utils
 
+import java.util.Locale
+
 fun Int.toTwoDigitNumber(): String {
-    return if (this in (10..<100)) this.toString() else "0$this"
+    return String.format(Locale.CHINA, "%02d", this)
 }
