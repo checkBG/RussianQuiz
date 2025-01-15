@@ -25,6 +25,7 @@ import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -47,6 +48,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.russianquiz.R
 import com.example.russianquiz.bars.NavigationScreen
 import com.example.russianquiz.model.Century
+import com.example.russianquiz.model.MainViewModel
 import com.example.russianquiz.ui.theme.RussianQuizTheme
 import kotlin.math.cos
 import kotlin.math.sin
@@ -54,17 +56,19 @@ import kotlin.math.sin
 @Composable
 fun StatisticCentury(
     widthSize: WindowWidthSizeClass,
-    century: Century,
+    mainViewModel: MainViewModel,
     navController: NavController,
     modifier: Modifier = Modifier,
 ) {
+    val quizData by mainViewModel.quizData.collectAsState()
+
     Column(
         modifier = modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
 
-        CircleStatistic(century = century, widthSize = widthSize)
+        CircleStatistic(century = quizData.chosenCentury!!, widthSize = widthSize)
 
         Spacer(modifier = Modifier.height(30.dp))
 
@@ -83,7 +87,7 @@ fun StatisticCentury(
                         .wrapContentWidth(align = Alignment.CenterHorizontally)
                 )
                 CenturyIconNumber(
-                    centuryNumber = century.centuryNumber,
+                    centuryNumber = quizData.chosenCentury!!.centuryNumber,
                     modifier = Modifier
                         .fillMaxWidth()
                         .wrapContentWidth(align = Alignment.End)
@@ -124,7 +128,7 @@ fun CircleStatistic(
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
-                text = stringResource(id = R.string.max_score),
+                text = stringResource(id = R.string.max_score).replaceFirstChar { it.uppercase() },
                 fontSize = 30.sp,
                 color = Color.White,
                 fontWeight = FontWeight.W300
@@ -230,31 +234,7 @@ fun StatisticCenturyCompactPreview() {
         StatisticCentury(
             navController = rememberNavController(),
             widthSize = WindowWidthSizeClass.Compact,
-            century = Century.NINETEENTH
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun StatisticCenturyMediumPreview() {
-    RussianQuizTheme {
-        StatisticCentury(
-            navController = rememberNavController(),
-            widthSize = WindowWidthSizeClass.Medium,
-            century = Century.NINETEENTH
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun StatisticCenturyExpandedPreview() {
-    RussianQuizTheme {
-        StatisticCentury(
-            navController = rememberNavController(),
-            widthSize = WindowWidthSizeClass.Expanded,
-            century = Century.NINETEENTH
+            mainViewModel = MainViewModel()
         )
     }
 }

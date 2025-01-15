@@ -1,8 +1,26 @@
 package com.example.russianquiz.model
 
 private const val CURRENT_YEAR = 2025
+private const val FIRST_IS_NOT_COMPLETED = 20
+private const val SECOND_IS_NOT_COMPLETED = 35
+private const val THIRD_IS_NOT_COMPLETED = 50
 
-object WrongAnswers {
+object StartQuiz {
+    private fun getCountOfQuizzes(century: Century): Int {
+        return if (!century.isFirstCompleted) {
+            FIRST_IS_NOT_COMPLETED
+        } else if (!century.isSecondCompleted) {
+            SECOND_IS_NOT_COMPLETED
+        } else {
+            THIRD_IS_NOT_COMPLETED
+        }
+    }
+
+    fun generateListOfQuizzes(
+        century: Century,
+    ): List<Quiz> =
+        century.quizzes.shuffled().take(getCountOfQuizzes(century = century))
+
     fun generateWrongAnswers(century: Century, rightAnswer: Int): List<Int> {
         if (rightAnswer in 800..CURRENT_YEAR) {
             val maxRange =

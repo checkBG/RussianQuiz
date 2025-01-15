@@ -161,6 +161,6 @@ enum class Century(
     }
 
     fun updateMaxScore(newMaxScore: Int) {
-        maxScore = newMaxScore
+        if (newMaxScore > maxScore) maxScore = newMaxScore
     }
 }

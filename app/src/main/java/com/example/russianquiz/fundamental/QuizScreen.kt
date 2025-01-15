@@ -52,107 +52,108 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.russianquiz.R
 import com.example.russianquiz.model.Century
-import com.example.russianquiz.model.Quiz
-import com.example.russianquiz.model.WrongAnswers
+import com.example.russianquiz.model.QuizData
+import com.example.russianquiz.model.StartQuiz
 import com.example.russianquiz.ui.theme.RussianQuizTheme
 import com.example.russianquiz.utils.toTwoDigitNumber
 
 @Composable
-fun QuizCard(
+fun QuizScreen(
     modifier: Modifier = Modifier,
-    quiz: Quiz,
-    quizWrongAnswers: List<Int>,
-    isCompleted: Boolean = false,
-    countOfQuestions: Int,
-    wrongAnswers: Int = 0,
-    solvedQuestions: Int = 0,
+    quizData: QuizData,
 ) {
     Column(modifier = modifier) {
-        Box(
+        QuizCard(quizData = quizData)
+    }
+}
+
+@Composable
+fun QuizCard(
+    modifier: Modifier = Modifier,
+    quizData: QuizData,
+) {
+    val currentQuiz = quizData.quizzes!![quizData.solvedQuestions + 1]
+
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(WindowInsets.navigationBars.asPaddingValues())
+            .padding(top = 40.dp)
+    ) {
+        ElevatedCard(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(WindowInsets.navigationBars.asPaddingValues())
-                .padding(top = 40.dp)
+                .fillMaxWidth()
+                .height(300.dp)
+                .padding(16.dp)
         ) {
-            ElevatedCard(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(300.dp)
-                    .padding(16.dp)
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally
+                Row(
+                    modifier = Modifier.padding(5.dp)
                 ) {
-                    Row(
-                        modifier = Modifier.padding(5.dp)
-                    ) {
-                        ProgressBar(
-                            isRight = true,
-                            answers = solvedQuestions - wrongAnswers,
-                            modifier = Modifier
-                                .size(width = 80.dp, height = 40.dp)
-                        )
-
-                        Spacer(modifier = Modifier.weight(1f))
-
-                        ProgressBar(
-                            isRight = false,
-                            answers = wrongAnswers,
-                            modifier = Modifier
-                                .size(width = 80.dp, height = 40.dp)
-                        )
-                    }
-
-                    CountOfQuestions(
-                        countOfQuestions = countOfQuestions,
-                        solvedQuestions = solvedQuestions,
+                    ProgressBar(
+                        isRight = true,
+                        answers = quizData.rightAnswers,
                         modifier = Modifier
-                            .size(width = 200.dp, height = 50.dp)
+                            .size(width = 80.dp, height = 40.dp)
                     )
 
-                    Spacer(modifier = Modifier.height(15.dp))
+                    Spacer(modifier = Modifier.weight(1f))
 
-                    Text(
-                        text = stringResource(id = quiz.question),
-                        fontSize = 19.sp,
-                        fontWeight = FontWeight(650),
-                        textAlign = TextAlign.Center,
+                    ProgressBar(
+                        isRight = false,
+                        answers = quizData.solvedQuestions - quizData.rightAnswers,
                         modifier = Modifier
-                            .padding(start = 16.dp, end = 16.dp),
+                            .size(width = 80.dp, height = 40.dp)
                     )
                 }
+
+                CountOfQuestions(
+                    countOfQuestions = quizData.quizzes.size,
+                    solvedQuestions = quizData.solvedQuestions,
+                    modifier = Modifier
+                        .size(width = 200.dp, height = 50.dp)
+                )
+
+                Spacer(modifier = Modifier.height(15.dp))
+
+                Text(
+                    text = stringResource(id = currentQuiz.question),
+                    fontSize = 19.sp,
+                    fontWeight = FontWeight(650),
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .padding(start = 16.dp, end = 16.dp),
+                )
             }
-
-            Score(
-                brushTop = Brush.linearGradient(
-                    colors = listOf(
-                        Color(0xFF87800A),
-                        Color(0xFF9900EE),
-                    )
-                ),
-                brushLeft = Brush.linearGradient(
-                    colors = listOf(
-                        Color(0xFF87CEFA),
-                        Color(0xFFB0E0E6),
-                    )
-                ),
-                brushRight = Brush.linearGradient(
-                    colors = listOf(
-                        Color(0xFF099d00),
-                        Color(0xFF149300),
-                    )
-                ),
-                score = quiz.score,
-                modifier = Modifier
-                    .size(80.dp)
-                    .align(alignment = Alignment.TopCenter)
-                    .offset(0.dp, (-25).dp)
-            )
         }
 
-        ElevatedCard(onClick = { /*TODO*/ }) {
-
-        }
+        Score(
+            brushTop = Brush.linearGradient(
+                colors = listOf(
+                    Color(0xFF87800A),
+                    Color(0xFF9900EE),
+                )
+            ),
+            brushLeft = Brush.linearGradient(
+                colors = listOf(
+                    Color(0xFF87CEFA),
+                    Color(0xFFB0E0E6),
+                )
+            ),
+            brushRight = Brush.linearGradient(
+                colors = listOf(
+                    Color(0xFF099d00),
+                    Color(0xFF149300),
+                )
+            ),
+            score = currentQuiz.score,
+            modifier = Modifier
+                .size(80.dp)
+                .align(alignment = Alignment.TopCenter)
+                .offset(0.dp, (-25).dp)
+        )
     }
 }
 
@@ -408,19 +409,18 @@ private fun ScorePreview() {
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+@Preview(showBackground = true)
 @Composable
 private fun QuizCardPreview() {
     RussianQuizTheme {
         QuizCard(
-            quiz = Century.NINETEENTH.quizzes.first(),
-            countOfQuestions = 20,
-            solvedQuestions = 3,
-            modifier = Modifier,
-            quizWrongAnswers = WrongAnswers.generateWrongAnswers(
-                Century.NINETEENTH,
-                Century.NINETEENTH.quizzes.first().rightAnswer,
-            )
+            quizData = QuizData(
+                chosenCentury = Century.NINETEENTH,
+                quizzes = StartQuiz.generateListOfQuizzes(century = Century.NINETEENTH),
+                currentScore = 0,
+                rightAnswers = 3,
+                solvedQuestions = 5
+            ),
         )
     }
 }

@@ -2,14 +2,14 @@
     <string name="app_name">История России</string>
     <string name="a_century">%s век</string>
     <string name="century">век</string>
-    <string name="max_score">Максимум очков</string>
-    <string name="choose_screen">Выбор века</string>
-    <string name="century_quiz">Тест</string>
+    <string name="max_score">максимум очков</string>
+    <string name="choose_screen">выбор века</string>
+    <string name="century_quiz">тест</string>
     <string name="navigate_up">вернуться назад</string>
     <string name="settings">настройки</string>
     <string name="profile">профиль</string>
     <string name="statistic_century_screen">статистика выбранного века</string>
-    <string name="start">Начать</string>
+    <string name="start">начать</string>
     <string name="question">вопрос</string>
 
     <string name="question_ninth_century_1">Когда началась эпоха правления Рюрика?</string>
@@ -1333,4 +1333,5 @@
     <string name="answer_twenty_first_century_48">Активное участие в ООН, влияние в вопросах безопасности и помощи.</string>
     <string name="answer_twenty_first_century_49">Ограничения прав и свобод, улучшения в отдельных областях.</string>
     <string name="answer_twenty_first_century_50">Спад ВВП, рост безработицы, финансовые трудности.</string>
+    <string name="result_screen">результаты</string>
 </resources>

@@ -1,7 +1,7 @@
 package com.example.russianquiz
 
 import com.example.russianquiz.model.Century
-import com.example.russianquiz.model.WrongAnswers
+import com.example.russianquiz.model.StartQuiz
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -9,10 +9,10 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun generation_wrong_answer() {
-        val wrongAnswers = WrongAnswers.generateWrongAnswers(Century.SIXTEENTH, 1544)
+        val wrongAnswers = StartQuiz.generateWrongAnswers(Century.SIXTEENTH, 1544)
         println(wrongAnswers)
         assertTrue(wrongAnswers.size == 6)
-        val wrongAnswers1 = WrongAnswers.generateWrongAnswers(Century.TWENTIETH, 1991)
+        val wrongAnswers1 = StartQuiz.generateWrongAnswers(Century.TWENTIETH, 1991)
         println(wrongAnswers1)
         assertTrue(wrongAnswers1.size == 6)
     }

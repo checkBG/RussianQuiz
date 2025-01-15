@@ -31,6 +31,11 @@ sealed class NavigationScreen(
         route = Screen.PROFILE_SCREEN.name,
         titularName = Screen.PROFILE_SCREEN.titularName,
     )
+
+    data object ResultScreen : NavigationScreen(
+        route = Screen.RESULT_SCREEN.name,
+        titularName = Screen.RESULT_SCREEN.titularName,
+    )
 }
 
 enum class Screen(@StringRes val titularName: Int) {
@@ -39,4 +44,5 @@ enum class Screen(@StringRes val titularName: Int) {
     CENTURY_QUIZ(titularName = R.string.century_quiz),
     SETTINGS_SCREEN(titularName = R.string.settings),
     PROFILE_SCREEN(titularName = R.string.profile),
+    RESULT_SCREEN(titularName = R.string.result_screen)
 }
