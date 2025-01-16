@@ -53,7 +53,7 @@ fun NavGraph(
         }
 
         composable(route = NavigationScreen.CenturyQuiz.route) {
-            mainViewModel = mainViewModel,
+            QuizScreen(mainViewModel = mainViewModel)
         }
 
         composable(route = NavigationScreen.SettingsScreen.route) {

@@ -16,29 +16,42 @@ class MainViewModel : ViewModel() {
     val quizData: StateFlow<QuizData>
         get() = _quizData.asStateFlow()
 
+    private val _answerOptions: MutableStateFlow<List<Int>> = MutableStateFlow(emptyList())
+    val answersOptions: StateFlow<List<Int>>
+        get() = _answerOptions.asStateFlow()
+
     fun updateCurrentCentury(century: Century) {
         if (century != quizData.value.chosenCentury) {
             _quizData.update {
-                it.copy(
+                QuizData(
                     chosenCentury = century,
                     quizzes = StartQuiz.generateListOfQuizzes(century = century),
+                )
+            }
+            _answerOptions.update {
+                StartQuiz.generateWrongAnswers(
+                    century = century,
+                    rightAnswer = quizData.value.quizzes!![quizData.value.solvedQuestions].rightAnswer
                 )
             }
         }
     }
 
     fun onChoosingOption(
+        isRight: Boolean,
         chosenOption: Int,
-        rightAnswer: Int,
-        quiz: Quiz,
+        score: Int,
     ) {
         _quizData.update {
-            if (chosenOption == rightAnswer) it.copy(
+            if (isRight) it.copy(
                 isCompleted = true,
-                currentScore = it.currentScore + quiz.score,
+                currentScore = it.currentScore + score,
                 rightAnswers = it.rightAnswers + 1,
-                solvedQuestions = it.solvedQuestions + 1,
-            ) else it.copy(isCompleted = true)
+                chosenOption = chosenOption,
+            ) else it.copy(
+                isCompleted = true,
+                chosenOption = chosenOption,
+            )
         }
     }
 
@@ -47,9 +60,21 @@ class MainViewModel : ViewModel() {
         solvedQuestions: Int,
     ) {
         _quizData.update {
-            it.copy(isCompleted = false)
+            it.copy(
+                isCompleted = false,
+                solvedQuestions = it.solvedQuestions + 1
+            )
         }
+
+        _answerOptions.update {
+            StartQuiz.generateWrongAnswers(
+                century = quizData.value.chosenCentury!!,
+                rightAnswer = quizData.value.quizzes!![quizData.value.solvedQuestions].rightAnswer
+            )
+        }
+
         if (solvedQuestions == (quizData.value.quizzes?.size ?: 0)) {
+            _answerOptions.update { emptyList() }
             quizData.value.chosenCentury!!.updateMaxScore(newMaxScore = quizData.value.currentScore)
             _quizData.update { QuizData.initQuizData() }
             navController.navigate(NavigationScreen.ResultScreen.route) {

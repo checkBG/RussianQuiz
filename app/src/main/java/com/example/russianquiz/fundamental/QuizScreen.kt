@@ -1,5 +1,6 @@
 package com.example.russianquiz.fundamental
 
+import android.util.Log
 import androidx.compose.animation.core.EaseInCirc
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -7,6 +8,8 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,22 +24,29 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLayoutResult
@@ -52,6 +62,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.russianquiz.R
 import com.example.russianquiz.model.Century
+import com.example.russianquiz.model.MainViewModel
 import com.example.russianquiz.model.QuizData
 import com.example.russianquiz.model.StartQuiz
 import com.example.russianquiz.ui.theme.RussianQuizTheme
@@ -60,10 +71,139 @@ import com.example.russianquiz.utils.toTwoDigitNumber
 @Composable
 fun QuizScreen(
     modifier: Modifier = Modifier,
-    quizData: QuizData,
+    mainViewModel: MainViewModel,
 ) {
-    Column(modifier = modifier) {
-        QuizCard(quizData = quizData)
+    val quizData by mainViewModel.quizData.collectAsState()
+    val currentQuiz = quizData.quizzes!![quizData.solvedQuestions]
+    val answersOptions by mainViewModel.answersOptions.collectAsState()
+
+    LazyColumn(modifier = modifier) {
+        item {
+            QuizCard(quizData = quizData)
+        }
+
+        item {
+            Spacer(modifier = Modifier)
+        }
+
+        items(items = answersOptions) { answerOption ->
+            AnswerOption(
+                mainViewModel = mainViewModel,
+                answerOption = answerOption,
+                chosenAnswer = quizData.chosenOption,
+                rightAnswer = currentQuiz.rightAnswer,
+                score = currentQuiz.score,
+                isCompleted = quizData.isCompleted,
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+        }
+    }
+}
+
+@Composable
+fun AnswerOption(
+    modifier: Modifier = Modifier,
+    mainViewModel: MainViewModel,
+    chosenAnswer: Int? = null,
+    answerOption: Int,
+    rightAnswer: Int,
+    score: Int,
+    isCompleted: Boolean,
+) {
+    ElevatedCard(
+        onClick = {
+            mainViewModel.onChoosingOption(
+                isRight = rightAnswer == answerOption,
+                score = score,
+                chosenOption = answerOption,
+            )
+        },
+        enabled = !isCompleted,
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(start = 20.dp, end = 20.dp)
+            .clip(
+                shape = RoundedCornerShape(
+                    topStartPercent = 5,
+                    bottomStartPercent = 5,
+                    topEndPercent = 40,
+                    bottomEndPercent = 40,
+                )
+            )
+            .border(
+                3.dp,
+                color = if (isCompleted && ((chosenAnswer == answerOption) || (answerOption == rightAnswer))) {
+                    if (answerOption == rightAnswer) {
+                        colorResource(id = R.color.purple_200)
+                    } else {
+                        Color(0xFFFF0000)
+                    }
+                } else {
+                    Color.Gray
+                },
+                shape = RoundedCornerShape(
+                    topStartPercent = 5,
+                    bottomStartPercent = 5,
+                    topEndPercent = 40,
+                    bottomEndPercent = 40,
+                )
+            ),
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Text(
+                text = stringResource(id = answerOption),
+                fontSize = 17.sp,
+                color = Color.Black,
+                fontWeight = FontWeight.W500,
+                textAlign = TextAlign.Start,
+                modifier = Modifier
+                    .weight(1f)
+            )
+
+            Spacer(modifier = Modifier.width(5.dp))
+
+            Image(
+                painter = painterResource(
+                    if (isCompleted && (answerOption == rightAnswer)) {
+                        R.drawable.tick_icon
+                    } else if (!isCompleted || (answerOption != chosenAnswer)) {
+                        R.drawable.radio_button
+                    } else {
+                        R.drawable.cross_icon
+                    }
+                ),
+                contentDescription = stringResource(
+                    if (isCompleted && ((chosenAnswer == answerOption) || (answerOption == rightAnswer))) {
+                        if (chosenAnswer == rightAnswer) {
+                            R.string.right_answer
+                        } else {
+                            R.string.wrong_answer
+                        }
+                    } else if (!isCompleted) {
+                        R.string.possible_option
+                    } else {
+                        R.string.wrong_option_not_chosen
+                    }
+                ),
+                colorFilter = ColorFilter.tint(
+                    color = if (isCompleted && ((chosenAnswer == answerOption) || (answerOption == rightAnswer))) {
+                        if (answerOption == rightAnswer) {
+                            colorResource(id = R.color.purple_200)
+                        } else {
+                            Color(0xFFFF0000)
+                        }
+                    } else {
+                        Color.Gray
+                    }
+                ),
+                modifier = Modifier.size(30.dp)
+            )
+        }
     }
 }
 
@@ -72,7 +212,7 @@ fun QuizCard(
     modifier: Modifier = Modifier,
     quizData: QuizData,
 ) {
-    val currentQuiz = quizData.quizzes!![quizData.solvedQuestions + 1]
+    val currentQuiz = quizData.quizzes!![quizData.solvedQuestions]
 
     Box(
         modifier = modifier
@@ -103,7 +243,7 @@ fun QuizCard(
 
                     ProgressBar(
                         isRight = false,
-                        answers = quizData.solvedQuestions - quizData.rightAnswers,
+                        answers = quizData.solvedQuestions - quizData.rightAnswers + if (quizData.isCompleted) 1 else 0,
                         modifier = Modifier
                             .size(width = 80.dp, height = 40.dp)
                     )
@@ -130,12 +270,12 @@ fun QuizCard(
         }
 
         Score(
-            brushTop = Brush.linearGradient(
-                colors = listOf(
-                    Color(0xFF87800A),
-                    Color(0xFF9900EE),
-                )
-            ),
+//            brushTop = Brush.linearGradient(
+//                colors = listOf(
+//                    Color(0xFF87800A),
+//                    Color(0xFF9900EE),
+//                )
+//            ),
             brushLeft = Brush.linearGradient(
                 colors = listOf(
                     Color(0xFF87CEFA),
@@ -305,7 +445,7 @@ fun Score(
     modifier: Modifier = Modifier,
     brushRight: Brush,
     brushLeft: Brush,
-    brushTop: Brush, /*TODO:*/
+//    brushTop: Brush, /*TODO:*/
     score: Int,
     initialValue: Float = 0f,
     targetValue: Float = 360f,
@@ -382,6 +522,21 @@ fun Score(
 
 @Preview(showBackground = true)
 @Composable
+private fun AnswerOptionPreview() {
+    RussianQuizTheme {
+        AnswerOption(
+            mainViewModel = MainViewModel(),
+            chosenAnswer = R.string.answer_twenty_first_century_4,
+            answerOption = R.string.answer_twenty_first_century_5,
+            rightAnswer = R.string.answer_twenty_first_century_44,
+            score = 3,
+            isCompleted = true,
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
 private fun ScorePreview() {
     RussianQuizTheme {
         Score(
@@ -398,12 +553,12 @@ private fun ScorePreview() {
                     Color(0xFFB0E0E6),
                 )
             ),
-            brushTop = Brush.linearGradient(
-                listOf(
-                    Color(0xFF004d00),
-                    Color(0xFF142300),
-                )
-            ),
+//            brushTop = Brush.linearGradient(
+//                listOf(
+//                    Color(0xFF004d00),
+//                    Color(0xFF142300),
+//                )
+//            ),
             score = 5,
         )
     }

@@ -1334,4 +1334,8 @@
     <string name="answer_twenty_first_century_49">Ограничения прав и свобод, улучшения в отдельных областях.</string>
     <string name="answer_twenty_first_century_50">Спад ВВП, рост безработицы, финансовые трудности.</string>
     <string name="result_screen">результаты</string>
+    <string name="right_answer">Верный ответ. Вы ответили верно</string>
+    <string name="wrong_answer">Неверный ответ. Вы ответили неверно</string>
+    <string name="possible_option">Возможный вариант ответа</string>
+    <string name="wrong_option_not_chosen">Ложный вариант ответа</string>
 </resources>
