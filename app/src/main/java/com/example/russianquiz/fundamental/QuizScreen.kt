@@ -8,7 +8,6 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -42,11 +41,11 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLayoutResult
@@ -61,11 +60,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.russianquiz.R
-import com.example.russianquiz.model.Century
+import com.example.russianquiz.model.Levels
 import com.example.russianquiz.model.MainViewModel
 import com.example.russianquiz.model.QuizData
-import com.example.russianquiz.model.StartQuiz
-import com.example.russianquiz.ui.theme.RussianQuizTheme
+import com.example.russianquiz.model.Quizzes
+import com.example.russianquiz.ui.theme.QuizAppTheme
+import com.example.russianquiz.utils.createVibration
 import com.example.russianquiz.utils.toTwoDigitNumber
 
 @Composable
@@ -75,7 +75,16 @@ fun QuizScreen(
 ) {
     val quizData by mainViewModel.quizData.collectAsState()
     val currentQuiz = quizData.quizzes!![quizData.solvedQuestions]
-    val answersOptions by mainViewModel.answersOptions.collectAsState()
+    val context = LocalContext.current
+    val ids =
+        context.resources.obtainTypedArray(quizData.quizzes!![quizData.solvedQuestions].options)
+    val answersOptions = mutableListOf<Int>()
+    for (i in 0 until ids.length()) {
+        answersOptions.add(ids.getResourceId(i, 0))
+    }
+
+    Log.d("EXPLORE", answersOptions.toString())
+    ids.recycle()
 
     LazyColumn(modifier = modifier) {
         item {
@@ -92,7 +101,6 @@ fun QuizScreen(
                 answerOption = answerOption,
                 chosenAnswer = quizData.chosenOption,
                 rightAnswer = currentQuiz.rightAnswer,
-                score = currentQuiz.score,
                 isCompleted = quizData.isCompleted,
             )
             Spacer(modifier = Modifier.height(10.dp))
@@ -107,16 +115,20 @@ fun AnswerOption(
     chosenAnswer: Int? = null,
     answerOption: Int,
     rightAnswer: Int,
-    score: Int,
     isCompleted: Boolean,
 ) {
+    val isTick = isCompleted && (answerOption == rightAnswer)
+    val isRadio = !isCompleted || (answerOption != chosenAnswer)
+    val context = LocalContext.current
+
     ElevatedCard(
         onClick = {
-            mainViewModel.onChoosingOption(
-                isRight = rightAnswer == answerOption,
-                score = score,
-                chosenOption = answerOption,
-            )
+            {
+                mainViewModel.onChoosingOption(
+                    isRight = rightAnswer == answerOption,
+                    chosenOption = answerOption,
+                )
+            }.createVibration(context = context)
         },
         enabled = !isCompleted,
         modifier = modifier
@@ -124,28 +136,26 @@ fun AnswerOption(
             .padding(start = 20.dp, end = 20.dp)
             .clip(
                 shape = RoundedCornerShape(
-                    topStartPercent = 5,
-                    bottomStartPercent = 5,
-                    topEndPercent = 40,
-                    bottomEndPercent = 40,
+                    topStartPercent = 100,
+                    bottomStartPercent = 100,
+                    topEndPercent = 100,
+                    bottomEndPercent = 100,
                 )
             )
             .border(
                 3.dp,
-                color = if (isCompleted && ((chosenAnswer == answerOption) || (answerOption == rightAnswer))) {
-                    if (answerOption == rightAnswer) {
-                        colorResource(id = R.color.purple_200)
-                    } else {
-                        Color(0xFFFF0000)
-                    }
-                } else {
+                color = if (isTick) {
+                    colorResource(id = R.color.purple_200)
+                } else if (isRadio) {
                     Color.Gray
+                } else {
+                    Color.Red
                 },
                 shape = RoundedCornerShape(
-                    topStartPercent = 5,
-                    bottomStartPercent = 5,
-                    topEndPercent = 40,
-                    bottomEndPercent = 40,
+                    topStartPercent = 100,
+                    bottomStartPercent = 100,
+                    topEndPercent = 100,
+                    bottomEndPercent = 100,
                 )
             ),
     ) {
@@ -160,49 +170,29 @@ fun AnswerOption(
                 fontSize = 17.sp,
                 color = Color.Black,
                 fontWeight = FontWeight.W500,
-                textAlign = TextAlign.Start,
+                textAlign = TextAlign.Center,
                 modifier = Modifier
                     .weight(1f)
             )
 
             Spacer(modifier = Modifier.width(5.dp))
 
-            Image(
-                painter = painterResource(
-                    if (isCompleted && (answerOption == rightAnswer)) {
-                        R.drawable.tick_icon
-                    } else if (!isCompleted || (answerOption != chosenAnswer)) {
-                        R.drawable.radio_button
-                    } else {
-                        R.drawable.cross_icon
-                    }
-                ),
-                contentDescription = stringResource(
-                    if (isCompleted && ((chosenAnswer == answerOption) || (answerOption == rightAnswer))) {
-                        if (chosenAnswer == rightAnswer) {
-                            R.string.right_answer
-                        } else {
-                            R.string.wrong_answer
-                        }
-                    } else if (!isCompleted) {
-                        R.string.possible_option
-                    } else {
-                        R.string.wrong_option_not_chosen
-                    }
-                ),
-                colorFilter = ColorFilter.tint(
-                    color = if (isCompleted && ((chosenAnswer == answerOption) || (answerOption == rightAnswer))) {
-                        if (answerOption == rightAnswer) {
-                            colorResource(id = R.color.purple_200)
-                        } else {
-                            Color(0xFFFF0000)
-                        }
-                    } else {
-                        Color.Gray
-                    }
-                ),
-                modifier = Modifier.size(30.dp)
-            )
+            if (isTick) {
+                Tick(
+                    color = colorResource(id = R.color.purple_200),
+                    modifier = Modifier.size(30.dp)
+                )
+            } else if (isRadio) {
+                Radio(
+                    color = Color.Gray,
+                    modifier = Modifier.size(30.dp)
+                )
+            } else {
+                Cross(
+                    color = Color.Red,
+                    modifier = Modifier.size(30.dp)
+                )
+            }
         }
     }
 }
@@ -288,7 +278,6 @@ fun QuizCard(
                     Color(0xFF149300),
                 )
             ),
-            score = currentQuiz.score,
             modifier = Modifier
                 .size(80.dp)
                 .align(alignment = Alignment.TopCenter)
@@ -445,8 +434,7 @@ fun Score(
     modifier: Modifier = Modifier,
     brushRight: Brush,
     brushLeft: Brush,
-//    brushTop: Brush, /*TODO:*/
-    score: Int,
+//    brushTop: Brush, /*TODO*/
     initialValue: Float = 0f,
     targetValue: Float = 360f,
 ) {
@@ -468,7 +456,7 @@ fun Score(
                 fontWeight = FontWeight.ExtraBold,
                 color = colorResource(id = R.color.purple_200)
             )
-        ) { append(score.toString()) }
+        ) { append("3") }
     }
     val textLayoutResult: TextLayoutResult =
         textMeasurer.measure(text = scoreString)
@@ -520,16 +508,144 @@ fun Score(
     }
 }
 
+@Composable
+fun Cross(
+    modifier: Modifier = Modifier,
+    color: Color,
+) {
+    Canvas(modifier = modifier) {
+        drawCircle(
+            color = color,
+        )
+        drawLine(
+            color = Color.White,
+            start = Offset(size.width * 0.25f, size.height * 0.25f),
+            end = Offset(size.width * 0.75f, size.height * 0.75f),
+            strokeWidth = 10f,
+            cap = StrokeCap.Round,
+        )
+        drawLine(
+            color = Color.White,
+            start = Offset(size.width * 0.27f, size.height * 0.75f),
+            end = Offset(size.width * 0.75f, size.height * 0.25f),
+            strokeWidth = 10f,
+            cap = StrokeCap.Round,
+        )
+    }
+}
+
+@Composable
+fun Tick(
+    modifier: Modifier = Modifier,
+    color: Color,
+) {
+    Canvas(modifier = modifier) {
+        drawCircle(
+            color = color
+        )
+        drawLine(
+            color = Color.White,
+            start = Offset(size.width * 0.45f, size.height * 0.7f),
+            end = Offset(size.width * 0.8f, size.height * 0.35f),
+            strokeWidth = 10f,
+            cap = StrokeCap.Round,
+        )
+        drawLine(
+            color = Color.White,
+            start = Offset(size.width * 0.45f, size.height * 0.7f),
+            end = Offset(size.width * 0.25f, size.height * 0.48f),
+            strokeWidth = 10f,
+            cap = StrokeCap.Round,
+        )
+    }
+}
+
+@Composable
+fun Radio(
+    modifier: Modifier = Modifier,
+    color: Color,
+) {
+    Canvas(modifier = modifier) {
+        drawCircle(
+            color = color,
+            style = Stroke(10f)
+        )
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
-private fun AnswerOptionPreview() {
-    RussianQuizTheme {
+private fun RadioPreview() {
+    QuizAppTheme {
+        Radio(
+            color = Color.Gray,
+            modifier = Modifier.size(100.dp)
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun TickPreview() {
+    QuizAppTheme {
+        Tick(
+            color = colorResource(id = R.color.purple_200),
+            modifier = Modifier.size(100.dp)
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun CrossPreview() {
+    QuizAppTheme {
+        Cross(
+            color = Color.Red,
+            modifier = Modifier.size(100.dp)
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun AnswerOptionNeutralPreview() {
+    val quiz = Quizzes.firstLevelQuizzes[0]
+    QuizAppTheme {
         AnswerOption(
             mainViewModel = MainViewModel(),
-            chosenAnswer = R.string.answer_twenty_first_century_4,
-            answerOption = R.string.answer_twenty_first_century_5,
-            rightAnswer = R.string.answer_twenty_first_century_44,
-            score = 3,
+            chosenAnswer = R.string.answer_grammar_1_1,
+            answerOption = R.string.answer_grammar_1_2,
+            rightAnswer = quiz.rightAnswer,
+            isCompleted = true,
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun AnswerOptionWrongPreview() {
+    val quiz = Quizzes.firstLevelQuizzes[0]
+    QuizAppTheme {
+        AnswerOption(
+            mainViewModel = MainViewModel(),
+            chosenAnswer = R.string.answer_grammar_1_1,
+            answerOption = R.string.answer_grammar_1_1,
+            rightAnswer = quiz.rightAnswer,
+            isCompleted = true,
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun AnswerOptionRightPreview() {
+    val quiz = Quizzes.firstLevelQuizzes[0]
+    QuizAppTheme {
+        AnswerOption(
+            mainViewModel = MainViewModel(),
+            chosenAnswer = R.string.answer_grammar_1_1,
+            answerOption = quiz.rightAnswer,
+            rightAnswer = quiz.rightAnswer,
             isCompleted = true,
         )
     }
@@ -538,7 +654,7 @@ private fun AnswerOptionPreview() {
 @Preview(showBackground = true)
 @Composable
 private fun ScorePreview() {
-    RussianQuizTheme {
+    QuizAppTheme {
         Score(
             modifier = Modifier.size(80.dp),
             brushRight = Brush.linearGradient(
@@ -559,7 +675,6 @@ private fun ScorePreview() {
 //                    Color(0xFF142300),
 //                )
 //            ),
-            score = 5,
         )
     }
 }
@@ -567,14 +682,13 @@ private fun ScorePreview() {
 @Preview(showBackground = true)
 @Composable
 private fun QuizCardPreview() {
-    RussianQuizTheme {
+    QuizAppTheme {
         QuizCard(
             quizData = QuizData(
-                chosenCentury = Century.NINETEENTH,
-                quizzes = StartQuiz.generateListOfQuizzes(century = Century.NINETEENTH),
-                currentScore = 0,
-                rightAnswers = 3,
-                solvedQuestions = 5
+                chosenLevel = Levels.SIXTH_LEVEL,
+                quizzes = Quizzes.sixthLevelQuizzes,
+                rightAnswers = 1,
+                solvedQuestions = 3
             ),
         )
     }

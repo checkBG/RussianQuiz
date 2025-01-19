@@ -7,15 +7,12 @@ import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.navigation.NavHostController
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.russianquiz.fundamental.ChooseCentury
-import com.example.russianquiz.fundamental.QuizCard
+import com.example.russianquiz.fundamental.ChooseTopic
 import com.example.russianquiz.fundamental.QuizScreen
 import com.example.russianquiz.fundamental.StatisticCentury
 import com.example.russianquiz.model.MainViewModel
@@ -36,8 +33,8 @@ fun NavGraph(
     ) {
 
         composable(route = NavigationScreen.ChooseScreen.route) {
-            ChooseCentury(
-                centuries = mainViewModel.centuries,
+            ChooseTopic(
+                levels = mainViewModel.levels,
                 widthSize = widthSize,
                 navController = navController,
                 mainViewModel = mainViewModel,

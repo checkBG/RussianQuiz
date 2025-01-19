@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="quiz_options_phrasal_verbs_1">
+        <item>@string/answer_phrasal_verbs_1_1</item>
+        <item>@string/answer_phrasal_verbs_1_2</item>
+        <item>@string/answer_phrasal_verbs_1_3</item>
+        <item>@string/answer_phrasal_verbs_1_4</item>
+    </string-array>
+
+    <string-array name="quiz_options_phrasal_verbs_2">
+        <item>@string/answer_phrasal_verbs_2_1</item>
+        <item>@string/answer_phrasal_verbs_2_2</item>
+        <item>@string/answer_phrasal_verbs_2_3</item>
+        <item>@string/answer_phrasal_verbs_2_4</item>
+    </string-array>
+
+    <string-array name="quiz_options_phrasal_verbs_3">
+        <item>@string/answer_phrasal_verbs_3_1</item>
+        <item>@string/answer_phrasal_verbs_3_2</item>
+        <item>@string/answer_phrasal_verbs_3_3</item>
+        <item>@string/answer_phrasal_verbs_3_4</item>
+    </string-array>
+
+    <string-array name="quiz_options_phrasal_verbs_4">
+        <item>@string/answer_phrasal_verbs_4_1</item>
+        <item>@string/answer_phrasal_verbs_4_2</item>
+        <item>@string/answer_phrasal_verbs_4_3</item>
+        <item>@string/answer_phrasal_verbs_4_4</item>
+    </string-array>
+
+    <string-array name="quiz_options_vocabulary_1">
+        <item>@string/answer_vocabulary_1_1</item>
+        <item>@string/answer_vocabulary_1_2</item>
+        <item>@string/answer_vocabulary_1_3</item>
+    </string-array>
+
+    <string-array name="quiz_options_grammar_1">
+        <item>@string/answer_grammar_1_1</item>
+        <item>@string/answer_grammar_1_2</item>
+    </string-array>
+
+    <string-array name="quiz_options_vocabulary_2">
+        <item>@string/answer_vocabulary_2_1</item>
+        <item>@string/answer_vocabulary_2_2</item>
+        <item>@string/answer_vocabulary_2_3</item>
+        <item>@string/all_correct</item>
+    </string-array>
+
+    <string-array name="quiz_options_grammar_2">
+        <item>@string/answer_grammar_2_1</item>
+        <item>@string/answer_grammar_2_2</item>
+        <item>@string/answer_grammar_2_3</item>
+        <item>@string/answer_grammar_2_4</item>
+    </string-array>
+
+    <string-array name="quiz_options_vocabulary_3">
+        <item>@string/answer_vocabulary_3_1</item>
+        <item>@string/answer_vocabulary_3_2</item>
+        <item>@string/answer_vocabulary_3_3</item>
+    </string-array>
+
+    <string-array name="quiz_options_grammar_3">
+        <item>@string/answer_grammar_3_1</item>
+        <item>@string/answer_grammar_3_2</item>
+        <item>@string/all_correct</item>
+    </string-array>
+
+    <string-array name="options_grammar_4">
+        <item>@string/answer_grammar_4_1</item>
+        <item>@string/answer_grammar_4_2</item>
+    </string-array>
+
+    <string-array name="options_pronunciation_1">
+        <item>@string/answer_pronunciation_1</item>
+        <item>@string/answer_pronunciation_2</item>
+        <item>@string/answer_pronunciation_1_3</item>
+        <item>@string/answer_pronunciation_4</item>
+    </string-array>
+
+    <string-array name="options_vocabulary_4">
+        <item>@string/answer_vocabulary_4_1</item>
+        <item>@string/answer_vocabulary_4_2</item>
+        <item>@string/answer_vocabulary_4_3</item>
+        <item>@string/answer_vocabulary_4_4</item>
+    </string-array>
+
+    <string-array name="options_grammar_5">
+        <item>@string/answer_grammar_5_1</item>
+        <item>@string/answer_grammar_5_2</item>
+        <item>@string/answer_grammar_5_3</item>
+        <item>@string/answer_grammar_5_4</item>
+    </string-array>
+
+    <string-array name="options_prepositions_1">
+        <item>@string/answer_prepositions_1_1</item>
+        <item>@string/answer_prepositions_1_2</item>
+        <item>@string/answer_prepositions_1_3</item>
+        <item>@string/answer_prepositions_1_4</item>
+        <item>@string/answer_prepositions_1_5</item>
+        <item>@string/answer_prepositions_1_6</item>
+        <item>@string/all_correct</item>
+        <item>@string/all_incorrect</item>
+    </string-array>
+
+    <string-array name="options_grammar_6">
+        <item>@string/answer_grammar_6_1</item>
+        <item>@string/answer_grammar_6_2</item>
+        <item>@string/all_correct</item>
+    </string-array>
+
+    <string-array name="options_phrasal_verbs_5">
+        <item>@string/answer_phrasal_verbs_5_1</item>
+        <item>@string/answer_phrasal_verbs_5_2</item>
+    </string-array>
+
+    <string-array name="options_tenses_1">
+        <item>@string/answer_tenses_1_1</item>
+        <item>@string/answer_tenses_6_2</item>
+        <item>@string/answer_tenses_6_3</item>
+        <item>@string/answer_tenses_6_4</item>
+        <item>@string/answer_tenses_6_5</item>
+    </string-array>
+
+    <string-array name="options_grammar_7">
+        <item>@string/answer_grammar_7_1</item>
+        <item>@string/answer_grammar_7_2</item>
+        <item>@string/all_correct</item>
+    </string-array>
+
+    <string-array name="options_grammar_8">
+        <item>@string/answer_grammar_8_1</item>
+        <item>@string/answer_grammar_8_2</item>
+    </string-array>
+
+    <string-array name="options_vocabulary_9">
+        <item>@string/answer_vocabulary_9_1</item>
+        <item>@string/answer_vocabulary_9_2</item>
+        <item>@string/answer_vocabulary_9_3</item>
+        <item>@string/answer_vocabulary_9_4</item>
+        <item>@string/answer_vocabulary_9_5</item>
+    </string-array>
+
+    <string-array name="options_slang_1">
+        <item>@string/answer_slang_1_1</item>
+        <item>@string/answer_slang_1_2</item>
+        <item>@string/answer_slang_1_3</item>
+    </string-array>
+
+    <string-array name="options_prepositions_2">
+        <item>@string/answer_prepositions_2_1</item>
+        <item>@string/answer_prepositions_2_2</item>
+        <item>@string/answer_prepositions_2_3</item>
+        <item>@string/answer_prepositions_2_4</item>
+    </string-array>
+
+    <string-array name="options_vocabulary_10">
+        <item>@string/answer_vocabulary_10_1</item>
+        <item>@string/answer_vocabulary_10_2</item>
+        <item>@string/answer_vocabulary_10_3</item>
+    </string-array>
+
+    <string-array name="options_grammar_10">
+        <item>@string/answer_grammar_10_1</item>
+        <item>@string/answer_grammar_10_2</item>
+        <item>@string/all_correct</item>
+        <item>@string/all_incorrect</item>
+    </string-array>
+
+    <string-array name="options_tenses_2">
+        <item>@string/answer_tenses_2_1</item>
+        <item>@string/answer_tenses_2_2</item>
+        <item>@string/answer_tenses_2_3</item>
+        <item>@string/all_correct</item>
+    </string-array>
+
+    <string-array name="options_verb_forms_1">
+        <item>@string/answer_verb_forms_1_1</item>
+        <item>@string/answer_verb_forms_1_2</item>
+        <item>@string/answer_verb_forms_1_3</item>
+        <item>@string/answer_verb_forms_1_4</item>
+        <item>@string/answer_verb_forms_1_5</item>
+    </string-array>
+
+    <string-array name="options_idioms_1">
+        <item>@string/answer_idioms_1_1</item>
+        <item>@string/answer_idioms_1_2</item>
+        <item>@string/all_correct</item>
+    </string-array>
+
+    <string-array name="options_vocabulary_5">
+        <item>@string/answer_vocabulary_5_1</item>
+        <item>@string/answer_vocabulary_5_2</item>
+        <item>@string/answer_vocabulary_5_3</item>
+        <item>@string/answer_vocabulary_5_4</item>
+        <item>@string/answer_vocabulary_5_5</item>
+        <item>@string/answer_vocabulary_5_6</item>
+    </string-array>
+
+    <string-array name="options_vocabulary_6">
+        <item>@string/answer_vocabulary_6_1</item>
+        <item>@string/answer_vocabulary_6_2</item>
+        <item>@string/answer_vocabulary_6_3</item>
+        <item>@string/answer_vocabulary_6_4</item>
+        <item>@string/all_incorrect</item>
+    </string-array>
+
+    <string-array name="options_vocabulary_7">
+        <item>@string/answer_vocabulary_7_1</item>
+        <item>@string/answer_vocabulary_7_2</item>
+        <item>@string/answer_vocabulary_7_3</item>
+        <item>@string/answer_vocabulary_7_4</item>
+    </string-array>
+
+    <string-array name="options_prepositions_3">
+        <item>@string/answer_prepositions_3_1</item>
+        <item>@string/answer_prepositions_3_2</item>
+        <item>@string/answer_prepositions_3_3</item>
+        <item>@string/answer_prepositions_3_4</item>
+        <item>@string/answer_prepositions_3_5</item>
+    </string-array>
+
+    <string-array name="options_spelling_1">
+        <item>@string/answer_spelling_1_1</item>
+        <item>@string/answer_spelling_1_2</item>
+        <item>@string/answer_spelling_1_3</item>
+        <item>@string/answer_spelling_1_4</item>
+        <item>@string/all_correct</item>
+    </string-array>
+
+    <string-array name="options_vocabulary_8">
+        <item>@string/answer_vocabulary_8_1</item>
+        <item>@string/answer_vocabulary_8_2</item>
+        <item>@string/answer_vocabulary_8_3</item>
+        <item>@string/answer_vocabulary_8_4</item>
+    </string-array>
+
+    <string-array name="options_prepositions_4">
+        <item>@string/answer_prepositions_4_1</item>
+        <item>@string/answer_prepositions_4_2</item>
+        <item>@string/answer_prepositions_4_3</item>
+    </string-array>
+
+    <string-array name="options_vocabulary_11">
+        <item>@string/answer_vocabulary_11_1</item>
+        <item>@string/answer_vocabulary_11_2</item>
+        <item>@string/answer_vocabulary_11_3</item>
+    </string-array>
+
+    <string-array name="options_grammar_11">
+        <item>@string/answer_grammar_11_1</item>
+        <item>@string/answer_grammar_11_2</item>
+        <item>@string/answer_grammar_11_3</item>
+        <item>@string/answer_grammar_11_4</item>
+        <item>@string/answer_grammar_11_5</item>
+        <item>@string/answer_grammar_11_6</item>
+    </string-array>
+
+    <string-array name="options_grammar_12">
+        <item>@string/answer_grammar_12_1</item>
+        <item>@string/answer_grammar_12_2</item>
+        <item>@string/answer_grammar_12_3</item>
+        <item>@string/answer_grammar_12_4</item>
+        <item>@string/answer_grammar_12_5</item>
+        <item>@string/answer_grammar_12_6</item>
+        <item>@string/all_incorrect</item>
+        <item>@string/all_correct</item>
+    </string-array>
+
+    <string-array name="options_phrasal_verbs_6">
+        <item>@string/answer_phrasal_verbs_6_1</item>
+        <item>@string/answer_phrasal_verbs_6_2</item>
+        <item>@string/answer_phrasal_verbs_6_3</item>
+    </string-array>
+
+    <string-array name="options_prepositions_5">
+        <item>@string/answer_prepositions_5_1</item>
+        <item>@string/answer_prepositions_5_2</item>
+        <item>@string/all_correct</item>
+    </string-array>
+
+    <string-array name="options_idioms_2">
+        <item>@string/answer_idioms_2_1</item>
+        <item>@string/answer_idioms_2_2</item>
+        <item>@string/answer_idioms_2_3</item>
+        <item>@string/all_correct</item>
+        <item>@string/all_incorrect</item>
+    </string-array>
+
+    <string-array name="options_phrasal_verbs_7">
+        <item>@string/answer_phrasal_verbs_7_1</item>
+        <item>@string/answer_phrasal_verbs_7_2</item>
+    </string-array>
+
+    <string-array name="options_vocabulary_12">
+        <item>@string/answer_vocabulary_12_1</item>
+        <item>@string/answer_vocabulary_12_2</item>
+        <item>@string/answer_vocabulary_12_3</item>
+        <item>@string/answer_vocabulary_12_4</item>
+    </string-array>
+
+    <string-array name="options_grammar_13">
+        <item>@string/answer_grammar_13_1</item>
+        <item>@string/answer_grammar_13_2</item>
+        <item>@string/answer_grammar_13_3</item>
+        <item>@string/answer_grammar_13_4</item>
+        <item>@string/answer_grammar_13_5</item>
+        <item>@string/answer_grammar_13_6</item>
+        <item>@string/answer_grammar_13_7</item>
+        <item>@string/all_correct</item>
+        <item>@string/all_incorrect</item>
+    </string-array>
+
+    <string-array name="options_idioms_3">
+        <item>@string/answer_idioms_3_1</item>
+        <item>@string/answer_idioms_3_2</item>
+        <item>@string/answer_idioms_3_3</item>
+        <item>@string/answer_idioms_3_4</item>
+        <item>@string/answer_idioms_3_5</item>
+    </string-array>
+
+    <array name="options_tenses_3">
+        <item>@string/answer_tenses_3_1</item>
+        <item>@string/answer_tenses_3_2</item>
+        <item>@string/answer_tenses_3_3</item>
+    </array>
+
+    <array name="options_grammar_14">
+        <item>@string/answer_grammar_14_1</item>
+        <item>@string/answer_grammar_14_2</item>
+        <item>@string/answer_grammar_14_3</item>
+    </array>
+
+    <string-array name="options_grammar_15">
+        <item>@string/answer_grammar_15_1</item>
+        <item>@string/answer_grammar_15_2</item>
+        <item>@string/answer_grammar_15_3</item>
+        <item>@string/answer_grammar_15_4</item>
+    </string-array>
+
+    <string-array name="options_phrasal_verbs_8">
+        <item>@string/answer_phrasal_verbs_8_1</item>
+        <item>@string/answer_phrasal_verbs_8_2</item>
+        <item>@string/answer_phrasal_verbs_8_3</item>
+        <item>@string/answer_phrasal_verbs_8_4</item>
+    </string-array>
+
+    <string-array name="options_tenses_4">
+        <item>@string/answer_tenses_4_1</item>
+        <item>@string/answer_tenses_4_2</item>
+        <item>@string/answer_tenses_4_3</item>
+    </string-array>
+
+    <string-array name="options_grammar_16">
+        <item>@string/answer_grammar_16_1</item>
+        <item>@string/answer_grammar_16_2</item>
+        <item>@string/answer_grammar_16_3</item>
+        <item>@string/answer_grammar_16_4</item>
+        <item>@string/answer_grammar_16_5</item>
+        <item>@string/answer_grammar_16_6</item>
+    </string-array>
+
+    <array name="options_phrasal_verbs_9">
+        <item>@string/answer_phrasal_verbs_9_1</item>
+        <item>@string/answer_phrasal_verbs_9_2</item>
+        <item>@string/answer_phrasal_verbs_9_3</item>
+        <item>@string/answer_phrasal_verbs_9_4</item>
+        <item>@string/answer_phrasal_verbs_9_5</item>
+    </array>
+
+    <string-array name="options_grammar_17">
+        <item>@string/answer_grammar_17_1</item>
+        <item>@string/answer_grammar_17_2</item>
+        <item>@string/answer_grammar_17_3</item>
+        <item>@string/answer_grammar_17_4</item>
+        <item>@string/answer_grammar_17_5</item>
+        <item>@string/answer_grammar_17_6</item>
+        <item>@string/answer_grammar_17_7</item>
+        <item>@string/all_correct</item>
+        <item>@string/all_incorrect</item>
+    </string-array>
+
+    <string-array name="options_pronunciation_2">
+        <item>@string/answer_pronunciation_2_1</item>
+        <item>@string/answer_pronunciation_2_2</item>
+        <item>@string/answer_pronunciation_2_3</item>
+    </string-array>
+
+    <string-array name="options_phrasal_verbs_10">
+        <item>@string/answer_phrasal_verbs_10_1</item>
+        <item>@string/answer_phrasal_verbs_10_2</item>
+        <item>@string/answer_phrasal_verbs_10_3</item>
+        <item>@string/answer_phrasal_verbs_10_4</item>
+    </string-array>
+
+    <string-array name="options_vocabulary_13">
+        <item>@string/answer_vocabulary_13_1</item>
+        <item>@string/answer_vocabulary_13_2</item>
+        <item>@string/answer_vocabulary_13_3</item>
+    </string-array>
+
+    <string-array name="options_spelling_2">
+        <item>@string/answer_spelling_2_1</item>
+        <item>@string/answer_spelling_2_2</item>
+        <item>@string/answer_spelling_2_3</item>
+        <item>@string/answer_spelling_2_4</item>
+    </string-array>
+
+    <string-array name="options_phrasal_verbs_11">
+        <item>@string/answer_phrasal_verbs_11_1</item>
+        <item>@string/answer_phrasal_verbs_11_2</item>
+        <item>@string/answer_phrasal_verbs_11_3</item>
+        <item>@string/answer_phrasal_verbs_11_4</item>
+    </string-array>
+
+    <string-array name="options_slang_2">
+        <item>@string/answer_slang_2_1</item>
+        <item>@string/answer_slang_2_2</item>
+        <item>@string/answer_slang_2_3</item>
+    </string-array>
+
+    <string-array name="options_prepositions_6">
+        <item>@string/answer_prepositions_6_1</item>
+        <item>@string/answer_prepositions_6_2</item>
+    </string-array>
+
+    <string-array name="options_grammar_18">
+        <item>@string/answer_grammar_18_1</item>
+        <item>@string/answer_grammar_18_2</item>
+        <item>@string/answer_grammar_18_3</item>
+        <item>@string/all_correct</item>
+    </string-array>
+
+    <string-array name="options_vocabulary_14">
+        <item>@string/answer_vocabulary_14_1</item>
+        <item>@string/answer_vocabulary_14_2</item>
+    </string-array>
+
+    <string-array name="options_grammar_19">
+        <item>@string/answer_grammar_19_1</item>
+        <item>@string/answer_grammar_19_2</item>
+        <item>@string/answer_grammar_19_3</item>
+        <item>@string/answer_grammar_19_4</item>
+    </string-array>
+
+    <string-array name="options_prepositions_7">
+        <item>@string/answer_prepositions_7_1</item>
+        <item>@string/answer_prepositions_7_2</item>
+        <item>@string/all_correct</item>
+    </string-array>
+
+    <string-array name="options_tenses_5">
+        <item>@string/answer_tenses_5_1</item>
+        <item>@string/answer_tenses_5_2</item>
+        <item>@string/answer_tenses_5_3</item>
+        <item>@string/answer_tenses_5_4</item>
+        <item>@string/answer_tenses_5_5</item>
+        <item>@string/answer_tenses_5_6</item>
+        <item>@string/answer_tenses_5_7</item>
+        <item>@string/answer_tenses_5_8</item>
+        <item>@string/answer_tenses_5_9</item>
+        <item>@string/all_correct</item>
+    </string-array>
+</resources>

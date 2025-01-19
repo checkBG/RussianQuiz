@@ -1,10 +1,9 @@
 package com.example.russianquiz.model
 
 data class QuizData(
-    val chosenCentury: Century?,
+    val chosenLevel: Levels?,
     val quizzes: List<Quiz>?,
     val chosenOption: Int = 0,
-    val currentScore: Int = 0,
     val rightAnswers: Int = 0,
     val isCompleted: Boolean = false,
     val solvedQuestions: Int = 0,
@@ -12,7 +11,7 @@ data class QuizData(
     companion object {
         fun initQuizData(): QuizData {
             return QuizData(
-                chosenCentury = null,
+                chosenLevel = null,
                 quizzes = null,
             )
         }

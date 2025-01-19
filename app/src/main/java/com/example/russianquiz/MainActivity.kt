@@ -8,9 +8,8 @@ import androidx.activity.viewModels
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.ui.Modifier
-import com.example.russianquiz.fundamental.CircleStatistic
 import com.example.russianquiz.model.MainViewModel
-import com.example.russianquiz.ui.theme.RussianQuizTheme
+import com.example.russianquiz.ui.theme.QuizAppTheme
 
 class MainActivity : ComponentActivity() {
     private val mainViewModel: MainViewModel by viewModels()
@@ -20,7 +19,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            RussianQuizTheme {
+            QuizAppTheme {
                 val windowSize = calculateWindowSizeClass(this)
                 MainScreen(
                     windowSize = windowSize.widthSizeClass,

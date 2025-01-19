@@ -10,28 +10,18 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
 class MainViewModel : ViewModel() {
-    val centuries = Century.entries
+    val levels = Levels.entries
 
     private val _quizData = MutableStateFlow(QuizData.initQuizData())
     val quizData: StateFlow<QuizData>
         get() = _quizData.asStateFlow()
 
-    private val _answerOptions: MutableStateFlow<List<Int>> = MutableStateFlow(emptyList())
-    val answersOptions: StateFlow<List<Int>>
-        get() = _answerOptions.asStateFlow()
-
-    fun updateCurrentCentury(century: Century) {
-        if (century != quizData.value.chosenCentury) {
+    fun updateCurrentLevel(level: Levels) {
+        if (level != quizData.value.chosenLevel) {
             _quizData.update {
                 QuizData(
-                    chosenCentury = century,
-                    quizzes = StartQuiz.generateListOfQuizzes(century = century),
-                )
-            }
-            _answerOptions.update {
-                StartQuiz.generateWrongAnswers(
-                    century = century,
-                    rightAnswer = quizData.value.quizzes!![quizData.value.solvedQuestions].rightAnswer
+                    chosenLevel = level,
+                    quizzes = level.quizzes.shuffled(),
                 )
             }
         }
@@ -40,12 +30,10 @@ class MainViewModel : ViewModel() {
     fun onChoosingOption(
         isRight: Boolean,
         chosenOption: Int,
-        score: Int,
     ) {
         _quizData.update {
             if (isRight) it.copy(
                 isCompleted = true,
-                currentScore = it.currentScore + score,
                 rightAnswers = it.rightAnswers + 1,
                 chosenOption = chosenOption,
             ) else it.copy(
@@ -66,16 +54,7 @@ class MainViewModel : ViewModel() {
             )
         }
 
-        _answerOptions.update {
-            StartQuiz.generateWrongAnswers(
-                century = quizData.value.chosenCentury!!,
-                rightAnswer = quizData.value.quizzes!![quizData.value.solvedQuestions].rightAnswer
-            )
-        }
-
         if (solvedQuestions == (quizData.value.quizzes?.size ?: 0)) {
-            _answerOptions.update { emptyList() }
-            quizData.value.chosenCentury!!.updateMaxScore(newMaxScore = quizData.value.currentScore)
             _quizData.update { QuizData.initQuizData() }
             navController.navigate(NavigationScreen.ResultScreen.route) {
                 popUpTo(navController.graph.findStartDestination().id) {

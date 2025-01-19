@@ -8,12 +8,12 @@ import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -49,14 +49,14 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.russianquiz.R
 import com.example.russianquiz.bars.NavigationScreen
-import com.example.russianquiz.model.Century
+import com.example.russianquiz.model.Levels
 import com.example.russianquiz.model.MainViewModel
-import com.example.russianquiz.ui.theme.RussianQuizTheme
+import com.example.russianquiz.ui.theme.QuizAppTheme
 import com.example.russianquiz.utils.toTwoDigitNumber
 
 @Composable
-fun ChooseCentury(
-    centuries: List<Century>,
+fun ChooseTopic(
+    levels: List<Levels>,
     widthSize: WindowWidthSizeClass,
     navController: NavHostController,
     mainViewModel: MainViewModel,
@@ -72,15 +72,18 @@ fun ChooseCentury(
     LazyVerticalGrid(
         columns = GridCells.Fixed(countOfColumns),
         modifier = modifier.fillMaxSize(),
+        contentPadding = PaddingValues(bottom = 20.dp),
         horizontalArrangement = Arrangement.Center,
     ) {
-        items(items = centuries) { century ->
+        itemsIndexed(items = levels) { index, level ->
             Pentagon(
-                pentagonSize = 100.dp,
-                century = century,
+                pentagonSize = 120.dp,
+                level = level,
+                colors = level.colors,
                 navController = navController,
                 mainViewModel = mainViewModel,
-                widthSize = widthSize,
+//                widthSize = widthSize,
+                index = index + 1,
             )
         }
     }
@@ -90,13 +93,12 @@ fun ChooseCentury(
 fun Pentagon(
     modifier: Modifier = Modifier,
     pentagonSize: Dp,
-    century: Century,
-    widthSize: WindowWidthSizeClass,
+    level: Levels,
+    index: Int,
+    colors: List<Color>,
+//    widthSize: WindowWidthSizeClass,
     navController: NavHostController,
     mainViewModel: MainViewModel,
-    isFirstStarFill: Boolean = false,
-    isSecondStarFill: Boolean = false,
-    isThirdStarFill: Boolean = false,
 ) {
     var isScalePlanetSize by remember { mutableStateOf(false) }
     val scale by animateFloatAsState(targetValue = if (isScalePlanetSize) 0.94f else 1f, label = "")
@@ -106,44 +108,37 @@ fun Pentagon(
 
     val width = with(density) { pentagonSize.toPx() }
     val height = with(density) { pentagonSize.toPx() }
-    val centuryString = stringResource(id = R.string.century)
+
+    val topicScreen = stringResource(id = R.string.level)
 
     val textMeasurer = rememberTextMeasurer()
     val titular = buildAnnotatedString {
-        withStyle(
-            style = SpanStyle(
-                fontSize = (38).sp,
-                fontWeight = FontWeight.ExtraBold,
-                color = Color.White,
-            )
-        ) { append(centuryString.first()) }
-
-        withStyle(
-            style = SpanStyle(
-                fontSize = 30.sp,
-                fontWeight = FontWeight.ExtraBold,
-                color = Color.White,
-            )
-        ) { append(centuryString.substring(1..<centuryString.length)) }
-    }
-
-    val centuryNumberString = buildAnnotatedString {
         withStyle(
             style = SpanStyle(
                 fontSize = 25.sp,
                 fontWeight = FontWeight.ExtraBold,
                 color = Color.White,
             )
-        ) { append(century.centuryNumber.toTwoDigitNumber()) }
+        ) { append(topicScreen) }
+    }
+
+    val levelString = buildAnnotatedString {
+        withStyle(
+            style = SpanStyle(
+                fontSize = 40.sp,
+                fontWeight = FontWeight.ExtraBold,
+                color = Color.White,
+            )
+        ) { append(index.toTwoDigitNumber()) }
     }
 
     val textLayoutResultTitular: TextLayoutResult =
         textMeasurer.measure(text = titular)
     val textSizeTitular = textLayoutResultTitular.size
 
-    val textLayoutResultCenturyNumber: TextLayoutResult =
-        textMeasurer.measure(text = centuryNumberString)
-    val textSizeCenturyNumber = textLayoutResultCenturyNumber.size
+    val textLayoutResultLevel: TextLayoutResult =
+        textMeasurer.measure(text = levelString)
+    val textSizeLevel = textLayoutResultLevel.size
 
     val path = pentagonPath(width = width, height = height)
 
@@ -152,26 +147,6 @@ fun Pentagon(
             .size(width = pentagonSize, height = pentagonSize * 1.2f),
         contentAlignment = Alignment.Center
     ) {
-        Star(
-            starSize = pentagonSize * 0.2f,
-            isFill = isFirstStarFill,
-            modifier = Modifier
-                .offset(x = 0.dp, y = -(pentagonSize / 2.5f))
-        )
-
-        Star(
-            starSize = pentagonSize * 0.2f,
-            isFill = isSecondStarFill,
-            modifier = Modifier
-                .offset(x = -(pentagonSize * 0.3f), y = -(pentagonSize / 4f))
-        )
-
-        Star(
-            starSize = pentagonSize * 0.2f,
-            isFill = isThirdStarFill,
-            modifier = Modifier
-                .offset(x = pentagonSize * 0.3f, y = -(pentagonSize / 4f))
-        )
         Canvas(
             modifier = Modifier
                 .size(width = pentagonSize, height = pentagonSize * 1.2f)
@@ -191,13 +166,13 @@ fun Pentagon(
                     interactionSource = interactionSource,
                     indication = null,
                 ) {
-                    mainViewModel.updateCurrentCentury(century = century)
+                    mainViewModel.updateCurrentLevel(level = level)
                     navController.navigate(NavigationScreen.StatisticCenturyScreen.route)
                 }
         ) {
             drawPath(
                 path = path,
-                brush = Brush.linearGradient(century.colors),
+                brush = Brush.linearGradient(colors),
             )
 
             clipPath(path) {
@@ -257,49 +232,14 @@ fun Pentagon(
 
             drawText(
                 textMeasurer = textMeasurer,
-                text = centuryNumberString,
+                text = levelString,
                 blendMode = BlendMode.Lighten,
                 topLeft = Offset(
-                    (width - textSizeCenturyNumber.width) / 2f,
-                    (height * 1.85f - textSizeCenturyNumber.height) / 2f
+                    (width - textSizeLevel.width) / 2f,
+                    (height * 1.85f - textSizeLevel.height) / 2f
                 )
             )
         }
-    }
-}
-
-@Composable
-fun Star(modifier: Modifier = Modifier, starSize: Dp, isFill: Boolean = false) {
-    Canvas(modifier = modifier.size(starSize)) {
-        val width = size.width
-        val height = size.height
-
-        val path = Path().apply {
-            moveTo(width * 0.5f, 0f) // 1
-            lineTo(width * 0.625f, height * 0.4f) // 2
-            lineTo(width, height * 0.4f) // 3
-            lineTo(width * 0.7f, height * 0.6f) // 4
-            lineTo(width * 0.8f, height) // 5
-            lineTo(width * 0.5f, height * 0.67f) // 6
-
-            moveTo(width * 0.5f, 0f) // 1
-            lineTo(width * 0.375f, height * 0.4f) // 2
-            lineTo(0f, height * 0.4f) // 3
-            lineTo(width * 0.3f, height * 0.6f) // 4
-            lineTo(width * 0.2f, height) // 5
-            lineTo(width * 0.5f, height * 0.67f) // 6
-        }
-        if (isFill) {
-            drawPath(
-                path = path,
-                brush = Brush.linearGradient(listOf(Color(0xFFffd500), Color(0xFFd6ae01))),
-            )
-        }
-        drawPath(
-            path = path,
-            brush = Brush.linearGradient(listOf(Color(0xFFffd500), Color(0x77918407))),
-            style = Stroke(2f),
-        )
     }
 }
 
@@ -328,22 +268,20 @@ fun pentagonPath(
 
 @Preview(showBackground = true)
 @Composable
-fun StarPreview() {
-    RussianQuizTheme {
-        Star(starSize = 100.dp, isFill = true)
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
 fun PentagonPreview() {
-    RussianQuizTheme(darkTheme = true) {
+    QuizAppTheme(darkTheme = true) {
         Pentagon(
             pentagonSize = 100.dp,
-            century = Century.FIFTEENTH,
+            colors = listOf(
+                Color(0xFF8B4513),
+                Color(0xFFFF4D00),
+                Color(0xFFF8F32B),
+            ),
             mainViewModel = MainViewModel(),
             navController = rememberNavController(),
-            widthSize = WindowWidthSizeClass.Compact,
+//            widthSize = WindowWidthSizeClass.Compact,
+            level = Levels.FIFTH_LEVEL,
+            index = 5
         )
     }
 }
@@ -351,9 +289,9 @@ fun PentagonPreview() {
 @Preview(showBackground = true)
 @Composable
 fun CenturiesCompactPreview() {
-    RussianQuizTheme {
-        ChooseCentury(
-            centuries = Century.entries,
+    QuizAppTheme {
+        ChooseTopic(
+            levels = Levels.entries,
             widthSize = WindowWidthSizeClass.Compact,
             navController = rememberNavController(),
             mainViewModel = MainViewModel(),
@@ -364,9 +302,9 @@ fun CenturiesCompactPreview() {
 @Preview(showBackground = true, widthDp = 700)
 @Composable
 fun CenturiesMediumPreview() {
-    RussianQuizTheme {
-        ChooseCentury(
-            centuries = Century.entries,
+    QuizAppTheme {
+        ChooseTopic(
+            levels = Levels.entries,
             widthSize = WindowWidthSizeClass.Medium,
             navController = rememberNavController(),
             mainViewModel = MainViewModel(),
@@ -377,9 +315,9 @@ fun CenturiesMediumPreview() {
 @Preview(showBackground = true, widthDp = 1000)
 @Composable
 fun CenturiesExpandedPreview() {
-    RussianQuizTheme {
-        ChooseCentury(
-            centuries = Century.entries,
+    QuizAppTheme {
+        ChooseTopic(
+            levels = Levels.entries,
             widthSize = WindowWidthSizeClass.Expanded,
             navController = rememberNavController(),
             mainViewModel = MainViewModel(),

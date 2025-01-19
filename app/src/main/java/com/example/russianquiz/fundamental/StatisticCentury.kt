@@ -47,9 +47,9 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.russianquiz.R
 import com.example.russianquiz.bars.NavigationScreen
-import com.example.russianquiz.model.Century
+import com.example.russianquiz.model.Levels
 import com.example.russianquiz.model.MainViewModel
-import com.example.russianquiz.ui.theme.RussianQuizTheme
+import com.example.russianquiz.ui.theme.QuizAppTheme
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -68,7 +68,7 @@ fun StatisticCentury(
         verticalArrangement = Arrangement.Center
     ) {
 
-        CircleStatistic(century = quizData.chosenCentury!!, widthSize = widthSize)
+        CircleStatistic(levels = quizData.chosenLevel!!, widthSize = widthSize)
 
         Spacer(modifier = Modifier.height(30.dp))
 
@@ -86,12 +86,6 @@ fun StatisticCentury(
                         .fillMaxWidth()
                         .wrapContentWidth(align = Alignment.CenterHorizontally)
                 )
-                CenturyIconNumber(
-                    centuryNumber = quizData.chosenCentury!!.centuryNumber,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .wrapContentWidth(align = Alignment.End)
-                )
             }
         }
     }
@@ -101,11 +95,11 @@ fun StatisticCentury(
 fun CircleStatistic(
     widthSize: WindowWidthSizeClass,
     modifier: Modifier = Modifier,
-    century: Century,
+    levels: Levels,
 ) {
     var startAnimation by remember { mutableStateOf(false) }
     val animatedCount = animateIntAsState(
-        targetValue = if (startAnimation) century.maxScore else 0,
+        targetValue = if (startAnimation) 200 else 0,
         animationSpec = tween(durationMillis = 100, easing = LinearEasing), label = ""
     )
     val circleColor = Color(0xFFFF5500)
@@ -222,7 +216,7 @@ fun CenturyIconNumber(
 @Preview(showBackground = true)
 @Composable
 fun CenturyIconNumberPreview() {
-    RussianQuizTheme {
+    QuizAppTheme {
         CenturyIconNumber(centuryNumber = 21)
     }
 }
@@ -230,7 +224,7 @@ fun CenturyIconNumberPreview() {
 @Preview(showBackground = true)
 @Composable
 fun StatisticCenturyCompactPreview() {
-    RussianQuizTheme {
+    QuizAppTheme {
         StatisticCentury(
             navController = rememberNavController(),
             widthSize = WindowWidthSizeClass.Compact,
@@ -242,10 +236,10 @@ fun StatisticCenturyCompactPreview() {
 @Preview(showBackground = true)
 @Composable
 fun CircleStatisticPreview() {
-    RussianQuizTheme {
+    QuizAppTheme {
         CircleStatistic(
             widthSize = WindowWidthSizeClass.Compact,
-            century = Century.EIGHTEENTH
+            levels = Levels.FIFTH_LEVEL
         )
     }
 }
