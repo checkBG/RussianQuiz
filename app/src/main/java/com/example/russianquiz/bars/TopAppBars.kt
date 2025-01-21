@@ -5,35 +5,57 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.russianquiz.R
+import com.example.russianquiz.model.MainViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainTopAppBar(
     navController: NavHostController,
     isStartScreen: Boolean,
+    isQuizScreen: Boolean,
     isSettingsScreen: Boolean,
     isProfileScreen: Boolean,
+    mainViewModel: MainViewModel,
     modifier: Modifier = Modifier,
 ) {
+    var gonnaBeFinished by remember { mutableStateOf(false) }
+
     TopAppBar(
         title = { },
         colors = TopAppBarDefaults.topAppBarColors(
@@ -46,7 +68,11 @@ fun MainTopAppBar(
                 exit = slideOutHorizontally(targetOffsetX = { -it }) + fadeOut(),
             ) {
                 IconButton(onClick = {
-                    navController.navigateUp()
+                    if (isQuizScreen) {
+                        gonnaBeFinished = true
+                    } else {
+                        navController.navigateUp()
+                    }
                 }) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
@@ -89,4 +115,76 @@ fun MainTopAppBar(
         },
         modifier = modifier.windowInsetsPadding(WindowInsets.statusBars)
     )
+
+    if (gonnaBeFinished) {
+        AlertDialog(
+            onDismissRequest = {
+                gonnaBeFinished = false
+            },
+            dismissButton = {
+                TextButton(
+                    onClick = { gonnaBeFinished = false },
+                    colors = ButtonDefaults.textButtonColors().copy(contentColor = Color.White),
+                    modifier = Modifier
+                        .clip(shape = RoundedCornerShape(100))
+                        .border(
+                            width = 1.dp,
+                            color = Color.White,
+                            shape = RoundedCornerShape(100)
+                        )
+                ) {
+                    Text(
+                        text = stringResource(R.string.cancel),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 16.sp
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        gonnaBeFinished = false
+                        mainViewModel.onNextQuestionClick(
+                            navController = navController,
+                            isFinished = true
+                        )
+                    },
+                    colors = ButtonDefaults.textButtonColors().copy(contentColor = Color.White),
+                    modifier = Modifier
+                        .clip(shape = RoundedCornerShape(100))
+                        .border(
+                            width = 1.dp,
+                            color = Color.White,
+                            shape = RoundedCornerShape(100)
+                        )
+                ) {
+                    Text(
+                        text = stringResource(R.string.continue_string),
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 16.sp
+                    )
+                }
+            },
+            title = {
+                Text(
+                    text = stringResource(R.string.finish_quiz),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentWidth(align = Alignment.CenterHorizontally)
+                )
+            },
+            text = {
+                Text(
+                    text = stringResource(R.string.continue_text_finish_quiz),
+                    textAlign = TextAlign.Justify
+                )
+            },
+            containerColor = Color(0xE52E8B57),
+            titleContentColor = Color.White,
+            textContentColor = Color.White,
+            shape = RoundedCornerShape(10),
+            modifier = Modifier
+                .border(width = 3.dp, color = Color.White, shape = RoundedCornerShape(10))
+        )
+    }
 }

@@ -7,7 +7,7 @@ sealed class NavigationScreen(
         route = Screen.CHOOSE_SCREEN.name,
     )
 
-    data object LevelQuiz : NavigationScreen(
+    data object QuizScreen : NavigationScreen(
         route = Screen.CENTURY_QUIZ.name,
     )
 

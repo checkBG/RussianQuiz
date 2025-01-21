@@ -40,8 +40,11 @@ fun NavGraph(
             )
         }
 
-        composable(route = NavigationScreen.LevelQuiz.route) {
-            QuizScreen(mainViewModel = mainViewModel)
+        composable(route = NavigationScreen.QuizScreen.route) {
+            QuizScreen(
+                mainViewModel = mainViewModel,
+                navController = navController,
+            )
         }
 
         composable(route = NavigationScreen.SettingsScreen.route) {

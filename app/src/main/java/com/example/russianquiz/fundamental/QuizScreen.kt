@@ -1,7 +1,11 @@
 package com.example.russianquiz.fundamental
 
+import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.EaseInCirc
+import androidx.compose.animation.core.EaseInOutBounce
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.animateFloatAsState
@@ -10,11 +14,13 @@ import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -75,6 +81,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Popup
+import androidx.compose.ui.window.PopupProperties
+import androidx.navigation.NavHostController
 import com.example.russianquiz.R
 import com.example.russianquiz.model.Levels
 import com.example.russianquiz.model.MainViewModel
@@ -87,6 +95,7 @@ import com.example.russianquiz.utils.toTwoDigitNumber
 @Composable
 fun QuizScreen(
     modifier: Modifier = Modifier,
+    navController: NavHostController,
     mainViewModel: MainViewModel,
 ) {
     val quizData by mainViewModel.quizData.collectAsState()
@@ -102,27 +111,28 @@ fun QuizScreen(
     }
     ids.recycle()
 
-    LazyColumn(
-        modifier = modifier,
-        contentPadding = PaddingValues(bottom = if (quizData.isCompleted) 100.dp else 20.dp)
-    ) {
-        item {
-            QuizCard(quizData = quizData)
-        }
+    Box(modifier = modifier) {
+        LazyColumn(
+            contentPadding = PaddingValues(bottom = if (quizData.isCompleted) 100.dp else 20.dp)
+        ) {
+            item {
+                QuizCard(quizData = quizData)
+            }
 
-        item {
-            Spacer(modifier = Modifier)
-        }
+            item {
+                Spacer(modifier = Modifier)
+            }
 
-        items(items = answersOptions) { answerOption ->
-            AnswerOption(
-                mainViewModel = mainViewModel,
-                answerOption = answerOption,
-                chosenAnswer = quizData.chosenOption,
-                rightAnswer = currentQuiz?.rightAnswer,
-                isCompleted = quizData.isCompleted,
-            )
-            Spacer(modifier = Modifier.height(10.dp))
+            items(items = answersOptions) { answerOption ->
+                AnswerOption(
+                    mainViewModel = mainViewModel,
+                    answerOption = answerOption,
+                    chosenAnswer = quizData.chosenOption,
+                    rightAnswer = currentQuiz.rightAnswer,
+                    isCompleted = quizData.isCompleted,
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+            }
         }
     }
 }
@@ -292,6 +302,7 @@ fun QuizCard(
                 )
             ),
             isCompleted = quizData.isCompleted,
+            explanationResId = currentQuiz.explanation,
             modifier = Modifier
                 .align(alignment = Alignment.TopCenter)
                 .offset(0.dp, (-20).dp)
@@ -448,14 +459,24 @@ fun Score(
     brushRight: Brush,
     brushLeft: Brush,
     isCompleted: Boolean,
+    @StringRes explanationResId: Int,
     initialValue: Float = 0f,
     targetValue: Float = 360f,
 ) {
     var isScale by remember { mutableStateOf(false) }
-    val scale by animateFloatAsState(targetValue = if (isScale) 0.94f else 1f, label = "")
+    val scale by animateFloatAsState(
+        targetValue = if (isScale && isCompleted) 0.94f else 1f,
+        label = ""
+    )
     val interactionSource = remember { MutableInteractionSource() }
 
-    val openDialog by remember { mutableStateOf(false) }
+    var openDialog by remember { mutableStateOf(false) }
+
+    val lightBulbColor by animateColorAsState(
+        targetValue = if (isCompleted) Color(0xFFffc261) else Color.Black,
+        animationSpec = tween(durationMillis = 250, easing = EaseInOutBounce),
+        label = "",
+    )
 
     val deltaXAnim = rememberInfiniteTransition(label = "")
     val sweepAngle by deltaXAnim.animateFloat(
@@ -469,43 +490,45 @@ fun Score(
 
     val backgroundColor = MaterialTheme.colorScheme.surfaceContainer
 
-    Box(
-        contentAlignment = Alignment.Center,
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
         modifier = modifier,
     ) {
+        Box(contentAlignment = Alignment.Center) {
 
-        Canvas(modifier = Modifier.size(80.dp)) {
-            drawCircle(
-                color = backgroundColor
-            )
+            Canvas(modifier = Modifier.size(80.dp)) {
+                drawCircle(
+                    color = backgroundColor
+                )
 
-            drawArc(
-                brush = brushLeft,
-                startAngle = initialValue - 180f,
-                sweepAngle = sweepAngle,
-                useCenter = false,
-                style = Stroke(20f),
-            )
+                drawArc(
+                    brush = brushLeft,
+                    startAngle = initialValue - 180f,
+                    sweepAngle = sweepAngle,
+                    useCenter = false,
+                    style = Stroke(20f),
+                )
 
-            drawArc(
-                brush = brushRight,
-                startAngle = initialValue,
-                sweepAngle = sweepAngle,
-                useCenter = false,
-                style = Stroke(20f),
-                blendMode = BlendMode.Difference,
-            )
-        }
-        Column {
+                drawArc(
+                    brush = brushRight,
+                    startAngle = initialValue,
+                    sweepAngle = sweepAngle,
+                    useCenter = false,
+                    style = Stroke(20f),
+                    blendMode = BlendMode.Difference,
+                )
+            }
+
             Image(
                 painter = painterResource(id = R.drawable.light_bulb),
                 contentDescription = null,
                 colorFilter = ColorFilter.tint(
-                    color = if (isCompleted) Color(0xFFffc261) else Color.Black
+                    color = lightBulbColor
                 ),
                 modifier = Modifier
-                    .size(40.dp)
-                    .rotate(10f)
+                    .size(35.dp)
+                    .rotate(15f)
                     .pointerInput(isScale) {
                         awaitPointerEventScope {
                             isScale = if (isScale) {
@@ -521,15 +544,24 @@ fun Score(
                     .clickable(
                         interactionSource = interactionSource,
                         indication = null,
-                        enabled = isCompleted
+                        enabled = isCompleted && !openDialog
                     ) {
-
+                        openDialog = true
                     }
             )
+        }
 
-            AnimatedVisibility(visible = openDialog) {
+        AnimatedVisibility(
+            visible = openDialog,
+            exit = ExitTransition.None,
+        ) {
+            Spacer(modifier = Modifier.height(10.dp))
 
-            }
+            PopupWindowDialog(
+                onDismissRequest = { openDialog = false },
+                explanationResId = explanationResId,
+                modifier = Modifier
+            )
         }
     }
 }
@@ -600,21 +632,51 @@ fun Radio(
 }
 
 @Composable
-fun PopupWindowDialog(modifier: Modifier = Modifier) {
-    Box(modifier = modifier.fillMaxWidth()) {
+fun PopupWindowDialog(
+    modifier: Modifier = Modifier,
+    onDismissRequest: () -> Unit,
+    @StringRes explanationResId: Int,
+) {
+    Box(
+        modifier = modifier
+            .fillMaxSize()
+    ) {
         Popup(
-
+            alignment = Alignment.TopCenter,
+            onDismissRequest = onDismissRequest,
+            properties = PopupProperties(),
         ) {
-
+            Box(
+                modifier = Modifier
+                    .padding(15.dp)
+                    .clip(shape = RoundedCornerShape(20))
+                    .border(
+                        width = 3.dp,
+                        color = Color(0xFFFFC261),
+                        shape = RoundedCornerShape(20)
+                    )
+                    .background(color = Color(0xE52E8B57))
+                    .padding(12.dp)
+            ) {
+                Text(
+                    text = stringResource(id = explanationResId),
+                    color = Color(0xFFFFFFFF),
+                    textAlign = TextAlign.Justify,
+                    modifier = Modifier
+                )
+            }
         }
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun PopupDialogPreview() {
     QuizAppTheme {
-        PopupWindowDialog()
+        PopupWindowDialog(
+            onDismissRequest = { },
+            explanationResId = R.string.explanation_tenses_5
+        )
     }
 }
 
@@ -714,7 +776,8 @@ private fun ScorePreview() {
                     Color(0xFFB0E0E6),
                 )
             ),
-            isCompleted = false
+            isCompleted = false,
+            explanationResId = R.string.explanation_tenses_5
 //            brushTop = Brush.linearGradient(
 //                listOf(
 //                    Color(0xFF004d00),

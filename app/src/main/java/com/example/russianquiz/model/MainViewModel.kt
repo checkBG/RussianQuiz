@@ -45,8 +45,9 @@ class MainViewModel : ViewModel() {
 
     fun onNextQuestionClick(
         navController: NavHostController,
+        isFinished: Boolean = false,
     ) {
-        if ((quizData.value.solvedQuestions + 1) == quizData.value.quizzes.size) {
+        if (((quizData.value.solvedQuestions + 1) == quizData.value.quizzes.size) || isFinished) {
             navController.navigate(NavigationScreen.ResultScreen.route)
             {
                 popUpTo(navController.graph.findStartDestination().id) {

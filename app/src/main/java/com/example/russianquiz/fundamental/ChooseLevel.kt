@@ -167,7 +167,7 @@ fun Pentagon(
                     indication = null,
                 ) {
                     mainViewModel.updateCurrentLevel(level = level)
-                    navController.navigate(NavigationScreen.LevelQuiz.route)
+                    navController.navigate(NavigationScreen.QuizScreen.route)
                 }
         ) {
             drawPath(

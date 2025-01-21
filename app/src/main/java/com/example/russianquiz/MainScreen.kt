@@ -49,7 +49,7 @@ fun MainScreen(
     Scaffold(
         floatingActionButton = {
             AnimatedVisibility(
-                visible = (currentScreen?.route == NavigationScreen.LevelQuiz.route) && quizData.isCompleted,
+                visible = (currentScreen?.route == NavigationScreen.QuizScreen.route) && quizData.isCompleted,
                 enter = slideInHorizontally(initialOffsetX = { -it }) + fadeIn(),
                 exit = slideOutHorizontally(targetOffsetX = { it }) + fadeOut(),
             ) {
@@ -81,6 +81,8 @@ fun MainScreen(
                 isStartScreen = currentScreen?.route == NavigationScreen.ChooseScreen.route,
                 isSettingsScreen = currentScreen?.route == NavigationScreen.SettingsScreen.route,
                 isProfileScreen = currentScreen?.route == NavigationScreen.ProfileScreen.route,
+                isQuizScreen = currentScreen?.route == NavigationScreen.QuizScreen.route,
+                mainViewModel = mainViewModel,
             )
         },
         modifier = modifier,
