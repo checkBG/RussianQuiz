@@ -100,8 +100,8 @@ fun Pentagon(
     navController: NavHostController,
     mainViewModel: MainViewModel,
 ) {
-    var isScalePlanetSize by remember { mutableStateOf(false) }
-    val scale by animateFloatAsState(targetValue = if (isScalePlanetSize) 0.94f else 1f, label = "")
+    var isScale by remember { mutableStateOf(false) }
+    val scale by animateFloatAsState(targetValue = if (isScale) 0.94f else 1f, label = "")
 
     val interactionSource = remember { MutableInteractionSource() }
     val density = LocalDensity.current
@@ -150,9 +150,9 @@ fun Pentagon(
         Canvas(
             modifier = Modifier
                 .size(width = pentagonSize, height = pentagonSize * 1.2f)
-                .pointerInput(isScalePlanetSize) {
+                .pointerInput(isScale) {
                     awaitPointerEventScope {
-                        isScalePlanetSize = if (isScalePlanetSize) {
+                        isScale = if (isScale) {
                             waitForUpOrCancellation()
                             false
                         } else {
@@ -167,7 +167,7 @@ fun Pentagon(
                     indication = null,
                 ) {
                     mainViewModel.updateCurrentLevel(level = level)
-                    navController.navigate(NavigationScreen.StatisticCenturyScreen.route)
+                    navController.navigate(NavigationScreen.LevelQuiz.route)
                 }
         ) {
             drawPath(

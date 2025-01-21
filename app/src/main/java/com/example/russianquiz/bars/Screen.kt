@@ -7,11 +7,7 @@ sealed class NavigationScreen(
         route = Screen.CHOOSE_SCREEN.name,
     )
 
-    data object StatisticCenturyScreen : NavigationScreen(
-        route = Screen.STATISTIC_CENTURY_SCREEN.name,
-    )
-
-    data object CenturyQuiz : NavigationScreen(
+    data object LevelQuiz : NavigationScreen(
         route = Screen.CENTURY_QUIZ.name,
     )
 
@@ -30,7 +26,6 @@ sealed class NavigationScreen(
 
 enum class Screen {
     CHOOSE_SCREEN,
-    STATISTIC_CENTURY_SCREEN,
     CENTURY_QUIZ,
     SETTINGS_SCREEN,
     PROFILE_SCREEN,

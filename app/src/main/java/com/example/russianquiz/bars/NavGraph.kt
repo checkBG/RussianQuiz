@@ -14,7 +14,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.russianquiz.fundamental.ChooseTopic
 import com.example.russianquiz.fundamental.QuizScreen
-import com.example.russianquiz.fundamental.StatisticCentury
 import com.example.russianquiz.model.MainViewModel
 
 @Composable
@@ -41,15 +40,7 @@ fun NavGraph(
             )
         }
 
-        composable(route = NavigationScreen.StatisticCenturyScreen.route) {
-            StatisticCentury(
-                widthSize = widthSize,
-                mainViewModel = mainViewModel,
-                navController = navController,
-            )
-        }
-
-        composable(route = NavigationScreen.CenturyQuiz.route) {
+        composable(route = NavigationScreen.LevelQuiz.route) {
             QuizScreen(mainViewModel = mainViewModel)
         }
 

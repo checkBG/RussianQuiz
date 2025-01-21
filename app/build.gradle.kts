@@ -50,6 +50,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.material.icons.extended)
+    implementation(libs.material3)
     implementation("androidx.compose.material3:material3-window-size-class")
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)

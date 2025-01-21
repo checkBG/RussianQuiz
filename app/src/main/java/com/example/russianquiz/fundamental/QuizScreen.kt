@@ -1,16 +1,23 @@
 package com.example.russianquiz.fundamental
 
-import android.util.Log
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.EaseInCirc
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.awaitFirstDown
+import androidx.compose.foundation.gestures.waitForUpOrCancellation
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
@@ -32,20 +39,28 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLayoutResult
@@ -59,6 +74,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Popup
 import com.example.russianquiz.R
 import com.example.russianquiz.model.Levels
 import com.example.russianquiz.model.MainViewModel
@@ -74,19 +90,22 @@ fun QuizScreen(
     mainViewModel: MainViewModel,
 ) {
     val quizData by mainViewModel.quizData.collectAsState()
-    val currentQuiz = quizData.quizzes!![quizData.solvedQuestions]
+    val currentQuiz = quizData.quizzes[quizData.solvedQuestions]
     val context = LocalContext.current
     val ids =
-        context.resources.obtainTypedArray(quizData.quizzes!![quizData.solvedQuestions].options)
+        context.resources.obtainTypedArray(
+            quizData.quizzes[quizData.solvedQuestions].options
+        )
     val answersOptions = mutableListOf<Int>()
     for (i in 0 until ids.length()) {
         answersOptions.add(ids.getResourceId(i, 0))
     }
-
-    Log.d("EXPLORE", answersOptions.toString())
     ids.recycle()
 
-    LazyColumn(modifier = modifier) {
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = PaddingValues(bottom = if (quizData.isCompleted) 100.dp else 20.dp)
+    ) {
         item {
             QuizCard(quizData = quizData)
         }
@@ -100,7 +119,7 @@ fun QuizScreen(
                 mainViewModel = mainViewModel,
                 answerOption = answerOption,
                 chosenAnswer = quizData.chosenOption,
-                rightAnswer = currentQuiz.rightAnswer,
+                rightAnswer = currentQuiz?.rightAnswer,
                 isCompleted = quizData.isCompleted,
             )
             Spacer(modifier = Modifier.height(10.dp))
@@ -114,7 +133,7 @@ fun AnswerOption(
     mainViewModel: MainViewModel,
     chosenAnswer: Int? = null,
     answerOption: Int,
-    rightAnswer: Int,
+    rightAnswer: Int?,
     isCompleted: Boolean,
 ) {
     val isTick = isCompleted && (answerOption == rightAnswer)
@@ -202,7 +221,7 @@ fun QuizCard(
     modifier: Modifier = Modifier,
     quizData: QuizData,
 ) {
-    val currentQuiz = quizData.quizzes!![quizData.solvedQuestions]
+    val currentQuiz = quizData.quizzes[quizData.solvedQuestions]
 
     Box(
         modifier = modifier
@@ -213,8 +232,7 @@ fun QuizCard(
         ElevatedCard(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(300.dp)
-                .padding(16.dp)
+                .padding(20.dp)
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
@@ -226,7 +244,7 @@ fun QuizCard(
                         isRight = true,
                         answers = quizData.rightAnswers,
                         modifier = Modifier
-                            .size(width = 80.dp, height = 40.dp)
+                            .size(width = 60.dp, height = 40.dp)
                     )
 
                     Spacer(modifier = Modifier.weight(1f))
@@ -235,7 +253,7 @@ fun QuizCard(
                         isRight = false,
                         answers = quizData.solvedQuestions - quizData.rightAnswers + if (quizData.isCompleted) 1 else 0,
                         modifier = Modifier
-                            .size(width = 80.dp, height = 40.dp)
+                            .size(width = 60.dp, height = 40.dp)
                     )
                 }
 
@@ -252,20 +270,15 @@ fun QuizCard(
                     text = stringResource(id = currentQuiz.question),
                     fontSize = 19.sp,
                     fontWeight = FontWeight(650),
-                    textAlign = TextAlign.Center,
+                    textAlign = TextAlign.Start,
                     modifier = Modifier
                         .padding(start = 16.dp, end = 16.dp),
                 )
+                Spacer(modifier = Modifier.height(35.dp))
             }
         }
 
         Score(
-//            brushTop = Brush.linearGradient(
-//                colors = listOf(
-//                    Color(0xFF87800A),
-//                    Color(0xFF9900EE),
-//                )
-//            ),
             brushLeft = Brush.linearGradient(
                 colors = listOf(
                     Color(0xFF87CEFA),
@@ -278,10 +291,10 @@ fun QuizCard(
                     Color(0xFF149300),
                 )
             ),
+            isCompleted = quizData.isCompleted,
             modifier = Modifier
-                .size(80.dp)
                 .align(alignment = Alignment.TopCenter)
-                .offset(0.dp, (-25).dp)
+                .offset(0.dp, (-20).dp)
         )
     }
 }
@@ -336,8 +349,8 @@ fun ProgressBar(
 
 @Composable
 fun CountOfQuestions(
-    countOfQuestions: Int,
-    solvedQuestions: Int,
+    countOfQuestions: Int?,
+    solvedQuestions: Int?,
     modifier: Modifier = Modifier,
 ) {
     val textColor = colorResource(id = R.color.purple_200)
@@ -374,7 +387,7 @@ fun CountOfQuestions(
                 fontStyle = FontStyle.Italic,
                 color = textColor,
             )
-        ) { append((solvedQuestions + 1).toTwoDigitNumber()) }
+        ) { append(((solvedQuestions ?: 0) + 1).toTwoDigitNumber()) }
 
         withStyle(
             style = SpanStyle(
@@ -406,7 +419,7 @@ fun CountOfQuestions(
                 fontStyle = FontStyle.Italic,
                 color = textColor,
             )
-        ) { append(countOfQuestions.toTwoDigitNumber()) }
+        ) { append(countOfQuestions?.toTwoDigitNumber() ?: "0") }
     }
 
     val textLayoutResultCountOfQuestions: TextLayoutResult =
@@ -434,10 +447,16 @@ fun Score(
     modifier: Modifier = Modifier,
     brushRight: Brush,
     brushLeft: Brush,
-//    brushTop: Brush, /*TODO*/
+    isCompleted: Boolean,
     initialValue: Float = 0f,
     targetValue: Float = 360f,
 ) {
+    var isScale by remember { mutableStateOf(false) }
+    val scale by animateFloatAsState(targetValue = if (isScale) 0.94f else 1f, label = "")
+    val interactionSource = remember { MutableInteractionSource() }
+
+    val openDialog by remember { mutableStateOf(false) }
+
     val deltaXAnim = rememberInfiniteTransition(label = "")
     val sweepAngle by deltaXAnim.animateFloat(
         initialValue = initialValue,
@@ -448,63 +467,70 @@ fun Score(
         ), label = ""
     )
 
-    val textMeasurer = rememberTextMeasurer()
-    val scoreString = buildAnnotatedString {
-        withStyle(
-            style = SpanStyle(
-                fontSize = 30.sp,
-                fontWeight = FontWeight.ExtraBold,
-                color = colorResource(id = R.color.purple_200)
-            )
-        ) { append("3") }
-    }
-    val textLayoutResult: TextLayoutResult =
-        textMeasurer.measure(text = scoreString)
-    val textSize = textLayoutResult.size
     val backgroundColor = MaterialTheme.colorScheme.surfaceContainer
 
-    Canvas(modifier = modifier) {
-        val width = size.width
-        val height = size.height
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier,
+    ) {
 
-        drawCircle(
-            color = backgroundColor
-        )
+        Canvas(modifier = Modifier.size(80.dp)) {
+            drawCircle(
+                color = backgroundColor
+            )
 
-        drawText(
-            textMeasurer = textMeasurer,
-            text = scoreString,
-            topLeft = Offset(
-                (width - textSize.width) / 2f,
-                (height - textSize.height) / 2f
-            ),
-        )
+            drawArc(
+                brush = brushLeft,
+                startAngle = initialValue - 180f,
+                sweepAngle = sweepAngle,
+                useCenter = false,
+                style = Stroke(20f),
+            )
 
-        drawArc(
-            brush = brushLeft,
-            startAngle = initialValue - 180f,
-            sweepAngle = sweepAngle,
-            useCenter = false,
-            style = Stroke(20f),
-        )
+            drawArc(
+                brush = brushRight,
+                startAngle = initialValue,
+                sweepAngle = sweepAngle,
+                useCenter = false,
+                style = Stroke(20f),
+                blendMode = BlendMode.Difference,
+            )
+        }
+        Column {
+            Image(
+                painter = painterResource(id = R.drawable.light_bulb),
+                contentDescription = null,
+                colorFilter = ColorFilter.tint(
+                    color = if (isCompleted) Color(0xFFffc261) else Color.Black
+                ),
+                modifier = Modifier
+                    .size(40.dp)
+                    .rotate(10f)
+                    .pointerInput(isScale) {
+                        awaitPointerEventScope {
+                            isScale = if (isScale) {
+                                waitForUpOrCancellation()
+                                false
+                            } else {
+                                awaitFirstDown(requireUnconsumed = false)
+                                true
+                            }
+                        }
+                    }
+                    .scale(scale = scale)
+                    .clickable(
+                        interactionSource = interactionSource,
+                        indication = null,
+                        enabled = isCompleted
+                    ) {
 
-//        drawArc(
-//            brush = brushTop,
-//            startAngle = initialValue - 90f,
-//            sweepAngle = sweepAngle,
-//            useCenter = false,
-//            style = Stroke(20f),
-////            blendMode = BlendMode.Modulate,
-//        )
+                    }
+            )
 
-        drawArc(
-            brush = brushRight,
-            startAngle = initialValue,
-            sweepAngle = sweepAngle,
-            useCenter = false,
-            style = Stroke(20f),
-            blendMode = BlendMode.Difference,
-        )
+            AnimatedVisibility(visible = openDialog) {
+
+            }
+        }
     }
 }
 
@@ -570,6 +596,25 @@ fun Radio(
             color = color,
             style = Stroke(10f)
         )
+    }
+}
+
+@Composable
+fun PopupWindowDialog(modifier: Modifier = Modifier) {
+    Box(modifier = modifier.fillMaxWidth()) {
+        Popup(
+
+        ) {
+
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun PopupDialogPreview() {
+    QuizAppTheme {
+        PopupWindowDialog()
     }
 }
 
@@ -669,6 +714,7 @@ private fun ScorePreview() {
                     Color(0xFFB0E0E6),
                 )
             ),
+            isCompleted = false
 //            brushTop = Brush.linearGradient(
 //                listOf(
 //                    Color(0xFF004d00),

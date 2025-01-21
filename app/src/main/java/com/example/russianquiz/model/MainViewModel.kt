@@ -21,7 +21,7 @@ class MainViewModel : ViewModel() {
             _quizData.update {
                 QuizData(
                     chosenLevel = level,
-                    quizzes = level.quizzes.shuffled(),
+                    quizzes = level.quizzes.shuffled().take(10),
                 )
             }
         }
@@ -45,23 +45,22 @@ class MainViewModel : ViewModel() {
 
     fun onNextQuestionClick(
         navController: NavHostController,
-        solvedQuestions: Int,
     ) {
-        _quizData.update {
-            it.copy(
-                isCompleted = false,
-                solvedQuestions = it.solvedQuestions + 1
-            )
-        }
-
-        if (solvedQuestions == (quizData.value.quizzes?.size ?: 0)) {
-            _quizData.update { QuizData.initQuizData() }
-            navController.navigate(NavigationScreen.ResultScreen.route) {
+        if ((quizData.value.solvedQuestions + 1) == quizData.value.quizzes.size) {
+            navController.navigate(NavigationScreen.ResultScreen.route)
+            {
                 popUpTo(navController.graph.findStartDestination().id) {
                     saveState = true
                 }
                 launchSingleTop = true
             }
+            return
+        }
+        _quizData.update {
+            it.copy(
+                isCompleted = false,
+                solvedQuestions = it.solvedQuestions + 1
+            )
         }
     }
 }
