@@ -82,7 +82,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
-import androidx.navigation.NavHostController
 import com.example.russianquiz.R
 import com.example.russianquiz.model.Levels
 import com.example.russianquiz.model.MainViewModel
@@ -95,7 +94,6 @@ import com.example.russianquiz.utils.toTwoDigitNumber
 @Composable
 fun QuizScreen(
     modifier: Modifier = Modifier,
-    navController: NavHostController,
     mainViewModel: MainViewModel,
 ) {
     val quizData by mainViewModel.quizData.collectAsState()
@@ -113,7 +111,7 @@ fun QuizScreen(
 
     Box(modifier = modifier) {
         LazyColumn(
-            contentPadding = PaddingValues(bottom = if (quizData.isCompleted) 100.dp else 20.dp)
+            contentPadding = PaddingValues(bottom = if (quizData.isCompleted) 80.dp else 20.dp)
         ) {
             item {
                 QuizCard(quizData = quizData)
@@ -778,12 +776,6 @@ private fun ScorePreview() {
             ),
             isCompleted = false,
             explanationResId = R.string.explanation_tenses_5
-//            brushTop = Brush.linearGradient(
-//                listOf(
-//                    Color(0xFF004d00),
-//                    Color(0xFF142300),
-//                )
-//            ),
         )
     }
 }

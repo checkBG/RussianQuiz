@@ -18,6 +18,14 @@
     <string name="cancel">Cancel</string>
     <string name="finish_quiz">Finish the quiz?</string>
     <string name="continue_text_finish_quiz">Do you really want to finish the quiz and go to results? All progress will be removed. You won\'t be able to return the current progress later</string>
+    <string name="completed_level">Completed level</string>
+    <string name="completion">Completion</string>
+    <string name="correct">Correct</string>
+    <string name="total_question">Total Question</string>
+    <string name="wrong">Wrong</string>
+    <string name="play_again">Play Again</string>
+    <string name="share">Share Score</string>
+    <string name="home">Home</string>
     <string name="all_correct">All the sentences above are correct</string>
     <string name="all_incorrect">All the sentences above are incorrect</string>
 
@@ -454,4 +462,4 @@
     <string name="answer_tenses_5_8">The second and the sixth sentences are correct</string>
     <string name="answer_tenses_5_9">The third and the fifth sentences are correct</string>
     <string name="explanation_tenses_5">The Past Perfect tense is used in this case. Therefore, we need to use \"had\" if there is the Past Simple one.</string>
- </resources>
+</resources>

@@ -30,11 +30,11 @@ fun Background(
         ), label = ""
     )
 
-    val screenWidthPx = with(LocalDensity.current) {
-        (LocalConfiguration.current.screenHeightDp * density) - 150.dp.toPx()
+    val screenHeightPx = with(LocalDensity.current) {
+        (LocalConfiguration.current.screenHeightDp * density)
     }
 
-    val waveWidth = 820
+    val waveWidth = 880
     val originalY = 150f
 
     val color = colorResource(id = R.color.purple_500)
@@ -43,7 +43,7 @@ fun Background(
         modifier = modifier
             .fillMaxSize()
     ) {
-        translate(top = screenWidthPx - 1450) {
+        translate(top = screenHeightPx * 0.25f) {
             drawPath(path = path, color = color)
             path.reset()
             val halfWaveWidth = waveWidth / 2

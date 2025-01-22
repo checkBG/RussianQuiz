@@ -60,8 +60,13 @@ class MainViewModel : ViewModel() {
         _quizData.update {
             it.copy(
                 isCompleted = false,
-                solvedQuestions = it.solvedQuestions + 1
+                solvedQuestions = it.solvedQuestions + 1,
+                chosenOption = 0,
             )
         }
+    }
+
+    fun resetResult() {
+        _quizData.value = QuizData.initQuizData()
     }
 }
