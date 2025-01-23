@@ -69,4 +69,6 @@ class MainViewModel : ViewModel() {
     fun resetResult() {
         _quizData.value = QuizData.initQuizData()
     }
+
+
 }

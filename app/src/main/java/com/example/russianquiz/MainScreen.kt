@@ -3,7 +3,7 @@ package com.example.russianquiz
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -50,7 +50,7 @@ fun MainScreen(
         floatingActionButton = {
             AnimatedVisibility(
                 visible = (currentScreen?.route == NavigationScreen.QuizScreen.route) && quizData.isCompleted,
-                enter = slideInHorizontally(initialOffsetX = { -it }) + fadeIn(),
+                enter = slideInVertically (initialOffsetY = { it }) + fadeIn(),
                 exit = slideOutHorizontally(targetOffsetX = { it }) + fadeOut(),
             ) {
                 MediumFloatingActionButton(
@@ -82,6 +82,7 @@ fun MainScreen(
                 isSettingsScreen = currentScreen?.route == NavigationScreen.SettingsScreen.route,
                 isProfileScreen = currentScreen?.route == NavigationScreen.ProfileScreen.route,
                 isQuizScreen = currentScreen?.route == NavigationScreen.QuizScreen.route,
+                isResultScreen = currentScreen?.route == NavigationScreen.ResultScreen.route,
                 mainViewModel = mainViewModel,
             )
         },

@@ -51,6 +51,7 @@ fun MainTopAppBar(
     isQuizScreen: Boolean,
     isSettingsScreen: Boolean,
     isProfileScreen: Boolean,
+    isResultScreen: Boolean,
     mainViewModel: MainViewModel,
     modifier: Modifier = Modifier,
 ) {
@@ -70,6 +71,9 @@ fun MainTopAppBar(
                 IconButton(onClick = {
                     if (isQuizScreen) {
                         gonnaBeFinished = true
+                    } else if (isResultScreen) {
+                        mainViewModel.resetResult()
+                        navController.navigate(NavigationScreen.ChooseScreen.route)
                     } else {
                         navController.navigateUp()
                     }
@@ -144,10 +148,14 @@ fun MainTopAppBar(
                 TextButton(
                     onClick = {
                         gonnaBeFinished = false
-                        mainViewModel.onNextQuestionClick(
-                            navController = navController,
-                            isFinished = true
-                        )
+                        if (mainViewModel.quizData.value.solvedQuestions == 0 && mainViewModel.quizData.value.chosenOption == 0) {
+                            navController.navigateUp()
+                        } else {
+                            mainViewModel.onNextQuestionClick(
+                                navController = navController,
+                                isFinished = true
+                            )
+                        }
                     },
                     colors = ButtonDefaults.textButtonColors().copy(contentColor = Color.White),
                     modifier = Modifier

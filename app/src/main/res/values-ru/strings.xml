@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">English Quiz</string>
+    <string name="century">Topic</string>
+    <string name="max_score">Max score</string>
+    <string name="century_quiz">Test</string>
+    <string name="navigate_up">Navigate up</string>
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="start">Start</string>
+    <string name="question">Question</string>
+    <string name="result_screen">results</string>
+    <string name="continue_string">Continue</string>
+    <string name="level">LEVEL</string>
+    <string name="right_answer">It\'s the right answer. You\'ve answered correctly</string>
+    <string name="wrong_answer"> It\s the wrong answer. You\'ve answered incorrectly</string>
+    <string name="possible_option">It\'s a possible option to choose</string>
+    <string name="wrong_option_not_chosen">It\'s a wrong option to choose</string>
+    <string name="cancel">Cancel</string>
+    <string name="finish_quiz">Finish the quiz?</string>
+    <string name="continue_text_finish_quiz">Do you really want to finish the quiz and go to results? All progress will be removed. You won\'t be able to return the current progress later</string>
+    <string name="completed_level">Completed level</string>
+    <string name="completion">Completion</string>
+    <string name="correct">Correct</string>
+    <string name="total_question">Total Question</string>
+    <string name="wrong">Wrong</string>
+    <string name="play_again">Play Again</string>
+    <string name="share">Share Score</string>
+    <string name="home">Home</string>
+    <string name="result_text">Yo! Look at my results!\nI\'ve completed %1$d level and I\'ve got %2$d out of %3$d.\nIt is %4$d%%</string>
+    <string name="extra_subject">Share you reached:</string>
+</resources>

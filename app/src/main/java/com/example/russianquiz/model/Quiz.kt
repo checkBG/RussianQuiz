@@ -23,7 +23,7 @@ object Quizzes {
             question = R.string.question_grammar_10,
             options = R.array.options_grammar_10,
             explanation = R.string.explanation_grammar_10,
-            rightAnswer = 3,
+            rightAnswer = R.string.all_correct,
         ),
         Quiz(
             question = R.string.question_grammar_15,

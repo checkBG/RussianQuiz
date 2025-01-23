@@ -1,5 +1,7 @@
 package com.example.russianquiz.fundamental
 
+import android.content.Context
+import android.content.Intent
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.animation.core.FastOutLinearInEasing
@@ -36,6 +38,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -65,6 +68,7 @@ fun ResultScreen(
     mainViewModel: MainViewModel,
 ) {
     val quizData by mainViewModel.quizData.collectAsState()
+    val context = LocalContext.current
 
     Box(
         modifier = modifier
@@ -90,7 +94,12 @@ fun ResultScreen(
                     mainViewModel.updateCurrentLevel(level = chosenLevel)
                     navController.navigate(NavigationScreen.QuizScreen.route)
                 },
-                onShareScoreClick = {},
+                onShareScoreClick = {
+                    shareQuizData(
+                        quizData = quizData,
+                        context = context,
+                    )
+                },
                 onHomeClick = {
                     mainViewModel.resetResult()
                     navController.navigate(NavigationScreen.ChooseScreen.route)
@@ -351,6 +360,39 @@ fun OtherFunctionButtons(
             scaleIcon = 0.7f
         )
     }
+}
+
+private fun shareQuizData(
+    context: Context,
+    quizData: QuizData,
+) {
+    val solvedQuestions =
+        if (quizData.chosenOption != 0) quizData.solvedQuestions + 1 else quizData.solvedQuestions
+    val percentage = (quizData.rightAnswers / solvedQuestions.toFloat() * 100).toInt()
+
+    val intent = Intent(Intent.ACTION_SEND).apply {
+        type = "text/plain"
+        putExtra(
+            Intent.EXTRA_SUBJECT,
+            context.getString(R.string.extra_subject)
+        )
+        putExtra(
+            Intent.EXTRA_TEXT,
+            context.getString(
+                R.string.result_text,
+                quizData.chosenLevel.ordinal + 1,
+                quizData.rightAnswers,
+                solvedQuestions,
+                percentage
+            )
+        )
+    }
+    context.startActivity(
+        Intent.createChooser(
+            intent,
+            context.getString(R.string.result_screen)
+        )
+    )
 }
 
 @Preview(showBackground = true)
