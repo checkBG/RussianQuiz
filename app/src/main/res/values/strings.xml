@@ -1,12 +1,8 @@
 <resources>
-    <string name="app_name">English Quiz</string>
-    <string name="century">Topic</string>
-    <string name="max_score">Max score</string>
-    <string name="century_quiz">Test</string>
+    <string name="app_name" translatable="false">English Quiz</string>
     <string name="navigate_up">Navigate up</string>
     <string name="settings">Settings</string>
     <string name="profile">Profile</string>
-    <string name="start">Start</string>
     <string name="question">Question</string>
     <string name="result_screen">results</string>
     <string name="continue_string">Continue</string>
@@ -14,7 +10,6 @@
     <string name="right_answer">It\'s the right answer. You\'ve answered correctly</string>
     <string name="wrong_answer"> It\s the wrong answer. You\'ve answered incorrectly</string>
     <string name="possible_option">It\'s a possible option to choose</string>
-    <string name="wrong_option_not_chosen">It\'s a wrong option to choose</string>
     <string name="cancel">Cancel</string>
     <string name="finish_quiz">Finish the quiz?</string>
     <string name="continue_text_finish_quiz">Do you really want to finish the quiz and go to results? All progress will be removed. You won\'t be able to return the current progress later</string>
@@ -24,444 +19,444 @@
     <string name="total_question">Total Question</string>
     <string name="wrong">Wrong</string>
     <string name="play_again">Play Again</string>
-    <string name="share">Share Score</string>
+    <string name="share">Share</string>
     <string name="home">Home</string>
-    <string name="all_correct">All the sentences above are correct</string>
-    <string name="all_incorrect">All the sentences above are incorrect</string>
-
-    <string name="question_phrasal_verbs_1">\"To sum it up, I came ___ the following conclusion: the channel is better than a group for quizzes\"</string>
-    <string name="answer_phrasal_verbs_1_1">down</string>
-    <string name="answer_phrasal_verbs_1_2">to</string>
-    <string name="answer_phrasal_verbs_1_3">into</string>
-    <string name="answer_phrasal_verbs_1_4">in</string>
-    <string name="explanation_phrasal_verbs_1">Come to something</string>
-
-    <string name="question_phrasal_verbs_2">\"That is a well-known fact that all business boils ___ to money\"</string>
-    <string name="answer_phrasal_verbs_2_1">up</string>
-    <string name="answer_phrasal_verbs_2_2">off</string>
-    <string name="answer_phrasal_verbs_2_3">down</string>
-    <string name="answer_phrasal_verbs_2_4">on</string>
-    <string name="explanation_phrasal_verbs_2">Come down to ~ boil down to</string>
-
-    <string name="question_phrasal_verbs_3">\"How can you put me ___ to Telegram support regarding my unban?\"</string>
-    <string name="answer_phrasal_verbs_3_1">through</string>
-    <string name="answer_phrasal_verbs_3_2">off</string>
-    <string name="answer_phrasal_verbs_3_3">by</string>
-    <string name="answer_phrasal_verbs_3_4">up</string>
-    <string name="explanation_phrasal_verbs_3">Put someone through to something</string>
-
-    <string name="question_phrasal_verbs_4">\"Doubtless, it\'s highly difficult to get ___ on such a small amount of money\"</string>
-    <string name="answer_phrasal_verbs_4_1">off</string>
-    <string name="answer_phrasal_verbs_4_2">out</string>
-    <string name="answer_phrasal_verbs_4_3">by</string>
-    <string name="answer_phrasal_verbs_4_4">in</string>
-    <string name="explanation_phrasal_verbs_4">Get by on money</string>
-
-    <string name="question_vocabulary_1">\"For real? This is (not a logical) decision at all! Just think about it one more time\"</string>
-    <string name="answer_vocabulary_1_1">unlogical</string>
-    <string name="answer_vocabulary_1_2">inlogical</string>
-    <string name="answer_vocabulary_1_3">illogical</string>
-    <string name="explanation_vocabulary_1">The correct word is \"illogical\" (for example: \"This is an extremely illogical decision you\'ve ever taken\")</string>
-
-    <string name="question_grammar_1">\"Is this sentence grammatically correct?\nIt looks a bit too weird.\"</string>
-    <string name="answer_grammar_1_1">Yes</string>
-    <string name="answer_grammar_1_2">No</string>
-    <string name="explanation_grammar_1">\"To not seem rude people can minimize such words like \'too\' into \'a bit too.\'\"</string>
-
-    <string name="question_vocabulary_2">\"Choose the WRONG/INCORRECT sentence (1, 2 or 3)\"</string>
-    <string name="answer_vocabulary_2_1">1) I used to study mathematics</string>
-    <string name="answer_vocabulary_2_2">2) I used to study math</string>
-    <string name="answer_vocabulary_2_3">3) I used to study maths</string>
-    <string name="explanation_vocabulary_2">1) mathematics (formal);\n2) math (US);\n3) maths (UK);\n4) \"used to do sth\" means that I did it in the past but now I don\'t do it anymore;\n5) By the way, in this meaning: anymore (US), any more (UK)</string>
-
-    <string name="question_grammar_2">\"Please, choose the incorrect sentence.\"</string>
-    <string name="answer_grammar_2_1">\"I want you to come over so that we have so much fun and celebrate Halloween\"</string>
-    <string name="answer_grammar_2_2">\"I\'d like you to come along with me there tonight. Do you have any plans for today?\"</string>
-    <string name="answer_grammar_2_3">\"I\'ve been going through a lot: I\'ve got exams coming up and I\'m studying so that I could pass them\"</string>
-    <string name="answer_grammar_2_4">\"I watch a lotta English video lessons on YouTube so that my English skills are better\"</string>
-    <string name="explanation_grammar_2">The third sentence is incorrect because we need to use Present Simple when the first part of the sentence has the Present Progressive tense (for example: \"I\'m studying so that I can pass them\")</string>
-
-    <string name="question_vocabulary_3">What does the word \"moving\" mean in this context?\n\"It was a very moving scene\"</string>
-    <string name="answer_vocabulary_3_1">With a lot of actions</string>
-    <string name="answer_vocabulary_3_2">With a lot of characters</string>
-    <string name="answer_vocabulary_3_3">Emotional (thrilling) or sad</string>
-    <string name="explanation_vocabulary_3">Moving - causing strong feelings of sadness or sympathy.</string>
-
-    <string name="question_grammar_3">PASSIVE VOICE: Please, choose the correct sentence</string>
-    <string name="answer_grammar_3_1">This building is repaired right now</string>
-    <string name="answer_grammar_3_2">This phone is being sold now</string>
-    <string name="explanation_grammar_3">The sentence \"This building is repaired right now\" is not correct. You need to use \"is being\" because there is \"right now\" in the end (for example: \"The ceiling is being painted now\").</string>
-
-    <string name="question_grammar_4">Is it a correct dialogue?\n\n-Where shall I put this vase? -Put it anyplace -it doesn\'t matter where.</string>
-    <string name="answer_grammar_4_1">Yes, it is</string>
-    <string name="answer_grammar_4_2">No, it isn\'t</string>
-    <string name="explanation_grammar_4">The adverb \"anyplace\" is informal and used mainly in the US. It means \"anywhere\".</string>
-
-    <string name="question_pronunciation_1">\"-Haven\'t you seen my key, Emily? -Sorry, darling, I left it in the flat.\"\nHow would you pronounce the word \'key\'?</string>
-    <string name="answer_pronunciation_1">[keɪ]</string>
-    <string name="answer_pronunciation_2">[keə]</string>
-    <string name="answer_pronunciation_1_3">[kiː]</string>
-    <string name="answer_pronunciation_4">[kaɪ]</string>
-
-    <string name="question_vocabulary_4">Find the mistake.</string>
-    <string name="answer_vocabulary_4_1">A person who cooks well is a good cook.</string>
-    <string name="answer_vocabulary_4_2">I\'m bad at cooking.</string>
-    <string name="answer_vocabulary_4_3">I\'m making an amazing desert in the kitchen right now.</string>
-    <string name="answer_vocabulary_4_4">I\'ve always wanted to be able to cook very well.</string>
-    <string name="explanation_vocabulary_4">DeSert (countable or uncountable) - a large, hot, dry area of land with very few plants.\nDeSsert (countable and uncountable) - sweet food.</string>
-
-    <string name="question_grammar_5">TAG QUESTIONS: please, choose the correct sentence for the given statement:</string>
-    <string name="answer_grammar_5_1">\"Nobody lives in that shabby house, do they?\"</string>
-    <string name="answer_grammar_5_2">\"Nobody lives in that shabby house, does they?\"</string>
-    <string name="answer_grammar_5_3">\"Nobody lives in that shabby house, isn\'t it?\"</string>
-    <string name="answer_grammar_5_4">\"Nobody lives in that shabby house, aren\'t they?\"</string>
-    <string name="explanation_grammar_5">The first sentence is correct because \"nobody\" (also \"no one\") means \"they\"; \"they\" comes with \"do\" (for example: \"No one cares, do they?\").</string>
-
-    <string name="question_prepositions_1">DEPENDENT PREPOSITIONS: please, choose the incorrect sentence</string>
-    <string name="answer_prepositions_1_1">\"I\'d say smiling at strangers is typical of American culture. I think, that\'s so cool!\"</string>
-    <string name="answer_prepositions_1_2">\"My city is covered with snow and it looks so wonderful and charming!\"</string>
-    <string name="answer_prepositions_1_3">\"Oh my gosh, this guy is so cruel to her! Stop him anybody!\"</string>
-    <string name="answer_prepositions_1_4">\"You were so polite for me and I appreciated that!\"</string>
-    <string name="answer_prepositions_1_5">The first and the second sentences are incorrect</string>
-    <string name="answer_prepositions_1_6">The third and the fourth sentences are incorrect</string>
-    <string name="explanation_prepositions_1">All of the sentences except the fourth one are correct. We need to use the preposition \"to\" (\"___ to someone\") (for example: \"The staff in this store is so polite to customers\").</string>
-
-    <string name="question_grammar_6">Choose the WRONG sentence, if any.</string>
-    <string name="answer_grammar_6_1">Mike and Lisa went to bed very early yesterday because they were exhausted.</string>
-    <string name="answer_grammar_6_2">Because Mike and Helen were exhausted, they went to bed very early yesterday.</string>
-    <string name="explanation_grammar_6">1) In a sentence \'because\' can be both at the beginning and in the middle;\n2) We put a comma after a subordinate clause if \'because\' is at the beginning of a sentence.</string>
-
-    <string name="question_phrasal_verbs_5">Do the \"to bring forward\" and \"to put off\" phrasal verbs mean the same thing?</string>
-    <string name="answer_phrasal_verbs_5_1">Yes, they do</string>
-    <string name="answer_phrasal_verbs_5_2">No, they don\'t</string>
-    <string name="explanation_phrasal_verbs_5">The \"to bring forward\" and \"to put off\" phrasal verbs do not mean the same. They mean \"to postpone\", but the \"to bring forward\" phrasal verb also means \"to introduce something\" (\"to introduce an idea\").</string>
-
-    <string name="question_tenses_1">Complete the dialogue:\n- Jessica, by the way, where ___ last week? - I ___ in Switzerland with my colleagues.</string>
-    <string name="answer_tenses_1_1">were you, was</string>
-    <string name="answer_tenses_6_2">you were, was</string>
-    <string name="answer_tenses_6_3">have you been, was</string>
-    <string name="answer_tenses_6_4">have you been, have been</string>
-    <string name="answer_tenses_6_5">The first and fourth options are correct</string>
-    <string name="explanation_tenses_1">The action happened at a definite time in the past. The time is mentioned (\"last week\"). So, we use the Past Simple, not the Present Perfect.</string>
-
-    <string name="question_grammar_7">Complete the following dialogue:\n- Mark, how long did it take you to wait ___ a postman? - Alice, you know, it took so long. I waited ___ five hours.</string>
-    <string name="answer_grammar_7_1">for; for</string>
-    <string name="answer_grammar_7_2">for; -</string>
-    <string name="explanation_grammar_7">1) With a period of time, \"for\" after \"wait\" is optional (= not necessary, but possible);\n2) BUT! \"to wait FOR someone/something\". In this case, \"for\" after \"wait\" is essential: I waited for the parcel.</string>
-
-    <string name="question_grammar_8">FUTURE-IN-THE-PAST: which sentence is correct?</string>
-    <string name="answer_grammar_8_1">\"Unfortunately, Jessica called us to say she would be late at the conference\"</string>
-    <string name="answer_grammar_8_2">\"John told me he will be at the meeting on time. That\'s great!\"</string>
-    <string name="explanation_grammar_8">When there is the Future-in-the-Past tense, \"would\" or \"would be\" are used instead of \"will\" or \"will be\" (for example: \"He said he would go there tomorrow\"). Therefore, the first sentence is correct.</string>
-
-    <string name="question_vocabulary_9">Complete the saying:\nKeep your friends ___ and your enemies ___ .</string>
-    <string name="answer_vocabulary_9_1">close; close</string>
-    <string name="answer_vocabulary_9_2">close; closer</string>
-    <string name="answer_vocabulary_9_3">close; far</string>
-    <string name="answer_vocabulary_9_4">closer; far</string>
-    <string name="answer_vocabulary_9_5">closer; farther</string>
-    <string name="explanation_vocabulary_9">Close - closer - the closest</string>
-
-    <string name="question_slang_1">What does the \"oddball\" slang word mean?\n\"Our new boss is a bit of an oddball, go just look at him\"</string>
-    <string name="answer_slang_1_1">interesting, impressive and hilarious</string>
-    <string name="answer_slang_1_2">weird, eccentric and unusual</string>
-    <string name="answer_slang_1_3">scary, awful and ugly</string>
-    <string name="explanation_slang_1">The \"oddball\" slang word is a noun that means someone is a weird, unusual, or eccentric person. This word also means something is strange or unusual.</string>
-
-    <string name="question_prepositions_2">Choose the correct preposition.\nThe trip ended ___ tragedy</string>
-    <string name="answer_prepositions_2_1">-</string>
-    <string name="answer_prepositions_2_2">By</string>
-    <string name="answer_prepositions_2_3">In</string>
-    <string name="answer_prepositions_2_4">With</string>
-    <string name="explanation_prepositions_2">The correct preposition is \"in\". We say \"end in tragedy\" when describing a situation that results in a tragic outcome.</string>
-
-    <string name="question_vocabulary_10">Fill in the gap.\nThe painting is just a copy - it\'s not ___.</string>
-    <string name="answer_vocabulary_10_1">Authentic</string>
-    <string name="answer_vocabulary_10_2">Artificial</string>
-    <string name="answer_vocabulary_10_3">Terrific</string>
-    <string name="explanation_vocabulary_10">\"Authentic\" means real or original, not fake, not copied.</string>
-
-    <string name="question_grammar_10">Choose the correct sentence</string>
-    <string name="answer_grammar_10_1">This course consists of three parts</string>
-    <string name="answer_grammar_10_2">This dish contains a lot of salt</string>
-    <string name="explanation_grammar_10">1) consist of something;\n2) contain sth</string>
-
-    <string name="question_tenses_2">Find the wrong sentence</string>
-    <string name="answer_tenses_2_1">He finds his socks in the fridge every Saturday</string>
-    <string name="answer_tenses_2_2">Lucy found her purse at last</string>
-    <string name="answer_tenses_2_3">John founded the company last year</string>
-    <string name="explanation_tenses_2">1) find - found - found (irregular verb);\n2) found - founded - founded (regular verb).</string>
-
-    <string name="question_verb_forms_1">Complete the dialogue:\n-Max, why didn\'t you call me back yesterday? -Sorry, darling! When I came home, I ___ down on the bed and fell asleep immediately</string>
-    <string name="answer_verb_forms_1_1">lie</string>
-    <string name="answer_verb_forms_1_2">lay</string>
-    <string name="answer_verb_forms_1_3">laid</string>
-    <string name="answer_verb_forms_1_4">lain</string>
-    <string name="answer_verb_forms_1_5">lied</string>
-    <string name="explanation_verb_forms_1">1) We use the Past Simple in that dialogue (the 2nd verb form);\n2) lie down (phrasal verb);\n3) lie - lay - lain (we need this verb in that context);\n4) lie - lied - lied; 5) lay - laid - laid.</string>
-
-    <string name="question_idioms_1">Complete the dialogue:\n-Alice, you know, these exams are so difficult</string>
-    <string name="answer_idioms_1_1">Yeah, I understand. Hang in there!</string>
-    <string name="answer_idioms_1_2">Yeah, I understand. Hang on in there!</string>
-    <string name="explanation_idioms_1">1) (idiom) hang in there (UK also \'hang on in there\') - said as a way of telling someone to not give up, despite difficulties.</string>
-
-    <string name="question_vocabulary_5">Choose the wrong collocation:</string>
-    <string name="answer_vocabulary_5_1">A game of tennis</string>
-    <string name="answer_vocabulary_5_2">A carton of milk</string>
-    <string name="answer_vocabulary_5_3">A bottle of perfume</string>
-    <string name="answer_vocabulary_5_4">A piece of music</string>
-    <string name="answer_vocabulary_5_5">A jar of wood</string>
-    <string name="answer_vocabulary_5_6">A bar of chocolate</string>
-    <string name="explanation_vocabulary_5">The collocation \"a jar of wood\" is incorrect. For example, we can say \"a jar of honey\" or \"a piece of wood\", but wood is not typically stored in a jar.</string>
-
-    <string name="question_vocabulary_6">Find the correct sentence:</string>
-    <string name="answer_vocabulary_6_1">Sheep eat grass.</string>
-    <string name="answer_vocabulary_6_2">This scissor isn\'t very sharp.</string>
-    <string name="answer_vocabulary_6_3">I need to buy a new jeans.</string>
-    <string name="answer_vocabulary_6_4">Does the police know the cause of the explosion?</string>
-    <string name="explanation_vocabulary_6">1) A sheep - four sheep (same form in singular and plural);\n2) Scissors are plural, so it should be \"these scissors aren\'t very sharp\";\n3) Jeans are plural, so we say \"a pair of jeans\";\n4) Police are plural, so the correct question is \"Do the police know the cause of the explosion?\"</string>
-
-    <string name="question_vocabulary_7">Choose the wrong sentence. (Read CAREFULLY)</string>
-    <string name="answer_vocabulary_7_1">She\'s given me some terrific ideas.</string>
-    <string name="answer_vocabulary_7_2">I\'ve recovered completely. I feel terrific.</string>
-    <string name="answer_vocabulary_7_3">I had a terrific time.</string>
-    <string name="answer_vocabulary_7_4">They did a terrific job painting the house.</string>
-    <string name="explanation_vocabulary_7">1) The correct spelling is \"teRRific\" (double R). Ensure you carefully review the spelling of each word in the options.</string>
-
-    <string name="question_prepositions_3">PREPOSITIONS: Choose the correct preposition. My cat hissed ___ me, when I stepped on its tail.</string>
-    <string name="answer_prepositions_3_1">-</string>
-    <string name="answer_prepositions_3_2">On</string>
-    <string name="answer_prepositions_3_3">At</string>
-    <string name="answer_prepositions_3_4">To</string>
-    <string name="answer_prepositions_3_5">With</string>
-    <string name="explanation_prepositions_3">Hiss at something/someone</string>
-
-    <string name="question_spelling_1">Choose the wrong spelling of the word. You\'re not a child anymore! Don\'t be so ___!</string>
-    <string name="answer_spelling_1_1">naive</string>
-    <string name="answer_spelling_1_2">naïve</string>
-    <string name="answer_spelling_1_3">naif</string>
-    <string name="answer_spelling_1_4">naïf</string>
-
-    <string name="question_vocabulary_8">Choose the wrong sentence.</string>
-    <string name="answer_vocabulary_8_1">Joan wanted to go to a movie but I wasn\'t keen.</string>
-    <string name="answer_vocabulary_8_2">He\'s a very keen cook.</string>
-    <string name="answer_vocabulary_8_3">They were very keen to start work as soon as possible.</string>
-    <string name="answer_vocabulary_8_4">He\'s rather keen a girl in his school.</string>
-    <string name="explanation_vocabulary_8">He\'s rather keen on a girl in his school. In this sentence, \"keen on somebody\" means be very interested in someone.</string>
-
-    <string name="question_prepositions_4">We are ___ no hurry.</string>
-    <string name="answer_prepositions_4_1">in</string>
-    <string name="answer_prepositions_4_2">on</string>
-    <string name="answer_prepositions_4_3">for</string>
-    <string name="explanation_prepositions_4">1) To be in no hurry (to do something);\n2) The opposite of this expression is \"to be in a hurry\" (to do something).</string>
-
-    <string name="question_vocabulary_11">VOCABULARY: We ___ the train because we had woken (up) too late.</string>
-    <string name="answer_vocabulary_11_1">missed</string>
-    <string name="answer_vocabulary_11_2">lost</string>
-    <string name="answer_vocabulary_11_3">late</string>
-
-    <string name="question_grammar_11">Choose the correct form of verb. The eggs were taken from the eagle\'s nest. Police believe they will now ___ out of the country and sold abroad.</string>
-    <string name="answer_grammar_11_1">Smuggle</string>
-    <string name="answer_grammar_11_2">Be smuggle</string>
-    <string name="answer_grammar_11_3">Be smuggling</string>
-    <string name="answer_grammar_11_4">Be smuggled</string>
-    <string name="answer_grammar_11_5">Smuggled</string>
-    <string name="answer_grammar_11_6">Smuggling</string>
-    <string name="explanation_grammar_11">Theme: Passive voice. According to the rule \"will be + V3/Ved,\" it must be \"will be smuggled.\"</string>
-
-    <string name="question_grammar_12">Please, choose the incorrect sentence/sentences.</string>
-    <string name="answer_grammar_12_1">\"I\'d rather not to say my name in public because I keep myself anonymous\"</string>
-    <string name="answer_grammar_12_2">\"I had rather not come along with them, they\'re kinda shady and___ weird\"</string>
-    <string name="answer_grammar_12_3">\"You\'d better not to lie to him, he\'s attentive and he\'s about staying alert!\"</string>
-    <string name="answer_grammar_12_4">\"I had better not disturb him when he\'s busy with his lessons!\"</string>
-    <string name="answer_grammar_12_5">The first and the third sentences are incorrect</string>
-    <string name="answer_grammar_12_6">The second and the fourth sentences are incorrect</string>
-    <string name="explanation_grammar_12">The right form is \"I\'d rather (We/You/They\'d better) + not + verb\". There\'s no need for using the preposition \"to\" between \"not\" and a verb. Therefore, the first and the third sentences are incorrect.</string>
-
-    <string name="question_phrasal_verbs_6">PHRASAL VERBS: please, fill in the gap in the sentence:\n\"Do you have an idea why I pulled you __?\"</string>
-    <string name="answer_phrasal_verbs_6_1">down</string>
-    <string name="answer_phrasal_verbs_6_2">up</string>
-    <string name="answer_phrasal_verbs_6_3">over</string>
-    <string name="explanation_phrasal_verbs_6">\"To pull over\" is a phrasal verb that means \"to stop\" (a car). For example: \"Pull over here please.\"</string>
-
-    <string name="question_prepositions_5">PREPOSITIONS: Complete the following dialogue: \"- Are Lucy and John siblings? Really?\"</string>
-    <string name="answer_prepositions_5_1">Yes, but Lucy is very different to her brother. She\'s kinder.</string>
-    <string name="answer_prepositions_5_2">Yes, but Lucy is very different from her brother. She\'s kinder.</string>
-    <string name="explanation_prepositions_5">1) \"To be different FROM sth/sb\" = \"to be different TO sth/sb\";\n2) In American English, it is also common to say \"different THAN\": \"Yes, but Lucy is very different THAN her brother. She\'s kinder.\"</string>
-
-    <string name="question_idioms_2">IDIOMS: Choose the wrong sentence, if any.</string>
-    <string name="answer_idioms_2_1">I\'m here to expand my horizons</string>
-    <string name="answer_idioms_2_2">I\'m here to widen my horizons</string>
-    <string name="answer_idioms_2_3">I\'m here to broaden my horizons</string>
-    <string name="explanation_idioms_2">To expand/widen/broaden someone\'s horizons (idiom) means to increase the range of things someone knows about or has experienced. Therefore, all the sentences are correct.</string>
-
-    <string name="question_phrasal_verbs_7">Do the \"to eat out\" and \"to pig out\" phrasal verbs mean the same?</string>
-    <string name="answer_phrasal_verbs_7_1">Yes, they do</string>
-    <string name="answer_phrasal_verbs_7_2">No, they don\'t</string>
-    <string name="explanation_phrasal_verbs_7">These phrasal verbs do not mean the same thing because the \"to eat out\" phrasal verb means \"to eat away from home\" and the \"to pig out\" one means \"to eat too much\".</string>
-
-    <string name="question_vocabulary_12">500 people were ___. Many buildings were ___.</string>
-    <string name="answer_vocabulary_12_1">injured; injured</string>
-    <string name="answer_vocabulary_12_2">injured; damaged</string>
-    <string name="answer_vocabulary_12_3">damaged; damaged</string>
-    <string name="answer_vocabulary_12_4">damaged; injured</string>
-    <string name="explanation_vocabulary_12">The correct answer is \"injured; damaged.\" \"Injured\" is used when referring to harm to people, while \"damaged\" is used for harm to things or objects such as buildings.</string>
-
-    <string name="question_grammar_13">GRAMMAR: please, choose the correct sentence</string>
-    <string name="answer_grammar_13_1">\"I don\'t want to tell you my name because I keep myself anonymous\"</string>
-    <string name="answer_grammar_13_2">\"I don\'t want to tell you my name because I keep myself in anonymous\"</string>
-    <string name="answer_grammar_13_3">\"Steve can\'t stand do it constantly\"</string>
-    <string name="answer_grammar_13_4">\"This line is so long! I can\'t stand waiting in long ones!\"</string>
-    <string name="answer_grammar_13_5">The first and the third sentences are correct</string>
-    <string name="answer_grammar_13_6">The second and the fourth sentences are correct</string>
-    <string name="answer_grammar_13_7">The first and the fourth sentences are correct</string>
-    <string name="explanation_grammar_13">The first and the fourth sentences are correct because \"anonymous\" is an adjective; \"can\'t stand/bear + verb + ing\" is a correct form according to grammar.</string>
-
-    <string name="question_idioms_3">IDIOMS: I can do this for hours on ___.\nI listen to music for hours on ___.</string>
-    <string name="answer_idioms_3_1">day</string>
-    <string name="answer_idioms_3_2">over</string>
-    <string name="answer_idioms_3_3">end</string>
-    <string name="answer_idioms_3_4">hours</string>
-    <string name="answer_idioms_3_5">weeks</string>
-    <string name="explanation_idioms_3">For hours/days on end - for hours/days without stopping (часами/днями напролёт, без конца).</string>
-
-    <string name="question_tenses_3">Choose the wrong sentence:</string>
-    <string name="answer_tenses_3_1">I was reading a book when my wife called me</string>
-    <string name="answer_tenses_3_2">I was reading a book for two hours when my wife called me</string>
-    <string name="answer_tenses_3_3">I had been reading a book for two hours when my wife called me</string>
-    <string name="explanation_tenses_3">1) The first action is longer; the second one is shorter.\n2) Because we have \"FOR + some period of time\" (for TWO HOURS), we use the Past Perfect Continuous in that case, not the Past Continuous.</string>
-
-    <string name="question_grammar_14">I had no appetite. I could only eat ___.</string>
-    <string name="answer_grammar_14_1">half my dinner</string>
-    <string name="answer_grammar_14_2">half of dinner</string>
-    <string name="answer_grammar_14_3">the half of my dinner</string>
-    <string name="explanation_grammar_14">We use half or half of mostly before a noun with a determiner. We do not normally put a/an or the before half in this case:\nShe spends half (of) her time travelling.\nI gave him half (of) a cheese pie.</string>
-
-    <string name="question_grammar_15">This is the ___ film she\'s ever seen.</string>
-    <string name="answer_grammar_15_1">badest</string>
-    <string name="answer_grammar_15_2">baddest</string>
-    <string name="answer_grammar_15_3">worst</string>
-    <string name="answer_grammar_15_4">worse</string>
-    <string name="explanation_grammar_15">Bad - worse - the worst</string>
-
-    <string name="question_phrasal_verbs_8">Let\'s cut ___ the field. This way is shorter. It\'ll save our time.</string>
-    <string name="answer_phrasal_verbs_8_1">off</string>
-    <string name="answer_phrasal_verbs_8_2">up</string>
-    <string name="answer_phrasal_verbs_8_3">across</string>
-    <string name="answer_phrasal_verbs_8_4">on</string>
-    <string name="explanation_phrasal_verbs_8">Cut across = to take a shorter way = to go from one side of an area to the other instead of going round it.</string>
-
-    <string name="question_tenses_4">When did the journey start?\n\"Lisa and Kevin had already travelled some distance when the sun rose.\"</string>
-    <string name="answer_tenses_4_1">The journey started before sunrise</string>
-    <string name="answer_tenses_4_2">The journey started at sunrise</string>
-    <string name="answer_tenses_4_3">The journey started after sunrise</string>
-    <string name="explanation_tenses_4">1) \"Lisa and Kevin HAD already TRAVELLED some distance\" (Past Perfect shows that this action happened before the action in the Past Simple);\n2) \"when the sun ROSE\" (Past Simple).</string>
-
-    <string name="question_grammar_16">It appears to me that the kids ____ the library yet because I can hear their voices from the living room.</string>
-
-    <string name="answer_grammar_16_1">have been in</string>
-    <string name="answer_grammar_16_2">haven\'t been in</string>
-    <string name="answer_grammar_16_3">haven\'t gone to</string>
-    <string name="answer_grammar_16_4">have gone to</string>
-    <string name="answer_grammar_16_5">have gone in</string>
-    <string name="answer_grammar_16_6">haven\'t gone in</string>
-    <string name="explanation_grammar_16">Present Perfect Tense:\n1) have/has + V3;\n2) have/has + been TO (some place);\n3) \"Go to the library\" -> \"have gone to the library\" (Present Perfect).</string>
-
-    <string name="question_phrasal_verbs_9">Fill in the gap.\nThe situation calls ___ decisive actions.</string>
-    <string name="answer_phrasal_verbs_9_1">After</string>
-    <string name="answer_phrasal_verbs_9_2">By</string>
-    <string name="answer_phrasal_verbs_9_3">For</string>
-    <string name="answer_phrasal_verbs_9_4">Out</string>
-    <string name="answer_phrasal_verbs_9_5">In</string>
-    <string name="explanation_phrasal_verbs_9">Call for - призывать</string>
-
-    <string name="question_grammar_17">ARTICLES: Please, choose the correct sentence.</string>
-    <string name="answer_grammar_17_1">These tourists weren\'t used to such severe climate.</string>
-    <string name="answer_grammar_17_2">My best friend left for US yesterday. I\'ll be missing him a lot!</string>
-    <string name="answer_grammar_17_3">Sorry, Derrick, I\'m in hurry!</string>
-    <string name="answer_grammar_17_4">I can\'t afford that now cuz! I\'ve been going through a lot and I\'m saving for a trip to the Europe.</string>
-    <string name="answer_grammar_17_5">The first and the third sentences are correct.</string>
-    <string name="answer_grammar_17_6">The second and the fourth sentences are correct.</string>
-    <string name="answer_grammar_17_7">The third and the fourth sentences are correct.</string>
-    <string name="explanation_grammar_17">The word \"a climate\" is countable, \"the US\" requires \"the,\" \"to be in a hurry\" requires \"a,\" the word \"Europe\" does not require \"the.\"</string>
-
-    <string name="question_pronunciation_2">What\'s the correct transcription of the word \'nightclub\'?\n\"The city is famous for its numerous nightclubs.\"</string>
-    <string name="answer_pronunciation_2_1">[ˈnaɪt.klʌb]</string>
-    <string name="answer_pronunciation_2_2">[ˈnaɪt.kləb]</string>
-    <string name="answer_pronunciation_2_3">Both options are correct</string>
-
-    <string name="question_phrasal_verbs_10">Please, fill in the gaps in the sentence:\n\"I can\'t afford that stuff at the moment. I gotta scrape ___ on $200 a month and I\'m paying __ my student loan else. So… that\'s why I still live with my parents.\"</string>
-    <string name="answer_phrasal_verbs_10_1">off, off</string>
-    <string name="answer_phrasal_verbs_10_2">down, off</string>
-    <string name="answer_phrasal_verbs_10_3">by, down</string>
-    <string name="answer_phrasal_verbs_10_4">by, back</string>
-    <string name="explanation_phrasal_verbs_10">\"To scrape by\" is a phrasal verb that means \"to have money for only some basic things you need and to live barely\"; \"to pay down\" is a phrasal verb that means \"to pay part of an amount you have\".</string>
-
-    <string name="question_vocabulary_13">Please, choose the correct sentence:</string>
-    <string name="answer_vocabulary_13_1">\"It was such an irresponsible decision!\"</string>
-    <string name="answer_vocabulary_13_2">\"This was such an unresponsible decision!\"</string>
-    <string name="answer_vocabulary_13_3">\"That was such an irresponsible decision!\"</string>
-    <string name="explanation_vocabulary_13">The word \"irresponsible\" is correct</string>
-
-    <string name="question_spelling_2">Fill in the gap:\n\"These patients need ___. Please talk to Mr. Smith about it. I hope he will be able to organise it.\"</string>
-    <string name="answer_spelling_2_1">rehebilitation</string>
-    <string name="answer_spelling_2_2">reebilitation</string>
-    <string name="answer_spelling_2_3">rehabilitation</string>
-    <string name="answer_spelling_2_4">reabilitation</string>
-    <string name="explanation_spelling_2">1) rehabilitation (uncountable noun) [rɪˌhæblɪˈteɪʃən];\n2) organise - UK; organize - US</string>
-
-    <string name="question_phrasal_verbs_11">Please, fill in the gap in the sentence:\n\"These guys are just liars! Don\'t get taken __ by their false promises and stay away from them!\"</string>
-    <string name="answer_phrasal_verbs_11_1">off</string>
-    <string name="answer_phrasal_verbs_11_2">in</string>
-    <string name="answer_phrasal_verbs_11_3">on</string>
-    <string name="answer_phrasal_verbs_11_4">down</string>
-    <string name="explanation_phrasal_verbs_11">\"To take in\" is a phrasal verb that means \"to deceive\"</string>
-
-    <string name="question_slang_2">What does the chat\'s \"jk\" abbreviation mean?</string>
-    <string name="answer_slang_2_1">Just kidding</string>
-    <string name="answer_slang_2_2">Just know</string>
-    <string name="answer_slang_2_3">okay</string>
-    <string name="explanation_slang_2">The slang abbreviation \"jk\" means \"just kidding\".</string>
-
-    <string name="question_prepositions_6">Choose the correct option:\n\"- Oh, I\'ve left my pen at home. Martin, please throw a pen ___ me.\"</string>
-    <string name="answer_prepositions_6_1">to</string>
-    <string name="answer_prepositions_6_2">at</string>
-    <string name="explanation_prepositions_6">1) We say \'throw something TO somebody/throw sb sth\' when we want to pass sth; 2) We say \'throw sth AT sb\' when we want to do harm: \"Lisa was angry with Jack. That\'s why she threw a plate AT him.\"</string>
-
-    <string name="question_grammar_18">\"Choose the correct sentence:\"</string>
-    <string name="answer_grammar_18_1">He threw me that towel</string>
-    <string name="answer_grammar_18_2">He threw that towel to me</string>
-    <string name="answer_grammar_18_3">He threw that towel at me</string>
-    <string name="explanation_grammar_18">1) throw - threw - thrown; 2) \'to throw somebody something\' and \'to throw sth TO sb\' are used when we want to pass something; 3) \'to throw sth AT sb\' is used when we want to do harm.</string>
-
-    <string name="question_vocabulary_14">Do the words \'terrific\' and \'disgusting\' mean the same thing?</string>
-    <string name="answer_vocabulary_14_1">Yes, they do</string>
-    <string name="answer_vocabulary_14_2">No, they don\'t</string>
-    <string name="explanation_vocabulary_14">The word \'terrific\' means \"wonderful\", \"excellent\", \"marvelous\", and so on; the word \'disgusting\' means \"awful\", \"horrible\", \"dreadful\", and so on. Therefore, these words do not mean the same thing.</string>
-
-    <string name="question_grammar_19">My mother ______ in Italy.</string>
-    <string name="answer_grammar_19_1">has grown up</string>
-    <string name="answer_grammar_19_2">grew up</string>
-    <string name="answer_grammar_19_3">had grown up</string>
-    <string name="answer_grammar_19_4">was grown up</string>
-    <string name="explanation_grammar_19">Use the past simple (not the present perfect) for things that are not recent or new. Example: Mozart was a composer. He wrote more than 600 pieces of music. My mother grew up in Italy.</string>
-
-    <string name="question_prepositions_7">Complete the dialogue:\n\"- You can ask Selena for help. - No, I can\'t rely ___ her because she let me down many times.\"</string>
-    <string name="answer_prepositions_7_1">on</string>
-    <string name="answer_prepositions_7_2">upon</string>
-    <string name="explanation_prepositions_7">1) In general, these two mean the same thing, but \"to rely UPON someone/something\" is more formal and less common than \"to rely ON someone/something\".\n2) To let someone down (let - let - let) means to disappoint someone by not doing what was expected.</string>
-
-    <string name="question_tenses_5">Please, choose the correct sentence.</string>
-    <string name="answer_tenses_5_1">By the time my dad came home, I did my homework</string>
-    <string name="answer_tenses_5_2">I have done my homework by the time my dad came home</string>
-    <string name="answer_tenses_5_3">I had done my homework by the time my dad came back home</string>
-    <string name="answer_tenses_5_4">I did my homework by the time my dad came back home</string>
-    <string name="answer_tenses_5_5">By the time my dad came home, I had done my homework</string>
-    <string name="answer_tenses_5_6">By the time my dad came back home, I have done my homework</string>
-    <string name="answer_tenses_5_7">The first and the fourth sentences are correct</string>
-    <string name="answer_tenses_5_8">The second and the sixth sentences are correct</string>
-    <string name="answer_tenses_5_9">The third and the fifth sentences are correct</string>
-    <string name="explanation_tenses_5">The Past Perfect tense is used in this case. Therefore, we need to use \"had\" if there is the Past Simple one.</string>
     <string name="result_text">Yo! Look at my results!\nI\'ve completed %1$d level and I\'ve got %2$d out of %3$d.\nIt is %4$d%%</string>
     <string name="extra_subject">Share you reached:</string>
+    <string name="all_correct" translatable="false">All the sentences above are correct</string>
+    <string name="all_incorrect" translatable="false">All the sentences above are incorrect</string>
+
+    <string name="question_phrasal_verbs_1" translatable="false">\"To sum it up, I came ___ the following conclusion: the channel is better than a group for quizzes\"</string>
+    <string name="answer_phrasal_verbs_1_1" translatable="false">down</string>
+    <string name="answer_phrasal_verbs_1_2" translatable="false">to</string>
+    <string name="answer_phrasal_verbs_1_3" translatable="false">into</string>
+    <string name="answer_phrasal_verbs_1_4" translatable="false">in</string>
+    <string name="explanation_phrasal_verbs_1" translatable="false">Come to something</string>
+
+    <string name="question_phrasal_verbs_2" translatable="false">\"That is a well-known fact that all business boils ___ to money\"</string>
+    <string name="answer_phrasal_verbs_2_1" translatable="false">up</string>
+    <string name="answer_phrasal_verbs_2_2" translatable="false">off</string>
+    <string name="answer_phrasal_verbs_2_3" translatable="false">down</string>
+    <string name="answer_phrasal_verbs_2_4" translatable="false">on</string>
+    <string name="explanation_phrasal_verbs_2" translatable="false">Come down to ~ boil down to</string>
+
+    <string name="question_phrasal_verbs_3" translatable="false">\"How can you put me ___ to Telegram support regarding my unban?\"</string>
+    <string name="answer_phrasal_verbs_3_1" translatable="false">through</string>
+    <string name="answer_phrasal_verbs_3_2" translatable="false">off</string>
+    <string name="answer_phrasal_verbs_3_3" translatable="false">by</string>
+    <string name="answer_phrasal_verbs_3_4" translatable="false">up</string>
+    <string name="explanation_phrasal_verbs_3" translatable="false">Put someone through to something</string>
+
+    <string name="question_phrasal_verbs_4" translatable="false">\"Doubtless, it\'s highly difficult to get ___ on such a small amount of money\"</string>
+    <string name="answer_phrasal_verbs_4_1" translatable="false">off</string>
+    <string name="answer_phrasal_verbs_4_2" translatable="false">out</string>
+    <string name="answer_phrasal_verbs_4_3" translatable="false">by</string>
+    <string name="answer_phrasal_verbs_4_4" translatable="false">in</string>
+    <string name="explanation_phrasal_verbs_4" translatable="false">Get by on money</string>
+
+    <string name="question_vocabulary_1" translatable="false">\"For real? This is (not a logical) decision at all! Just think about it one more time\"</string>
+    <string name="answer_vocabulary_1_1" translatable="false">unlogical</string>
+    <string name="answer_vocabulary_1_2" translatable="false">inlogical</string>
+    <string name="answer_vocabulary_1_3" translatable="false">illogical</string>
+    <string name="explanation_vocabulary_1" translatable="false">The correct word is \"illogical\" (for example: \"This is an extremely illogical decision you\'ve ever taken\")</string>
+
+    <string name="question_grammar_1" translatable="false">\"Is this sentence grammatically correct?\nIt looks a bit too weird.\"</string>
+    <string name="answer_grammar_1_1" translatable="false">Yes</string>
+    <string name="answer_grammar_1_2" translatable="false">No</string>
+    <string name="explanation_grammar_1" translatable="false">\"To not seem rude people can minimize such words like \'too\' into \'a bit too.\'\"</string>
+
+    <string name="question_vocabulary_2" translatable="false">\"Choose the WRONG/INCORRECT sentence (1, 2 or 3)\"</string>
+    <string name="answer_vocabulary_2_1" translatable="false">1) I used to study mathematics</string>
+    <string name="answer_vocabulary_2_2" translatable="false">2) I used to study math</string>
+    <string name="answer_vocabulary_2_3" translatable="false">3) I used to study maths</string>
+    <string name="explanation_vocabulary_2" translatable="false">1) mathematics (formal);\n2) math (US);\n3) maths (UK);\n4) \"used to do sth\" means that I did it in the past but now I don\'t do it anymore;\n5) By the way, in this meaning: anymore (US), any more (UK)</string>
+
+    <string name="question_grammar_2" translatable="false">\"Please, choose the incorrect sentence.\"</string>
+    <string name="answer_grammar_2_1" translatable="false">\"I want you to come over so that we have so much fun and celebrate Halloween\"</string>
+    <string name="answer_grammar_2_2" translatable="false">\"I\'d like you to come along with me there tonight. Do you have any plans for today?\"</string>
+    <string name="answer_grammar_2_3" translatable="false">\"I\'ve been going through a lot: I\'ve got exams coming up and I\'m studying so that I could pass them\"</string>
+    <string name="answer_grammar_2_4" translatable="false">\"I watch a lotta English video lessons on YouTube so that my English skills are better\"</string>
+    <string name="explanation_grammar_2" translatable="false">The third sentence is incorrect because we need to use Present Simple when the first part of the sentence has the Present Progressive tense (for example: \"I\'m studying so that I can pass them\")</string>
+
+    <string name="question_vocabulary_3" translatable="false">What does the word \"moving\" mean in this context?\n\"It was a very moving scene\"</string>
+    <string name="answer_vocabulary_3_1" translatable="false">With a lot of actions</string>
+    <string name="answer_vocabulary_3_2" translatable="false">With a lot of characters</string>
+    <string name="answer_vocabulary_3_3" translatable="false">Emotional (thrilling) or sad</string>
+    <string name="explanation_vocabulary_3" translatable="false">Moving - causing strong feelings of sadness or sympathy.</string>
+
+    <string name="question_grammar_3" translatable="false">PASSIVE VOICE: Please, choose the correct sentence</string>
+    <string name="answer_grammar_3_1" translatable="false">This building is repaired right now</string>
+    <string name="answer_grammar_3_2" translatable="false">This phone is being sold now</string>
+    <string name="explanation_grammar_3" translatable="false">The sentence \"This building is repaired right now\" is not correct. You need to use \"is being\" because there is \"right now\" in the end (for example: \"The ceiling is being painted now\").</string>
+
+    <string name="question_grammar_4" translatable="false">Is it a correct dialogue?\n\n-Where shall I put this vase? -Put it anyplace -it doesn\'t matter where.</string>
+    <string name="answer_grammar_4_1" translatable="false">Yes, it is</string>
+    <string name="answer_grammar_4_2" translatable="false">No, it isn\'t</string>
+    <string name="explanation_grammar_4" translatable="false">The adverb \"anyplace\" is informal and used mainly in the US. It means \"anywhere\".</string>
+
+    <string name="question_pronunciation_1" translatable="false">\"-Haven\'t you seen my key, Emily? -Sorry, darling, I left it in the flat.\"\nHow would you pronounce the word \'key\'?</string>
+    <string name="answer_pronunciation_1" translatable="false">[keɪ]</string>
+    <string name="answer_pronunciation_2" translatable="false">[keə]</string>
+    <string name="answer_pronunciation_1_3" translatable="false">[kiː]</string>
+    <string name="answer_pronunciation_4" translatable="false">[kaɪ]</string>
+
+    <string name="question_vocabulary_4" translatable="false">Find the mistake.</string>
+    <string name="answer_vocabulary_4_1" translatable="false">A person who cooks well is a good cook.</string>
+    <string name="answer_vocabulary_4_2" translatable="false">I\'m bad at cooking.</string>
+    <string name="answer_vocabulary_4_3" translatable="false">I\'m making an amazing desert in the kitchen right now.</string>
+    <string name="answer_vocabulary_4_4" translatable="false">I\'ve always wanted to be able to cook very well.</string>
+    <string name="explanation_vocabulary_4" translatable="false">DeSert (countable or uncountable) - a large, hot, dry area of land with very few plants.\nDeSsert (countable and uncountable) - sweet food.</string>
+
+    <string name="question_grammar_5" translatable="false">TAG QUESTIONS: please, choose the correct sentence for the given statement:</string>
+    <string name="answer_grammar_5_1" translatable="false">\"Nobody lives in that shabby house, do they?\"</string>
+    <string name="answer_grammar_5_2" translatable="false">\"Nobody lives in that shabby house, does they?\"</string>
+    <string name="answer_grammar_5_3" translatable="false">\"Nobody lives in that shabby house, isn\'t it?\"</string>
+    <string name="answer_grammar_5_4" translatable="false">\"Nobody lives in that shabby house, aren\'t they?\"</string>
+    <string name="explanation_grammar_5" translatable="false">The first sentence is correct because \"nobody\" (also \"no one\") means \"they\"; \"they\" comes with \"do\" (for example: \"No one cares, do they?\").</string>
+
+    <string name="question_prepositions_1" translatable="false">DEPENDENT PREPOSITIONS: please, choose the incorrect sentence</string>
+    <string name="answer_prepositions_1_1" translatable="false">\"I\'d say smiling at strangers is typical of American culture. I think, that\'s so cool!\"</string>
+    <string name="answer_prepositions_1_2" translatable="false">\"My city is covered with snow and it looks so wonderful and charming!\"</string>
+    <string name="answer_prepositions_1_3" translatable="false">\"Oh my gosh, this guy is so cruel to her! Stop him anybody!\"</string>
+    <string name="answer_prepositions_1_4" translatable="false">\"You were so polite for me and I appreciated that!\"</string>
+    <string name="answer_prepositions_1_5" translatable="false">The first and the second sentences are incorrect</string>
+    <string name="answer_prepositions_1_6" translatable="false">The third and the fourth sentences are incorrect</string>
+    <string name="explanation_prepositions_1" translatable="false">All of the sentences except the fourth one are correct. We need to use the preposition \"to\" (\"___ to someone\") (for example: \"The staff in this store is so polite to customers\").</string>
+
+    <string name="question_grammar_6" translatable="false">Choose the WRONG sentence, if any.</string>
+    <string name="answer_grammar_6_1" translatable="false">Mike and Lisa went to bed very early yesterday because they were exhausted.</string>
+    <string name="answer_grammar_6_2" translatable="false">Because Mike and Helen were exhausted, they went to bed very early yesterday.</string>
+    <string name="explanation_grammar_6" translatable="false">1) In a sentence \'because\' can be both at the beginning and in the middle;\n2) We put a comma after a subordinate clause if \'because\' is at the beginning of a sentence.</string>
+
+    <string name="question_phrasal_verbs_5" translatable="false">Do the \"to bring forward\" and \"to put off\" phrasal verbs mean the same thing?</string>
+    <string name="answer_phrasal_verbs_5_1" translatable="false">Yes, they do</string>
+    <string name="answer_phrasal_verbs_5_2" translatable="false">No, they don\'t</string>
+    <string name="explanation_phrasal_verbs_5" translatable="false">The \"to bring forward\" and \"to put off\" phrasal verbs do not mean the same. They mean \"to postpone\", but the \"to bring forward\" phrasal verb also means \"to introduce something\" (\"to introduce an idea\").</string>
+
+    <string name="question_tenses_1" translatable="false">Complete the dialogue:\n- Jessica, by the way, where ___ last week? - I ___ in Switzerland with my colleagues.</string>
+    <string name="answer_tenses_1_1" translatable="false">were you, was</string>
+    <string name="answer_tenses_6_2" translatable="false">you were, was</string>
+    <string name="answer_tenses_6_3" translatable="false">have you been, was</string>
+    <string name="answer_tenses_6_4" translatable="false">have you been, have been</string>
+    <string name="answer_tenses_6_5" translatable="false">The first and fourth options are correct</string>
+    <string name="explanation_tenses_1" translatable="false">The action happened at a definite time in the past. The time is mentioned (\"last week\"). So, we use the Past Simple, not the Present Perfect.</string>
+
+    <string name="question_grammar_7" translatable="false">Complete the following dialogue:\n- Mark, how long did it take you to wait ___ a postman? - Alice, you know, it took so long. I waited ___ five hours.</string>
+    <string name="answer_grammar_7_1" translatable="false">for; for</string>
+    <string name="answer_grammar_7_2" translatable="false">for; -</string>
+    <string name="explanation_grammar_7" translatable="false">1) With a period of time, \"for\" after \"wait\" is optional (= not necessary, but possible);\n2) BUT! \"to wait FOR someone/something\". In this case, \"for\" after \"wait\" is essential: I waited for the parcel.</string>
+
+    <string name="question_grammar_8" translatable="false">FUTURE-IN-THE-PAST: which sentence is correct?</string>
+    <string name="answer_grammar_8_1" translatable="false">\"Unfortunately, Jessica called us to say she would be late at the conference\"</string>
+    <string name="answer_grammar_8_2" translatable="false">\"John told me he will be at the meeting on time. That\'s great!\"</string>
+    <string name="explanation_grammar_8" translatable="false">When there is the Future-in-the-Past tense, \"would\" or \"would be\" are used instead of \"will\" or \"will be\" (for example: \"He said he would go there tomorrow\"). Therefore, the first sentence is correct.</string>
+
+    <string name="question_vocabulary_9" translatable="false">Complete the saying:\nKeep your friends ___ and your enemies ___ .</string>
+    <string name="answer_vocabulary_9_1" translatable="false">close; close</string>
+    <string name="answer_vocabulary_9_2" translatable="false">close; closer</string>
+    <string name="answer_vocabulary_9_3" translatable="false">close; far</string>
+    <string name="answer_vocabulary_9_4" translatable="false">closer; far</string>
+    <string name="answer_vocabulary_9_5" translatable="false">closer; farther</string>
+    <string name="explanation_vocabulary_9" translatable="false">Close - closer - the closest</string>
+
+    <string name="question_slang_1" translatable="false">What does the \"oddball\" slang word mean?\n\"Our new boss is a bit of an oddball, go just look at him\"</string>
+    <string name="answer_slang_1_1" translatable="false">interesting, impressive and hilarious</string>
+    <string name="answer_slang_1_2" translatable="false">weird, eccentric and unusual</string>
+    <string name="answer_slang_1_3" translatable="false">scary, awful and ugly</string>
+    <string name="explanation_slang_1" translatable="false">The \"oddball\" slang word is a noun that means someone is a weird, unusual, or eccentric person. This word also means something is strange or unusual.</string>
+
+    <string name="question_prepositions_2" translatable="false">Choose the correct preposition.\nThe trip ended ___ tragedy</string>
+    <string name="answer_prepositions_2_1" translatable="false">-</string>
+    <string name="answer_prepositions_2_2" translatable="false">By</string>
+    <string name="answer_prepositions_2_3" translatable="false">In</string>
+    <string name="answer_prepositions_2_4" translatable="false">With</string>
+    <string name="explanation_prepositions_2" translatable="false">The correct preposition is \"in\". We say \"end in tragedy\" when describing a situation that results in a tragic outcome.</string>
+
+    <string name="question_vocabulary_10" translatable="false">Fill in the gap.\nThe painting is just a copy - it\'s not ___.</string>
+    <string name="answer_vocabulary_10_1" translatable="false">Authentic</string>
+    <string name="answer_vocabulary_10_2" translatable="false">Artificial</string>
+    <string name="answer_vocabulary_10_3" translatable="false">Terrific</string>
+    <string name="explanation_vocabulary_10" translatable="false">\"Authentic\" means real or original, not fake, not copied.</string>
+
+    <string name="question_grammar_10" translatable="false">Choose the correct sentence</string>
+    <string name="answer_grammar_10_1" translatable="false">This course consists of three parts</string>
+    <string name="answer_grammar_10_2" translatable="false">This dish contains a lot of salt</string>
+    <string name="explanation_grammar_10" translatable="false">1) consist of something;\n2) contain sth</string>
+
+    <string name="question_tenses_2" translatable="false">Find the wrong sentence</string>
+    <string name="answer_tenses_2_1" translatable="false">He finds his socks in the fridge every Saturday</string>
+    <string name="answer_tenses_2_2" translatable="false">Lucy found her purse at last</string>
+    <string name="answer_tenses_2_3" translatable="false">John founded the company last year</string>
+    <string name="explanation_tenses_2" translatable="false">1) find - found - found (irregular verb);\n2) found - founded - founded (regular verb).</string>
+
+    <string name="question_verb_forms_1" translatable="false">Complete the dialogue:\n-Max, why didn\'t you call me back yesterday? -Sorry, darling! When I came home, I ___ down on the bed and fell asleep immediately</string>
+    <string name="answer_verb_forms_1_1" translatable="false">lie</string>
+    <string name="answer_verb_forms_1_2" translatable="false">lay</string>
+    <string name="answer_verb_forms_1_3" translatable="false">laid</string>
+    <string name="answer_verb_forms_1_4" translatable="false">lain</string>
+    <string name="answer_verb_forms_1_5" translatable="false">lied</string>
+    <string name="explanation_verb_forms_1" translatable="false">1) We use the Past Simple in that dialogue (the 2nd verb form);\n2) lie down (phrasal verb);\n3) lie - lay - lain (we need this verb in that context);\n4) lie - lied - lied; 5) lay - laid - laid.</string>
+
+    <string name="question_idioms_1" translatable="false">Complete the dialogue:\n-Alice, you know, these exams are so difficult</string>
+    <string name="answer_idioms_1_1" translatable="false">Yeah, I understand. Hang in there!</string>
+    <string name="answer_idioms_1_2" translatable="false">Yeah, I understand. Hang on in there!</string>
+    <string name="explanation_idioms_1" translatable="false">1) (idiom) hang in there (UK also \'hang on in there\') - said as a way of telling someone to not give up, despite difficulties.</string>
+
+    <string name="question_vocabulary_5" translatable="false">Choose the wrong collocation:</string>
+    <string name="answer_vocabulary_5_1" translatable="false">A game of tennis</string>
+    <string name="answer_vocabulary_5_2" translatable="false">A carton of milk</string>
+    <string name="answer_vocabulary_5_3" translatable="false">A bottle of perfume</string>
+    <string name="answer_vocabulary_5_4" translatable="false">A piece of music</string>
+    <string name="answer_vocabulary_5_5" translatable="false">A jar of wood</string>
+    <string name="answer_vocabulary_5_6" translatable="false">A bar of chocolate</string>
+    <string name="explanation_vocabulary_5" translatable="false">The collocation \"a jar of wood\" is incorrect. For example, we can say \"a jar of honey\" or \"a piece of wood\", but wood is not typically stored in a jar.</string>
+
+    <string name="question_vocabulary_6" translatable="false">Find the correct sentence:</string>
+    <string name="answer_vocabulary_6_1" translatable="false">Sheep eat grass.</string>
+    <string name="answer_vocabulary_6_2" translatable="false">This scissor isn\'t very sharp.</string>
+    <string name="answer_vocabulary_6_3" translatable="false">I need to buy a new jeans.</string>
+    <string name="answer_vocabulary_6_4" translatable="false">Does the police know the cause of the explosion?</string>
+    <string name="explanation_vocabulary_6" translatable="false">1) A sheep - four sheep (same form in singular and plural);\n2) Scissors are plural, so it should be \"these scissors aren\'t very sharp\";\n3) Jeans are plural, so we say \"a pair of jeans\";\n4) Police are plural, so the correct question is \"Do the police know the cause of the explosion?\"</string>
+
+    <string name="question_vocabulary_7" translatable="false">Choose the wrong sentence. (Read CAREFULLY)</string>
+    <string name="answer_vocabulary_7_1" translatable="false">She\'s given me some terrific ideas.</string>
+    <string name="answer_vocabulary_7_2" translatable="false">I\'ve recovered completely. I feel terrific.</string>
+    <string name="answer_vocabulary_7_3" translatable="false">I had a terrific time.</string>
+    <string name="answer_vocabulary_7_4" translatable="false">They did a terrific job painting the house.</string>
+    <string name="explanation_vocabulary_7" translatable="false">1) The correct spelling is \"teRRific\" (double R). Ensure you carefully review the spelling of each word in the options.</string>
+
+    <string name="question_prepositions_3" translatable="false">PREPOSITIONS: Choose the correct preposition. My cat hissed ___ me, when I stepped on its tail.</string>
+    <string name="answer_prepositions_3_1" translatable="false">-</string>
+    <string name="answer_prepositions_3_2" translatable="false">On</string>
+    <string name="answer_prepositions_3_3" translatable="false">At</string>
+    <string name="answer_prepositions_3_4" translatable="false">To</string>
+    <string name="answer_prepositions_3_5" translatable="false">With</string>
+    <string name="explanation_prepositions_3" translatable="false">Hiss at something/someone</string>
+
+    <string name="question_spelling_1" translatable="false">Choose the wrong spelling of the word. You\'re not a child anymore! Don\'t be so ___!</string>
+    <string name="answer_spelling_1_1" translatable="false">naive</string>
+    <string name="answer_spelling_1_2" translatable="false">naïve</string>
+    <string name="answer_spelling_1_3" translatable="false">naif</string>
+    <string name="answer_spelling_1_4" translatable="false">naïf</string>
+
+    <string name="question_vocabulary_8" translatable="false">Choose the wrong sentence.</string>
+    <string name="answer_vocabulary_8_1" translatable="false">Joan wanted to go to a movie but I wasn\'t keen.</string>
+    <string name="answer_vocabulary_8_2" translatable="false">He\'s a very keen cook.</string>
+    <string name="answer_vocabulary_8_3" translatable="false">They were very keen to start work as soon as possible.</string>
+    <string name="answer_vocabulary_8_4" translatable="false">He\'s rather keen a girl in his school.</string>
+    <string name="explanation_vocabulary_8" translatable="false">He\'s rather keen on a girl in his school. In this sentence, \"keen on somebody\" means be very interested in someone.</string>
+
+    <string name="question_prepositions_4" translatable="false">We are ___ no hurry.</string>
+    <string name="answer_prepositions_4_1" translatable="false">in</string>
+    <string name="answer_prepositions_4_2" translatable="false">on</string>
+    <string name="answer_prepositions_4_3" translatable="false">for</string>
+    <string name="explanation_prepositions_4" translatable="false">1) To be in no hurry (to do something);\n2) The opposite of this expression is \"to be in a hurry\" (to do something).</string>
+
+    <string name="question_vocabulary_11" translatable="false">VOCABULARY: We ___ the train because we had woken (up) too late.</string>
+    <string name="answer_vocabulary_11_1" translatable="false">missed</string>
+    <string name="answer_vocabulary_11_2" translatable="false">lost</string>
+    <string name="answer_vocabulary_11_3" translatable="false">late</string>
+
+    <string name="question_grammar_11" translatable="false">Choose the correct form of verb. The eggs were taken from the eagle\'s nest. Police believe they will now ___ out of the country and sold abroad.</string>
+    <string name="answer_grammar_11_1" translatable="false">Smuggle</string>
+    <string name="answer_grammar_11_2" translatable="false">Be smuggle</string>
+    <string name="answer_grammar_11_3" translatable="false">Be smuggling</string>
+    <string name="answer_grammar_11_4" translatable="false">Be smuggled</string>
+    <string name="answer_grammar_11_5" translatable="false">Smuggled</string>
+    <string name="answer_grammar_11_6" translatable="false">Smuggling</string>
+    <string name="explanation_grammar_11" translatable="false">Theme: Passive voice. According to the rule \"will be + V3/Ved,\" it must be \"will be smuggled.\"</string>
+
+    <string name="question_grammar_12" translatable="false">Please, choose the incorrect sentence/sentences.</string>
+    <string name="answer_grammar_12_1" translatable="false">\"I\'d rather not to say my name in public because I keep myself anonymous\"</string>
+    <string name="answer_grammar_12_2" translatable="false">\"I had rather not come along with them, they\'re kinda shady and___ weird\"</string>
+    <string name="answer_grammar_12_3" translatable="false">\"You\'d better not to lie to him, he\'s attentive and he\'s about staying alert!\"</string>
+    <string name="answer_grammar_12_4" translatable="false">\"I had better not disturb him when he\'s busy with his lessons!\"</string>
+    <string name="answer_grammar_12_5" translatable="false">The first and the third sentences are incorrect</string>
+    <string name="answer_grammar_12_6" translatable="false">The second and the fourth sentences are incorrect</string>
+    <string name="explanation_grammar_12" translatable="false">The right form is \"I\'d rather (We/You/They\'d better) + not + verb\". There\'s no need for using the preposition \"to\" between \"not\" and a verb. Therefore, the first and the third sentences are incorrect.</string>
+
+    <string name="question_phrasal_verbs_6" translatable="false">PHRASAL VERBS: please, fill in the gap in the sentence:\n\"Do you have an idea why I pulled you __?\"</string>
+    <string name="answer_phrasal_verbs_6_1" translatable="false">down</string>
+    <string name="answer_phrasal_verbs_6_2" translatable="false">up</string>
+    <string name="answer_phrasal_verbs_6_3" translatable="false">over</string>
+    <string name="explanation_phrasal_verbs_6" translatable="false">\"To pull over\" is a phrasal verb that means \"to stop\" (a car). For example: \"Pull over here please.\"</string>
+
+    <string name="question_prepositions_5" translatable="false">PREPOSITIONS: Complete the following dialogue: \"- Are Lucy and John siblings? Really?\"</string>
+    <string name="answer_prepositions_5_1" translatable="false">Yes, but Lucy is very different to her brother. She\'s kinder.</string>
+    <string name="answer_prepositions_5_2" translatable="false">Yes, but Lucy is very different from her brother. She\'s kinder.</string>
+    <string name="explanation_prepositions_5" translatable="false">1) \"To be different FROM sth/sb\" = \"to be different TO sth/sb\";\n2) In American English, it is also common to say \"different THAN\": \"Yes, but Lucy is very different THAN her brother. She\'s kinder.\"</string>
+
+    <string name="question_idioms_2" translatable="false">IDIOMS: Choose the wrong sentence, if any.</string>
+    <string name="answer_idioms_2_1" translatable="false">I\'m here to expand my horizons</string>
+    <string name="answer_idioms_2_2" translatable="false">I\'m here to widen my horizons</string>
+    <string name="answer_idioms_2_3" translatable="false">I\'m here to broaden my horizons</string>
+    <string name="explanation_idioms_2" translatable="false">To expand/widen/broaden someone\'s horizons (idiom) means to increase the range of things someone knows about or has experienced. Therefore, all the sentences are correct.</string>
+
+    <string name="question_phrasal_verbs_7" translatable="false">Do the \"to eat out\" and \"to pig out\" phrasal verbs mean the same?</string>
+    <string name="answer_phrasal_verbs_7_1" translatable="false">Yes, they do</string>
+    <string name="answer_phrasal_verbs_7_2" translatable="false">No, they don\'t</string>
+    <string name="explanation_phrasal_verbs_7" translatable="false">These phrasal verbs do not mean the same thing because the \"to eat out\" phrasal verb means \"to eat away from home\" and the \"to pig out\" one means \"to eat too much\".</string>
+
+    <string name="question_vocabulary_12" translatable="false">500 people were ___. Many buildings were ___.</string>
+    <string name="answer_vocabulary_12_1" translatable="false">injured; injured</string>
+    <string name="answer_vocabulary_12_2" translatable="false">injured; damaged</string>
+    <string name="answer_vocabulary_12_3" translatable="false">damaged; damaged</string>
+    <string name="answer_vocabulary_12_4" translatable="false">damaged; injured</string>
+    <string name="explanation_vocabulary_12" translatable="false">The correct answer is \"injured; damaged.\" \"Injured\" is used when referring to harm to people, while \"damaged\" is used for harm to things or objects such as buildings.</string>
+
+    <string name="question_grammar_13" translatable="false">GRAMMAR: please, choose the correct sentence</string>
+    <string name="answer_grammar_13_1" translatable="false">\"I don\'t want to tell you my name because I keep myself anonymous\"</string>
+    <string name="answer_grammar_13_2" translatable="false">\"I don\'t want to tell you my name because I keep myself in anonymous\"</string>
+    <string name="answer_grammar_13_3" translatable="false">\"Steve can\'t stand do it constantly\"</string>
+    <string name="answer_grammar_13_4" translatable="false">\"This line is so long! I can\'t stand waiting in long ones!\"</string>
+    <string name="answer_grammar_13_5" translatable="false">The first and the third sentences are correct</string>
+    <string name="answer_grammar_13_6" translatable="false">The second and the fourth sentences are correct</string>
+    <string name="answer_grammar_13_7" translatable="false">The first and the fourth sentences are correct</string>
+    <string name="explanation_grammar_13" translatable="false">The first and the fourth sentences are correct because \"anonymous\" is an adjective; \"can\'t stand/bear + verb + ing\" is a correct form according to grammar.</string>
+
+    <string name="question_idioms_3" translatable="false">IDIOMS: I can do this for hours on ___.\nI listen to music for hours on ___.</string>
+    <string name="answer_idioms_3_1" translatable="false">day</string>
+    <string name="answer_idioms_3_2" translatable="false">over</string>
+    <string name="answer_idioms_3_3" translatable="false">end</string>
+    <string name="answer_idioms_3_4" translatable="false">hours</string>
+    <string name="answer_idioms_3_5" translatable="false">weeks</string>
+    <string name="explanation_idioms_3" translatable="false">For hours/days on end - for hours/days without stopping (часами/днями напролёт, без конца).</string>
+
+    <string name="question_tenses_3" translatable="false">Choose the wrong sentence:</string>
+    <string name="answer_tenses_3_1" translatable="false">I was reading a book when my wife called me</string>
+    <string name="answer_tenses_3_2" translatable="false">I was reading a book for two hours when my wife called me</string>
+    <string name="answer_tenses_3_3" translatable="false">I had been reading a book for two hours when my wife called me</string>
+    <string name="explanation_tenses_3" translatable="false">1) The first action is longer; the second one is shorter.\n2) Because we have \"FOR + some period of time\" (for TWO HOURS), we use the Past Perfect Continuous in that case, not the Past Continuous.</string>
+
+    <string name="question_grammar_14" translatable="false">I had no appetite. I could only eat ___.</string>
+    <string name="answer_grammar_14_1" translatable="false">half my dinner</string>
+    <string name="answer_grammar_14_2" translatable="false">half of dinner</string>
+    <string name="answer_grammar_14_3" translatable="false">the half of my dinner</string>
+    <string name="explanation_grammar_14" translatable="false">We use half or half of mostly before a noun with a determiner. We do not normally put a/an or the before half in this case:\nShe spends half (of) her time travelling.\nI gave him half (of) a cheese pie.</string>
+
+    <string name="question_grammar_15" translatable="false">This is the ___ film she\'s ever seen.</string>
+    <string name="answer_grammar_15_1" translatable="false">badest</string>
+    <string name="answer_grammar_15_2" translatable="false">baddest</string>
+    <string name="answer_grammar_15_3" translatable="false">worst</string>
+    <string name="answer_grammar_15_4" translatable="false">worse</string>
+    <string name="explanation_grammar_15" translatable="false">Bad - worse - the worst</string>
+
+    <string name="question_phrasal_verbs_8" translatable="false">Let\'s cut ___ the field. This way is shorter. It\'ll save our time.</string>
+    <string name="answer_phrasal_verbs_8_1" translatable="false">off</string>
+    <string name="answer_phrasal_verbs_8_2" translatable="false">up</string>
+    <string name="answer_phrasal_verbs_8_3" translatable="false">across</string>
+    <string name="answer_phrasal_verbs_8_4" translatable="false">on</string>
+    <string name="explanation_phrasal_verbs_8" translatable="false">Cut across = to take a shorter way = to go from one side of an area to the other instead of going round it.</string>
+
+    <string name="question_tenses_4" translatable="false">When did the journey start?\n\"Lisa and Kevin had already travelled some distance when the sun rose.\"</string>
+    <string name="answer_tenses_4_1" translatable="false">The journey started before sunrise</string>
+    <string name="answer_tenses_4_2" translatable="false">The journey started at sunrise</string>
+    <string name="answer_tenses_4_3" translatable="false">The journey started after sunrise</string>
+    <string name="explanation_tenses_4" translatable="false">1) \"Lisa and Kevin HAD already TRAVELLED some distance\" (Past Perfect shows that this action happened before the action in the Past Simple);\n2) \"when the sun ROSE\" (Past Simple).</string>
+
+    <string name="question_grammar_16" translatable="false">It appears to me that the kids ____ the library yet because I can hear their voices from the living room.</string>
+
+    <string name="answer_grammar_16_1" translatable="false">have been in</string>
+    <string name="answer_grammar_16_2" translatable="false">haven\'t been in</string>
+    <string name="answer_grammar_16_3" translatable="false">haven\'t gone to</string>
+    <string name="answer_grammar_16_4" translatable="false">have gone to</string>
+    <string name="answer_grammar_16_5" translatable="false">have gone in</string>
+    <string name="answer_grammar_16_6" translatable="false">haven\'t gone in</string>
+    <string name="explanation_grammar_16" translatable="false">Present Perfect Tense:\n1) have/has + V3;\n2) have/has + been TO (some place);\n3) \"Go to the library\" -> \"have gone to the library\" (Present Perfect).</string>
+
+    <string name="question_phrasal_verbs_9" translatable="false">Fill in the gap.\nThe situation calls ___ decisive actions.</string>
+    <string name="answer_phrasal_verbs_9_1" translatable="false">After</string>
+    <string name="answer_phrasal_verbs_9_2" translatable="false">By</string>
+    <string name="answer_phrasal_verbs_9_3" translatable="false">For</string>
+    <string name="answer_phrasal_verbs_9_4" translatable="false">Out</string>
+    <string name="answer_phrasal_verbs_9_5" translatable="false">In</string>
+    <string name="explanation_phrasal_verbs_9" translatable="false">Call for - призывать</string>
+
+    <string name="question_grammar_17" translatable="false">ARTICLES: Please, choose the correct sentence.</string>
+    <string name="answer_grammar_17_1" translatable="false">These tourists weren\'t used to such severe climate.</string>
+    <string name="answer_grammar_17_2" translatable="false">My best friend left for US yesterday. I\'ll be missing him a lot!</string>
+    <string name="answer_grammar_17_3" translatable="false">Sorry, Derrick, I\'m in hurry!</string>
+    <string name="answer_grammar_17_4" translatable="false">I can\'t afford that now cuz! I\'ve been going through a lot and I\'m saving for a trip to the Europe.</string>
+    <string name="answer_grammar_17_5" translatable="false">The first and the third sentences are correct.</string>
+    <string name="answer_grammar_17_6" translatable="false">The second and the fourth sentences are correct.</string>
+    <string name="answer_grammar_17_7" translatable="false">The third and the fourth sentences are correct.</string>
+    <string name="explanation_grammar_17" translatable="false">The word \"a climate\" is countable, \"the US\" requires \"the,\" \"to be in a hurry\" requires \"a,\" the word \"Europe\" does not require \"the.\"</string>
+
+    <string name="question_pronunciation_2" translatable="false">What\'s the correct transcription of the word \'nightclub\'?\n\"The city is famous for its numerous nightclubs.\"</string>
+    <string name="answer_pronunciation_2_1" translatable="false">[ˈnaɪt.klʌb]</string>
+    <string name="answer_pronunciation_2_2" translatable="false">[ˈnaɪt.kləb]</string>
+    <string name="answer_pronunciation_2_3" translatable="false">Both options are correct</string>
+
+    <string name="question_phrasal_verbs_10" translatable="false">Please, fill in the gaps in the sentence:\n\"I can\'t afford that stuff at the moment. I gotta scrape ___ on $200 a month and I\'m paying __ my student loan else. So… that\'s why I still live with my parents.\"</string>
+    <string name="answer_phrasal_verbs_10_1" translatable="false">off, off</string>
+    <string name="answer_phrasal_verbs_10_2" translatable="false">down, off</string>
+    <string name="answer_phrasal_verbs_10_3" translatable="false">by, down</string>
+    <string name="answer_phrasal_verbs_10_4" translatable="false">by, back</string>
+    <string name="explanation_phrasal_verbs_10" translatable="false">\"To scrape by\" is a phrasal verb that means \"to have money for only some basic things you need and to live barely\"; \"to pay down\" is a phrasal verb that means \"to pay part of an amount you have\".</string>
+
+    <string name="question_vocabulary_13" translatable="false">Please, choose the correct sentence:</string>
+    <string name="answer_vocabulary_13_1" translatable="false">\"It was such an irresponsible decision!\"</string>
+    <string name="answer_vocabulary_13_2" translatable="false">\"This was such an unresponsible decision!\"</string>
+    <string name="answer_vocabulary_13_3" translatable="false">\"That was such an irresponsible decision!\"</string>
+    <string name="explanation_vocabulary_13" translatable="false">The word \"irresponsible\" is correct</string>
+
+    <string name="question_spelling_2" translatable="false">Fill in the gap:\n\"These patients need ___. Please talk to Mr. Smith about it. I hope he will be able to organise it.\"</string>
+    <string name="answer_spelling_2_1" translatable="false">rehebilitation</string>
+    <string name="answer_spelling_2_2" translatable="false">reebilitation</string>
+    <string name="answer_spelling_2_3" translatable="false">rehabilitation</string>
+    <string name="answer_spelling_2_4" translatable="false">reabilitation</string>
+    <string name="explanation_spelling_2" translatable="false">1) rehabilitation (uncountable noun) [rɪˌhæblɪˈteɪʃən];\n2) organise - UK; organize - US</string>
+
+    <string name="question_phrasal_verbs_11" translatable="false">Please, fill in the gap in the sentence:\n\"These guys are just liars! Don\'t get taken __ by their false promises and stay away from them!\"</string>
+    <string name="answer_phrasal_verbs_11_1" translatable="false">off</string>
+    <string name="answer_phrasal_verbs_11_2" translatable="false">in</string>
+    <string name="answer_phrasal_verbs_11_3" translatable="false">on</string>
+    <string name="answer_phrasal_verbs_11_4" translatable="false">down</string>
+    <string name="explanation_phrasal_verbs_11" translatable="false">\"To take in\" is a phrasal verb that means \"to deceive\"</string>
+
+    <string name="question_slang_2" translatable="false">What does the chat\'s \"jk\" abbreviation mean?</string>
+    <string name="answer_slang_2_1" translatable="false">Just kidding</string>
+    <string name="answer_slang_2_2" translatable="false">Just know</string>
+    <string name="answer_slang_2_3" translatable="false">okay</string>
+    <string name="explanation_slang_2" translatable="false">The slang abbreviation \"jk\" means \"just kidding\".</string>
+
+    <string name="question_prepositions_6" translatable="false">Choose the correct option:\n\"- Oh, I\'ve left my pen at home. Martin, please throw a pen ___ me.\"</string>
+    <string name="answer_prepositions_6_1" translatable="false">to</string>
+    <string name="answer_prepositions_6_2" translatable="false">at</string>
+    <string name="explanation_prepositions_6" translatable="false">1) We say \'throw something TO somebody/throw sb sth\' when we want to pass sth; 2) We say \'throw sth AT sb\' when we want to do harm: \"Lisa was angry with Jack. That\'s why she threw a plate AT him.\"</string>
+
+    <string name="question_grammar_18" translatable="false">\"Choose the correct sentence:\"</string>
+    <string name="answer_grammar_18_1" translatable="false">He threw me that towel</string>
+    <string name="answer_grammar_18_2" translatable="false">He threw that towel to me</string>
+    <string name="answer_grammar_18_3" translatable="false">He threw that towel at me</string>
+    <string name="explanation_grammar_18" translatable="false">1) throw - threw - thrown; 2) \'to throw somebody something\' and \'to throw sth TO sb\' are used when we want to pass something; 3) \'to throw sth AT sb\' is used when we want to do harm.</string>
+
+    <string name="question_vocabulary_14" translatable="false">Do the words \'terrific\' and \'disgusting\' mean the same thing?</string>
+    <string name="answer_vocabulary_14_1" translatable="false">Yes, they do</string>
+    <string name="answer_vocabulary_14_2" translatable="false">No, they don\'t</string>
+    <string name="explanation_vocabulary_14" translatable="false">The word \'terrific\' means \"wonderful\", \"excellent\", \"marvelous\", and so on; the word \'disgusting\' means \"awful\", \"horrible\", \"dreadful\", and so on. Therefore, these words do not mean the same thing.</string>
+
+    <string name="question_grammar_19" translatable="false">My mother ______ in Italy.</string>
+    <string name="answer_grammar_19_1" translatable="false">has grown up</string>
+    <string name="answer_grammar_19_2" translatable="false">grew up</string>
+    <string name="answer_grammar_19_3" translatable="false">had grown up</string>
+    <string name="answer_grammar_19_4" translatable="false">was grown up</string>
+    <string name="explanation_grammar_19" translatable="false">Use the past simple (not the present perfect) for things that are not recent or new. Example: Mozart was a composer. He wrote more than 600 pieces of music. My mother grew up in Italy.</string>
+
+    <string name="question_prepositions_7" translatable="false">Complete the dialogue:\n\"- You can ask Selena for help. - No, I can\'t rely ___ her because she let me down many times.\"</string>
+    <string name="answer_prepositions_7_1" translatable="false">on</string>
+    <string name="answer_prepositions_7_2" translatable="false">upon</string>
+    <string name="explanation_prepositions_7" translatable="false">1) In general, these two mean the same thing, but \"to rely UPON someone/something\" is more formal and less common than \"to rely ON someone/something\".\n2) To let someone down (let - let - let) means to disappoint someone by not doing what was expected.</string>
+
+    <string name="question_tenses_5" translatable="false">Please, choose the correct sentence.</string>
+    <string name="answer_tenses_5_1" translatable="false">By the time my dad came home, I did my homework</string>
+    <string name="answer_tenses_5_2" translatable="false">I have done my homework by the time my dad came home</string>
+    <string name="answer_tenses_5_3" translatable="false">I had done my homework by the time my dad came back home</string>
+    <string name="answer_tenses_5_4" translatable="false">I did my homework by the time my dad came back home</string>
+    <string name="answer_tenses_5_5" translatable="false">By the time my dad came home, I had done my homework</string>
+    <string name="answer_tenses_5_6" translatable="false">By the time my dad came back home, I have done my homework</string>
+    <string name="answer_tenses_5_7" translatable="false">The first and the fourth sentences are correct</string>
+    <string name="answer_tenses_5_8" translatable="false">The second and the sixth sentences are correct</string>
+    <string name="answer_tenses_5_9" translatable="false">The third and the fifth sentences are correct</string>
+    <string name="explanation_tenses_5" translatable="false">The Past Perfect tense is used in this case. Therefore, we need to use \"had\" if there is the Past Simple one.</string>
 </resources>
