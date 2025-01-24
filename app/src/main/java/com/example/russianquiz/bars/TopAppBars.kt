@@ -34,7 +34,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -42,6 +41,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.russianquiz.R
 import com.example.russianquiz.model.MainViewModel
+import com.example.russianquiz.model.localizedString
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -80,7 +80,7 @@ fun MainTopAppBar(
                 }) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = stringResource(R.string.navigate_up),
+                        contentDescription = localizedString(R.string.navigate_up),
                         modifier = Modifier.size(35.dp),
                         tint = Color.White,
                     )
@@ -96,7 +96,7 @@ fun MainTopAppBar(
                 }) {
                     Icon(
                         painter = painterResource(id = R.drawable.settings_icon),
-                        contentDescription = stringResource(R.string.settings),
+                        contentDescription = localizedString(R.string.settings),
                         modifier = Modifier.size(35.dp),
                         tint = Color.White,
                     )
@@ -110,7 +110,7 @@ fun MainTopAppBar(
                 }) {
                     Icon(
                         painter = painterResource(id = R.drawable.profile_icon),
-                        contentDescription = stringResource(R.string.profile),
+                        contentDescription = localizedString(R.string.profile),
                         modifier = Modifier.size(35.dp),
                         tint = Color.White,
                     )
@@ -138,7 +138,7 @@ fun MainTopAppBar(
                         )
                 ) {
                     Text(
-                        text = stringResource(R.string.cancel),
+                        text = localizedString(R.string.cancel),
                         fontWeight = FontWeight.Bold,
                         fontSize = 16.sp
                     )
@@ -167,7 +167,7 @@ fun MainTopAppBar(
                         )
                 ) {
                     Text(
-                        text = stringResource(R.string.continue_string),
+                        text = localizedString(R.string.continue_string),
                         fontWeight = FontWeight.Bold,
                         fontSize = 16.sp
                     )
@@ -175,7 +175,7 @@ fun MainTopAppBar(
             },
             title = {
                 Text(
-                    text = stringResource(R.string.finish_quiz),
+                    text = localizedString(R.string.finish_quiz),
                     modifier = Modifier
                         .fillMaxWidth()
                         .wrapContentWidth(align = Alignment.CenterHorizontally)
@@ -183,7 +183,7 @@ fun MainTopAppBar(
             },
             text = {
                 Text(
-                    text = stringResource(R.string.continue_text_finish_quiz),
+                    text = localizedString(R.string.continue_text_finish_quiz),
                     textAlign = TextAlign.Justify
                 )
             },

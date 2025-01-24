@@ -67,7 +67,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.buildAnnotatedString
@@ -87,6 +86,7 @@ import com.example.russianquiz.model.Levels
 import com.example.russianquiz.model.MainViewModel
 import com.example.russianquiz.model.QuizData
 import com.example.russianquiz.model.Quizzes
+import com.example.russianquiz.model.localizedString
 import com.example.russianquiz.ui.theme.QuizAppTheme
 import com.example.russianquiz.utils.createVibration
 import com.example.russianquiz.utils.toTwoDigitNumber
@@ -193,7 +193,7 @@ fun AnswerOption(
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Text(
-                text = stringResource(id = answerOption),
+                text = localizedString(id = answerOption),
                 fontSize = 17.sp,
                 color = Color.Black,
                 fontWeight = FontWeight.W500,
@@ -275,7 +275,7 @@ fun QuizCard(
                 Spacer(modifier = Modifier.height(15.dp))
 
                 Text(
-                    text = stringResource(id = currentQuiz.question),
+                    text = localizedString(id = currentQuiz.question),
                     fontSize = 19.sp,
                     fontWeight = FontWeight(650),
                     textAlign = TextAlign.Start,
@@ -365,7 +365,7 @@ fun CountOfQuestions(
     val textColor = colorResource(id = R.color.purple_200)
 
     val textMeasurer = rememberTextMeasurer()
-    val questionText = stringResource(id = R.string.question)
+    val questionText = localizedString(id = R.string.question)
     val countOfQuestionText = buildAnnotatedString {
         withStyle(
             style = SpanStyle(
@@ -657,7 +657,7 @@ fun PopupWindowDialog(
                     .padding(12.dp)
             ) {
                 Text(
-                    text = stringResource(id = explanationResId),
+                    text = localizedString(id = explanationResId),
                     color = Color(0xFFFFFFFF),
                     textAlign = TextAlign.Justify,
                     modifier = Modifier

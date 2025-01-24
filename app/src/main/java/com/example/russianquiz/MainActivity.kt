@@ -7,7 +7,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import com.example.russianquiz.model.LocalizedApp
 import com.example.russianquiz.model.MainViewModel
 import com.example.russianquiz.ui.theme.QuizAppTheme
 
@@ -18,15 +21,21 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContent {
             QuizAppTheme {
                 val windowSize = calculateWindowSizeClass(this)
-                MainScreen(
-                    windowSize = windowSize.widthSizeClass,
-                    mainViewModel = mainViewModel,
-                    modifier = Modifier,
-                )
+                val currentLanguage by mainViewModel.language.collectAsState()
+
+                LocalizedApp(languagesCode = currentLanguage) {
+                    MainScreen(
+                        windowSize = windowSize.widthSizeClass,
+                        mainViewModel = mainViewModel,
+                        modifier = Modifier,
+                    )
+                }
             }
         }
+
     }
 }

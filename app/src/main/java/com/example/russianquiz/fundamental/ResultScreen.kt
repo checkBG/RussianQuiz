@@ -41,7 +41,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.buildAnnotatedString
@@ -58,6 +57,7 @@ import com.example.russianquiz.R
 import com.example.russianquiz.bars.NavigationScreen
 import com.example.russianquiz.model.MainViewModel
 import com.example.russianquiz.model.QuizData
+import com.example.russianquiz.model.localizedString
 import com.example.russianquiz.ui.theme.QuizAppTheme
 import com.example.russianquiz.utils.toTwoDigitNumber
 
@@ -133,7 +133,7 @@ fun CompletedLevel(
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
             )
-        ) { append(stringResource(R.string.completed_level)) }
+        ) { append(localizedString(R.string.completed_level)) }
     }
 
     val textLayoutCompletedLevel: TextLayoutResult =
@@ -265,7 +265,7 @@ fun ResultElement(
                     color = color
                 )
                 Text(
-                    text = stringResource(id = component),
+                    text = localizedString(id = component),
                     fontWeight = FontWeight.W300,
                 )
             }
@@ -297,14 +297,14 @@ fun FunctionButton(
         ) {
             Icon(
                 painter = painterResource(id = iconResId),
-                contentDescription = stringResource(iconContentDescription),
+                contentDescription = localizedString(iconContentDescription),
                 tint = Color.White,
                 modifier = Modifier.size(buttonSize * scaleIcon)
             )
         }
         Spacer(modifier = Modifier.height(5.dp))
         Text(
-            text = stringResource(id = actionTitle),
+            text = localizedString(id = actionTitle),
             fontWeight = FontWeight.W500,
             fontSize = 15.sp,
             color = Color.White,

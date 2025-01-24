@@ -11,10 +11,17 @@ import kotlinx.coroutines.flow.update
 
 class MainViewModel : ViewModel() {
     val levels = Levels.entries
+    private val _language = MutableStateFlow("en")
+    val language: StateFlow<String>
+        get() = _language.asStateFlow()
 
     private val _quizData = MutableStateFlow(QuizData.initQuizData())
     val quizData: StateFlow<QuizData>
         get() = _quizData.asStateFlow()
+
+    fun changeLanguage(languageCode: String) {
+        _language.value = languageCode
+    }
 
     fun updateCurrentLevel(level: Levels) {
         if (level != quizData.value.chosenLevel) {

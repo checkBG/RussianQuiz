@@ -1,0 +1,26 @@
+<resources>
+    <string name="navigate_up">Повернутися назад</string>
+    <string name="settings">Налаштування</string>
+    <string name="profile">Профіль</string>
+    <string name="question">Питання</string>
+    <string name="result_screen">Результати</string>
+    <string name="continue_string">Продовжити</string>
+    <string name="level">Рівень</string>
+    <string name="right_answer">Це правильна відповідь. Ви відповіли правильно</string>
+    <string name="wrong_answer">Це неправильна відповідь. Ви відповіли неправильно</string>
+    <string name="possible_option">Можливий варіант відповіді</string>
+    <string name="cancel">Скасувати</string>
+    <string name="finish_quiz">Завершити вікторину?</string>
+    <string name="continue_text_finish_quiz">Ви справді хочете завершити вікторину і перейти до результатів? Весь прогрес буде скинуто. Ви не зможете повернути поточний прогрес пізніше</string>
+    <string name="completed_level">Завершений рівень</string>
+    <string name="completion">Виконано</string>
+    <string name="correct">Вірно</string>
+    <string name="total_question">Усього запитань</string>
+    <string name="wrong">Невірно</string>
+    <string name="play_again">Грати знову</string>
+    <string name="share">Поділитися</string>
+    <string name="home">Додому</string>
+    <string name="choose_language">Виберіть мову</string>
+    <string name="result_text">Гей! Подивися на мої результати! Я завершив %1$d рівень і відповів %2$d із %3$d. Це %4$d%%% всіх запитань</string>
+    <string name="extra_subject">Поділися досягнутим:</string>
+</resources>

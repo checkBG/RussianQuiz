@@ -7,7 +7,7 @@
     <string name="continue_string">Продолжить</string>
     <string name="level">Уровень</string>
     <string name="right_answer">Это верный ответ. Вы ответили верно</string>
-    <string name="wrong_answer"> Это неверный ответ. Вы ответили неверно</string>
+    <string name="wrong_answer">Это неверный ответ. Вы ответили неверно</string>
     <string name="possible_option">Возможный вариант ответа</string>
     <string name="cancel">Отменить</string>
     <string name="finish_quiz">Завершить викторину?</string>
@@ -20,6 +20,7 @@
     <string name="play_again">Играть снова</string>
     <string name="share">Поделиться</string>
     <string name="home">Домой</string>
+    <string name="choose_language">Выберите язык</string>
     <string name="result_text">Эй! Посмотори на мои результаты!\nЯ завершил %1$d уровень и ответил %2$d из %3$d.\nЭто %4$d%% всех вопросов</string>
     <string name="extra_subject">Поделись достигнутым:</string>
 </resources>

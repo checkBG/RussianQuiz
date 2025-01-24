@@ -33,7 +33,6 @@ import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.buildAnnotatedString
@@ -51,6 +50,7 @@ import com.example.russianquiz.R
 import com.example.russianquiz.bars.NavigationScreen
 import com.example.russianquiz.model.Levels
 import com.example.russianquiz.model.MainViewModel
+import com.example.russianquiz.model.localizedString
 import com.example.russianquiz.ui.theme.QuizAppTheme
 import com.example.russianquiz.utils.toTwoDigitNumber
 
@@ -109,7 +109,7 @@ fun Pentagon(
     val width = with(density) { pentagonSize.toPx() }
     val height = with(density) { pentagonSize.toPx() }
 
-    val topicScreen = stringResource(id = R.string.level)
+    val topicScreen = localizedString(id = R.string.level)
 
     val textMeasurer = rememberTextMeasurer()
     val titular = buildAnnotatedString {

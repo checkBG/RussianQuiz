@@ -25,7 +25,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
@@ -33,6 +32,7 @@ import com.example.russianquiz.bars.MainTopAppBar
 import com.example.russianquiz.bars.NavGraph
 import com.example.russianquiz.bars.NavigationScreen
 import com.example.russianquiz.model.MainViewModel
+import com.example.russianquiz.model.localizedString
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -67,7 +67,7 @@ fun MainScreen(
                 ) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowForward,
-                        contentDescription = stringResource(R.string.continue_string),
+                        contentDescription = localizedString(R.string.continue_string),
                         modifier = Modifier
                             .size(35.dp)
                     )
