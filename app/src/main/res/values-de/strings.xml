@@ -1,0 +1,26 @@
+<resources>
+    <string name="choose_language">Sprache auswählen</string>
+    <string name="navigate_up">Zurück navigieren</string>
+    <string name="settings">Einstellungen</string>
+    <string name="profile">Profil</string>
+    <string name="question">Frage</string>
+    <string name="result_screen">Ergebnisse</string>
+    <string name="continue_string">Weiter</string>
+    <string name="level">STUFE</string>
+    <string name="right_answer">Das ist die richtige Antwort. Du hast richtig geantwortet.</string>
+    <string name="wrong_answer">Das ist die falsche Antwort. Du hast falsch geantwortet.</string>
+    <string name="possible_option">Das ist eine mögliche Option zur Auswahl.</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="finish_quiz">Quiz beenden?</string>
+    <string name="continue_text_finish_quiz">Möchtest du das Quiz wirklich beenden und die Ergebnisse anzeigen? Alle Fortschritte gehen verloren. Du kannst den aktuellen Fortschritt später nicht wiederherstellen.</string>
+    <string name="completed_level">Stufe abgeschlossen</string>
+    <string name="completion">Abschluss</string>
+    <string name="correct">Richtig</string>
+    <string name="total_question">Fragen insgesamt</string>
+    <string name="wrong">Falsch</string>
+    <string name="play_again">Erneut spielen</string>
+    <string name="share">Teilen</string>
+    <string name="home">Startseite</string>
+    <string name="result_text">Hey! Schau dir meine Ergebnisse an!\nIch habe Stufe %1$d abgeschlossen und %2$d von %3$d Punkten erreicht.\nDas sind %4$d%%.</string>
+    <string name="extra_subject">Teile, was du erreicht hast:</string>
+</resources>

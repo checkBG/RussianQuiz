@@ -27,6 +27,16 @@ enum class Languages(
         flagIcon = R.drawable.ru,
         locale = "ru"
     ),
+    UKRAINIAN(
+        text = R.string.uk,
+        flagIcon = R.drawable.uk,
+        locale = "uk"
+    ),
+    GERMAN(
+        text = R.string.de,
+        flagIcon = R.drawable.de,
+        locale = "de"
+    )
 }
 
 fun Context.updateLocale(languagesCode: String): Context {

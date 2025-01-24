@@ -55,7 +55,7 @@ import com.example.russianquiz.ui.theme.QuizAppTheme
 import com.example.russianquiz.utils.toTwoDigitNumber
 
 @Composable
-fun ChooseTopic(
+fun ChooseLevel(
     levels: List<Levels>,
     widthSize: WindowWidthSizeClass,
     navController: NavHostController,
@@ -73,7 +73,7 @@ fun ChooseTopic(
         columns = GridCells.Fixed(countOfColumns),
         modifier = modifier.fillMaxSize(),
         contentPadding = PaddingValues(bottom = 20.dp),
-        horizontalArrangement = Arrangement.Center,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         itemsIndexed(items = levels) { index, level ->
             Pentagon(
@@ -290,7 +290,7 @@ fun PentagonPreview() {
 @Composable
 fun CenturiesCompactPreview() {
     QuizAppTheme {
-        ChooseTopic(
+        ChooseLevel(
             levels = Levels.entries,
             widthSize = WindowWidthSizeClass.Compact,
             navController = rememberNavController(),
@@ -303,7 +303,7 @@ fun CenturiesCompactPreview() {
 @Composable
 fun CenturiesMediumPreview() {
     QuizAppTheme {
-        ChooseTopic(
+        ChooseLevel(
             levels = Levels.entries,
             widthSize = WindowWidthSizeClass.Medium,
             navController = rememberNavController(),
@@ -316,7 +316,7 @@ fun CenturiesMediumPreview() {
 @Composable
 fun CenturiesExpandedPreview() {
     QuizAppTheme {
-        ChooseTopic(
+        ChooseLevel(
             levels = Levels.entries,
             widthSize = WindowWidthSizeClass.Expanded,
             navController = rememberNavController(),

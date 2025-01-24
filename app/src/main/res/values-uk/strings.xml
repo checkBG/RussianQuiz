@@ -14,9 +14,9 @@
     <string name="continue_text_finish_quiz">Ви справді хочете завершити вікторину і перейти до результатів? Весь прогрес буде скинуто. Ви не зможете повернути поточний прогрес пізніше</string>
     <string name="completed_level">Завершений рівень</string>
     <string name="completion">Виконано</string>
-    <string name="correct">Вірно</string>
+    <string name="correct">Правильно</string>
     <string name="total_question">Усього запитань</string>
-    <string name="wrong">Невірно</string>
+    <string name="wrong">Неправильно</string>
     <string name="play_again">Грати знову</string>
     <string name="share">Поділитися</string>
     <string name="home">Додому</string>

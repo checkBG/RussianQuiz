@@ -12,7 +12,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.russianquiz.fundamental.ChooseTopic
+import com.example.russianquiz.fundamental.ChooseLevel
 import com.example.russianquiz.fundamental.QuizScreen
 import com.example.russianquiz.fundamental.ResultScreen
 import com.example.russianquiz.fundamental.SettingsScreen
@@ -34,7 +34,7 @@ fun NavGraph(
     ) {
 
         composable(route = NavigationScreen.ChooseScreen.route) {
-            ChooseTopic(
+            ChooseLevel(
                 levels = mainViewModel.levels,
                 widthSize = widthSize,
                 navController = navController,
@@ -43,11 +43,17 @@ fun NavGraph(
         }
 
         composable(route = NavigationScreen.QuizScreen.route) {
-            QuizScreen(mainViewModel = mainViewModel)
+            QuizScreen(
+                mainViewModel = mainViewModel,
+                widthSize = widthSize,
+            )
         }
 
         composable(route = NavigationScreen.SettingsScreen.route) {
-            SettingsScreen(mainViewModel = mainViewModel)
+            SettingsScreen(
+                mainViewModel = mainViewModel,
+                widthSize = widthSize,
+            )
         }
 
         composable(route = NavigationScreen.ProfileScreen.route) {

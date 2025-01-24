@@ -2,6 +2,8 @@
     <string name="app_name" translatable="false">English Quiz</string>
     <string name="en" translatable="false">English</string>
     <string name="ru" translatable="false">Русский</string>
+    <string name="uk" translatable="false">Українська</string>
+    <string name="de" translatable="false">Deutsch</string>
     <string name="choose_language">Choose a language</string>
     <string name="navigate_up">Navigate up</string>
     <string name="settings">Settings</string>

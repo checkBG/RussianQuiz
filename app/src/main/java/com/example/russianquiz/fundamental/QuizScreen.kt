@@ -42,6 +42,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -95,10 +96,13 @@ import com.example.russianquiz.utils.toTwoDigitNumber
 fun QuizScreen(
     modifier: Modifier = Modifier,
     mainViewModel: MainViewModel,
+    widthSize: WindowWidthSizeClass,
 ) {
     val quizData by mainViewModel.quizData.collectAsState()
     val currentQuiz = quizData.quizzes[quizData.solvedQuestions]
+
     val context = LocalContext.current
+
     val ids =
         context.resources.obtainTypedArray(
             quizData.quizzes[quizData.solvedQuestions].options
@@ -109,12 +113,24 @@ fun QuizScreen(
     }
     ids.recycle()
 
+    val quizCardWidthScale = when (widthSize) {
+        WindowWidthSizeClass.Compact -> 1f
+        WindowWidthSizeClass.Medium -> 0.8f
+        WindowWidthSizeClass.Expanded -> 0.6f
+        else -> 1f
+    }
+
     Box(modifier = modifier) {
         LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
             contentPadding = PaddingValues(bottom = if (quizData.isCompleted) 80.dp else 20.dp)
         ) {
             item {
-                QuizCard(quizData = quizData)
+                QuizCard(
+                    quizData = quizData,
+                    modifier = Modifier.fillMaxWidth(quizCardWidthScale)
+                )
             }
 
             item {
@@ -128,6 +144,7 @@ fun QuizScreen(
                     chosenAnswer = quizData.chosenOption,
                     rightAnswer = currentQuiz.rightAnswer,
                     isCompleted = quizData.isCompleted,
+                    modifier = Modifier.fillMaxWidth(quizCardWidthScale)
                 )
                 Spacer(modifier = Modifier.height(10.dp))
             }
