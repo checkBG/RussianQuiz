@@ -47,8 +47,10 @@ android {
         }
     }
 }
-
+// can you see?
 dependencies {
+    implementation(libs.coil.compose)
+    implementation(libs.android.image.cropper)
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.material3)
     implementation("androidx.compose.material3:material3-window-size-class")

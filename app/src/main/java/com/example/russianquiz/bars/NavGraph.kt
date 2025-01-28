@@ -13,6 +13,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.russianquiz.fundamental.ChooseLevel
+import com.example.russianquiz.fundamental.ProfileScreen
 import com.example.russianquiz.fundamental.QuizScreen
 import com.example.russianquiz.fundamental.ResultScreen
 import com.example.russianquiz.fundamental.SettingsScreen
@@ -57,7 +58,9 @@ fun NavGraph(
         }
 
         composable(route = NavigationScreen.ProfileScreen.route) {
+            ProfileScreen(
 
+            )
         }
 
         composable(route = NavigationScreen.ResultScreen.route) {

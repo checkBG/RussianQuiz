@@ -11,15 +11,17 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -64,6 +66,7 @@ fun SettingsScreen(
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun SelectLanguage(
     modifier: Modifier = Modifier,
@@ -86,7 +89,7 @@ fun SelectLanguage(
         else -> 1f
     }
 
-    val columnsLanguages = when (widthSize) {
+    val countLanguagesInRow = when (widthSize) {
         WindowWidthSizeClass.Compact -> 1
         WindowWidthSizeClass.Medium -> 2
         WindowWidthSizeClass.Expanded -> 2
@@ -95,6 +98,7 @@ fun SelectLanguage(
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.verticalScroll(rememberScrollState())
     ) {
         Card(
             modifier = modifier
@@ -128,20 +132,25 @@ fun SelectLanguage(
             enter = slideInVertically(initialOffsetY = { -it }) + fadeIn(),
             exit = slideOutVertically(targetOffsetY = { -it }) + fadeOut()
         ) {
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(columnsLanguages),
-                modifier = Modifier.fillMaxWidth(optionWidthScale * 1.1f)
+            Spacer(modifier = Modifier.height(10.dp))
+            FlowRow(
+                maxItemsInEachRow = countLanguagesInRow,
+                horizontalArrangement = Arrangement.SpaceAround,
+                modifier = Modifier
+                    .fillMaxWidth()
             ) {
-                items(items = Languages.entries) { language ->
+                Languages.entries.forEach { language ->
                     LanguageOption(
                         language = language,
                         currentLanguage = currentLanguage,
                         onChoosingClick = {
                             mainViewModel.changeLanguage(languageCode = language.locale)
                         },
+                        countInRow = countLanguagesInRow
                     )
                 }
             }
+            Spacer(modifier = Modifier.height(10.dp))
         }
     }
 }
@@ -151,11 +160,12 @@ fun LanguageOption(
     modifier: Modifier = Modifier,
     language: Languages,
     currentLanguage: String = Languages.ENGLISH.locale,
+    countInRow: Int,
     onChoosingClick: () -> Unit,
 ) {
     Card(
         modifier = modifier
-            .fillMaxWidth()
+            .fillMaxWidth(1f / countInRow * 0.8f)
             .padding(top = 10.dp, start = 10.dp, end = 10.dp),
         onClick = onChoosingClick,
         colors = CardDefaults.cardColors(
@@ -169,7 +179,6 @@ fun LanguageOption(
     ) {
         Row(
             modifier = Modifier.padding(start = 20.dp),
-//            modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {

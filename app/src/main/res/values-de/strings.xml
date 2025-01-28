@@ -12,7 +12,8 @@
     <string name="possible_option">Das ist eine mögliche Option zur Auswahl.</string>
     <string name="cancel">Abbrechen</string>
     <string name="finish_quiz">Quiz beenden?</string>
-    <string name="continue_text_finish_quiz">Möchtest du das Quiz wirklich beenden und die Ergebnisse anzeigen? Alle Fortschritte gehen verloren. Du kannst den aktuellen Fortschritt später nicht wiederherstellen.</string>
+    <string name="finish_quiz_details">Möchtest du das Quiz wirklich beenden und die Ergebnisse anzeigen? Alle Fortschritte gehen verloren. Du kannst den aktuellen Fortschritt später nicht wiederherstellen.</string>
+    <string name="no_progress_finish_quiz_details">Werden Sie das Quiz beenden und zum Startbildschirm zurückkehren?</string>
     <string name="completed_level">Stufe abgeschlossen</string>
     <string name="completion">Abschluss</string>
     <string name="correct">Richtig</string>

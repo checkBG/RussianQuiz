@@ -11,7 +11,8 @@
     <string name="possible_option">Возможный вариант ответа</string>
     <string name="cancel">Отменить</string>
     <string name="finish_quiz">Завершить викторину?</string>
-    <string name="continue_text_finish_quiz">Вы действительно хотите завершить викторину и перейти к результатам? Весь прогресс будет сброшен. Вы не сможете вернуть текущий прогресс позже</string>
+    <string name="finish_quiz_details">Вы действительно хотите завершить викторину и перейти к результатам? Весь прогресс будет сброшен. Вы не сможете вернуть текущий прогресс позже</string>
+    <string name="no_progress_finish_quiz_details">Вы действительно хотите завершить викторину и вернуться на главный экран?</string>
     <string name="completed_level">Завершённый уровень</string>
     <string name="completion">Выполнено</string>
     <string name="correct">Верно</string>

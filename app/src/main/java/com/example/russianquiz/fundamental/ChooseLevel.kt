@@ -8,12 +8,15 @@ import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -54,6 +57,7 @@ import com.example.russianquiz.model.localizedString
 import com.example.russianquiz.ui.theme.QuizAppTheme
 import com.example.russianquiz.utils.toTwoDigitNumber
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ChooseLevel(
     levels: List<Levels>,
@@ -69,23 +73,28 @@ fun ChooseLevel(
         else -> 2
     }
 
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(countOfColumns),
-        modifier = modifier.fillMaxSize(),
-        contentPadding = PaddingValues(bottom = 20.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    Column(
+        modifier = Modifier
+            .verticalScroll(rememberScrollState())
     ) {
-        itemsIndexed(items = levels) { index, level ->
-            Pentagon(
-                pentagonSize = 120.dp,
-                level = level,
-                colors = level.colors,
-                navController = navController,
-                mainViewModel = mainViewModel,
-//                widthSize = widthSize,
-                index = index + 1,
-            )
+        FlowRow(
+            maxItemsInEachRow = countOfColumns,
+            horizontalArrangement = Arrangement.SpaceAround,
+            modifier = modifier
+                .fillMaxSize(),
+        ) {
+            levels.forEachIndexed { index, level ->
+                Pentagon(
+                    pentagonSize = 120.dp,
+                    level = level,
+                    colors = level.colors,
+                    navController = navController,
+                    mainViewModel = mainViewModel,
+                    index = index + 1,
+                )
+            }
         }
+        Spacer(modifier = Modifier.height(20.dp))
     }
 }
 
@@ -96,7 +105,6 @@ fun Pentagon(
     level: Levels,
     index: Int,
     colors: List<Color>,
-//    widthSize: WindowWidthSizeClass,
     navController: NavHostController,
     mainViewModel: MainViewModel,
 ) {

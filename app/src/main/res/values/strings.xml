@@ -17,7 +17,8 @@
     <string name="possible_option">It\'s a possible option to choose</string>
     <string name="cancel">Cancel</string>
     <string name="finish_quiz">Finish the quiz?</string>
-    <string name="continue_text_finish_quiz">Do you really want to finish the quiz and go to results? All progress will be removed. You won\'t be able to return the current progress later</string>
+    <string name="finish_quiz_details">Do you really want to finish the quiz and go to results? All progress will be removed. You won\'t be able to return the current progress later</string>
+    <string name="no_progress_finish_quiz_details">Are you going to finish the quiz and return home screen?</string>
     <string name="completed_level">Completed level</string>
     <string name="completion">Completion</string>
     <string name="correct">Correct</string>

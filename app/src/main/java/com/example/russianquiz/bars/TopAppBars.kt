@@ -25,6 +25,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -56,6 +57,7 @@ fun MainTopAppBar(
     modifier: Modifier = Modifier,
 ) {
     var gonnaBeFinished by remember { mutableStateOf(false) }
+    val quizData by mainViewModel.quizData.collectAsState()
 
     TopAppBar(
         title = { },
@@ -183,7 +185,13 @@ fun MainTopAppBar(
             },
             text = {
                 Text(
-                    text = localizedString(R.string.continue_text_finish_quiz),
+                    text = localizedString(
+                        if (quizData.solvedQuestions == 0 && quizData.chosenOption == 0) {
+                            R.string.no_progress_finish_quiz_details
+                        } else {
+                            R.string.finish_quiz_details
+                        }
+                    ),
                     textAlign = TextAlign.Justify
                 )
             },
