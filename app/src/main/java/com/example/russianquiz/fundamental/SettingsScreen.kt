@@ -73,7 +73,7 @@ fun SelectLanguage(
     mainViewModel: MainViewModel,
     widthSize: WindowWidthSizeClass,
 ) {
-    val currentLanguage by mainViewModel.language.collectAsState()
+    val settingsData by mainViewModel.settingsData.collectAsState()
 
     var dropdownMenu by remember { mutableStateOf(false) }
     val rotation by animateFloatAsState(
@@ -142,9 +142,9 @@ fun SelectLanguage(
                 Languages.entries.forEach { language ->
                     LanguageOption(
                         language = language,
-                        currentLanguage = currentLanguage,
+                        currentLanguage = settingsData.language.locale,
                         onChoosingClick = {
-                            mainViewModel.changeLanguage(languageCode = language.locale)
+                            mainViewModel.changeLanguage(language = language)
                         },
                         countInRow = countLanguagesInRow
                     )
@@ -159,7 +159,7 @@ fun SelectLanguage(
 fun LanguageOption(
     modifier: Modifier = Modifier,
     language: Languages,
-    currentLanguage: String = Languages.ENGLISH.locale,
+    currentLanguage: String,
     countInRow: Int,
     onChoosingClick: () -> Unit,
 ) {

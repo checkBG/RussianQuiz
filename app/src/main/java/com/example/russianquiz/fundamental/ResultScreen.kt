@@ -70,6 +70,17 @@ fun ResultScreen(
     val quizData by mainViewModel.quizData.collectAsState()
     val context = LocalContext.current
 
+    val solvedQuestions =
+        if (quizData.chosenOption != 0) quizData.solvedQuestions + 1 else quizData.solvedQuestions
+    val percentage = (quizData.rightAnswers / solvedQuestions.toFloat() * 100).toInt()
+    val extraText = localizedString(
+        R.string.result_text,
+        quizData.chosenLevel.ordinal + 1,
+        quizData.rightAnswers,
+        solvedQuestions,
+        percentage
+    )
+
     Box(
         modifier = modifier
     ) {
@@ -82,7 +93,11 @@ fun ResultScreen(
                 modifier = Modifier
                     .size(250.dp)
             )
-            ResultsCard(quizData = quizData)
+            ResultsCard(
+                quizData = quizData,
+                solvedQuestions = solvedQuestions,
+                percentage = percentage
+            )
             Spacer(modifier = Modifier.weight(1f))
 
             OtherFunctionButtons(
@@ -96,8 +111,8 @@ fun ResultScreen(
                 },
                 onShareScoreClick = {
                     shareQuizData(
-                        quizData = quizData,
                         context = context,
+                        extraText = extraText
                     )
                 },
                 onHomeClick = {
@@ -195,12 +210,10 @@ fun CompletedLevel(
 @Composable
 fun ResultsCard(
     modifier: Modifier = Modifier,
+    solvedQuestions: Int,
+    percentage: Int,
     quizData: QuizData,
 ) {
-    val solvedQuestions =
-        if (quizData.chosenOption != 0) quizData.solvedQuestions + 1 else quizData.solvedQuestions
-    val percentage = (quizData.rightAnswers / solvedQuestions.toFloat() * 100).toInt()
-
     Card(
         modifier = modifier
             .padding(20.dp)
@@ -364,12 +377,8 @@ fun OtherFunctionButtons(
 
 private fun shareQuizData(
     context: Context,
-    quizData: QuizData,
+    extraText: String,
 ) {
-    val solvedQuestions =
-        if (quizData.chosenOption != 0) quizData.solvedQuestions + 1 else quizData.solvedQuestions
-    val percentage = (quizData.rightAnswers / solvedQuestions.toFloat() * 100).toInt()
-
     val intent = Intent(Intent.ACTION_SEND).apply {
         type = "text/plain"
         putExtra(
@@ -378,13 +387,7 @@ private fun shareQuizData(
         )
         putExtra(
             Intent.EXTRA_TEXT,
-            context.getString(
-                R.string.result_text,
-                quizData.chosenLevel.ordinal + 1,
-                quizData.rightAnswers,
-                solvedQuestions,
-                percentage
-            )
+            extraText
         )
     }
     context.startActivity(

@@ -61,8 +61,9 @@ fun LocalizedApp(
     }
 }
 
+@Suppress("Be careful with parameters")
 @Composable
-fun localizedString(@StringRes id: Int): String {
+fun localizedString(@StringRes id: Int, vararg parameters: Any): String {
     val context = LocalAppContext.current
-    return context.getString(id)
+    return context.getString(id, *parameters.toList().toTypedArray())
 }

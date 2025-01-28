@@ -1,6 +1,7 @@
 package com.example.russianquiz
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -21,13 +22,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
         setContent {
             QuizAppTheme {
                 val windowSize = calculateWindowSizeClass(this)
-                val currentLanguage by mainViewModel.language.collectAsState()
+                val settingsData by mainViewModel.settingsData.collectAsState()
+                Log.d("EXPLORE", settingsData.profile.toString())
 
-                LocalizedApp(languagesCode = currentLanguage) {
+                LocalizedApp(languagesCode = settingsData.language.locale) {
                     MainScreen(
                         windowSize = windowSize.widthSizeClass,
                         mainViewModel = mainViewModel,

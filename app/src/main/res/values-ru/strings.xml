@@ -24,4 +24,10 @@
     <string name="choose_language">Выберите язык</string>
     <string name="result_text">Эй! Посмотори на мои результаты!\nЯ завершил %1$d уровень и ответил %2$d из %3$d.\nЭто %4$d%% всех вопросов</string>
     <string name="extra_subject">Поделись достигнутым:</string>
+    <string name="choose_a_photo">Выберите фото</string>
+    <string name="selected_photo">Выбранное фото</string>
+    <string name="total_solved_questions">Всего решено вопросов</string>
+    <string name="solved_correct">Из них верно</string>
+    <string name="correct_rate">Процент правильных ответов</string>
+    <string name="favorite_level">Любимый уровень</string>
 </resources>

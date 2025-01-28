@@ -29,6 +29,12 @@
     <string name="home">Home</string>
     <string name="result_text">Yo! Look at my results!\nI\'ve completed %1$d level and I\'ve got %2$d out of %3$d.\nIt is %4$d%%</string>
     <string name="extra_subject">Share you reached:</string>
+    <string name="choose_a_photo">choose a photo</string>
+    <string name="selected_photo">the selected photo</string>
+    <string name="total_solved_questions">Total solved questions</string>
+    <string name="solved_correct">Correct out of them</string>
+    <string name="correct_rate">Correct rate</string>
+    <string name="favorite_level">Favorite level</string>
     <string name="all_correct" translatable="false">All the sentences above are correct</string>
     <string name="all_incorrect" translatable="false">All the sentences above are incorrect</string>
 

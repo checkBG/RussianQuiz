@@ -59,7 +59,8 @@ fun NavGraph(
 
         composable(route = NavigationScreen.ProfileScreen.route) {
             ProfileScreen(
-
+                mainViewModel = mainViewModel,
+                widthSize = widthSize
             )
         }
 

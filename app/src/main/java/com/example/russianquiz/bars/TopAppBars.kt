@@ -150,8 +150,8 @@ fun MainTopAppBar(
                 TextButton(
                     onClick = {
                         gonnaBeFinished = false
-                        if (mainViewModel.quizData.value.solvedQuestions == 0 && mainViewModel.quizData.value.chosenOption == 0) {
-                            navController.navigateUp()
+                        if (quizData.solvedQuestions == 0 && quizData.chosenOption == 0) {
+                            navController.navigate(NavigationScreen.ChooseScreen.route)
                         } else {
                             mainViewModel.onNextQuestionClick(
                                 navController = navController,
