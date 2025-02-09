@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.compose.compiler)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -49,6 +51,9 @@ android {
 }
 // can you see?
 dependencies {
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
+
     implementation(libs.coil.compose)
     implementation(libs.android.image.cropper)
     implementation(libs.androidx.material.icons.extended)

@@ -19,7 +19,7 @@ enum class Languages(
 ) {
     ENGLISH(
         text = R.string.en,
-        flagIcon = R.drawable.en_us,
+        flagIcon = R.drawable.en,
         locale = "en"
     ),
     RUSSIAN(

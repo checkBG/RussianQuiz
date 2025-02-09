@@ -20,6 +20,18 @@ class MainViewModel : ViewModel() {
     val quizData: StateFlow<QuizData>
         get() = _quizData.asStateFlow()
 
+    fun getFavouriteLevel(): Int {
+        var maxCompleted = 0
+        var maxLevelCompleted = 0
+        settingsData.value.profile.completedLevels.forEach { (level, count) ->
+            if (count >= maxCompleted) {
+                maxCompleted = count
+                maxLevelCompleted = level.ordinal + 1
+            }
+        }
+        return maxLevelCompleted
+    }
+
     fun changeChosenPhoto(bitmap: Bitmap) {
         _settingsData.update {
             it.copy(profile = it.profile.copy(chosenPhotoProfile = bitmap))

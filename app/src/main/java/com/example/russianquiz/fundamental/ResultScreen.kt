@@ -296,10 +296,11 @@ fun FunctionButton(
     onClickAction: () -> Unit,
     buttonSize: Dp = 50.dp,
     scaleIcon: Float,
+    alignment: Alignment.Horizontal,
 ) {
     Column(
         modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = alignment
     ) {
         IconButton(
             onClick = onClickAction,
@@ -335,7 +336,7 @@ fun OtherFunctionButtons(
 ) {
     Column(
         modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Row {
             FunctionButton(
@@ -345,7 +346,8 @@ fun OtherFunctionButtons(
                 containerColor = Color(0xFF006400),
                 onClickAction = onPlayAgainClick,
                 buttonSize = buttonSize,
-                scaleIcon = 0.8f
+                scaleIcon = 0.8f,
+                alignment = Alignment.CenterHorizontally
             )
 
             Spacer(modifier = Modifier.weight(1f))
@@ -357,7 +359,8 @@ fun OtherFunctionButtons(
                 containerColor = Color(0xFF520099),
                 onClickAction = onShareScoreClick,
                 buttonSize = buttonSize,
-                scaleIcon = 0.8f
+                scaleIcon = 0.8f,
+                alignment = Alignment.CenterHorizontally
             )
         }
 
@@ -370,7 +373,8 @@ fun OtherFunctionButtons(
             containerColor = Color(0xFFff6161),
             onClickAction = onHomeClick,
             buttonSize = buttonSize,
-            scaleIcon = 0.7f
+            scaleIcon = 0.7f,
+            alignment = Alignment.CenterHorizontally
         )
     }
 }

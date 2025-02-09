@@ -22,7 +22,7 @@
     <string name="share">Поділитися</string>
     <string name="home">Додому</string>
     <string name="choose_language">Виберіть мову</string>
-    <string name="result_text">Гей! Подивися на мої результати! Я завершив %1$d рівень і відповів %2$d із %3$d. Це %4$d%%% всіх запитань</string>
+    <string name="result_text">Гей! Подивися на мої результати! Я завершив %1$d рівень і відповів %2$d із %3$d. Це %4$d%% всіх запитань</string>
     <string name="extra_subject">Поділися досягнутим:</string>
     <string name="choose_a_photo">вибрати фотографію</string>
     <string name="selected_photo">вибрана фотографія</string>

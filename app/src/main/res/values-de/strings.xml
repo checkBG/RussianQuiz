@@ -19,7 +19,7 @@
     <string name="correct">Richtig</string>
     <string name="total_question">Fragen insgesamt</string>
     <string name="wrong">Falsch</string>
-    <string name="play_again">Erneut spielen</string>
+    <string name="play_again">Nochmal</string>
     <string name="share">Teilen</string>
     <string name="home">Startseite</string>
     <string name="result_text">Hey! Schau dir meine Ergebnisse an!\nIch habe Stufe %1$d abgeschlossen und %2$d von %3$d Punkten erreicht.\nDas sind %4$d%%.</string>
