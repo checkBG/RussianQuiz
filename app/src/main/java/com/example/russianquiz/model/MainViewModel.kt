@@ -2,23 +2,52 @@ package com.example.russianquiz.model
 
 import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.example.russianquiz.bars.NavigationScreen
+import com.example.russianquiz.model.database.dao.SettingsDataDao
+import com.example.russianquiz.model.database.entity.SettingsDataEntity
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-class MainViewModel : ViewModel() {
+class MainViewModel(
+    private val dao: SettingsDataDao,
+) : ViewModel() {
     val levels = Levels.entries
-    private val _settingsData = MutableStateFlow(SettingsData())
-    val settingsData: StateFlow<SettingsData>
-        get() = _settingsData.asStateFlow()
+
+    val settingsData = dao.getSettings()
+        .map { settings ->
+            val languageIndex = settings?.languageIndex ?: 0
+            val language = Languages.entries.getOrNull(languageIndex) ?: Languages.ENGLISH
+
+            SettingsData(language = language)
+        }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), SettingsData())
+
+    private val _settingsData = MutableStateFlow(settingsData.value)
 
     private val _quizData = MutableStateFlow(QuizData.initQuizData())
     val quizData: StateFlow<QuizData>
         get() = _quizData.asStateFlow()
+
+//    init {
+//        println("settings ${settingsData.value}")
+//        viewModelScope.launch {
+//            settingsData.collectLatest { settingsData ->
+//                _settingsData.value = settingsData
+//            }
+//        }
+//        println("settings ${settingsData.value}")
+//    }
 
     fun getFavouriteLevel(): Int {
         var maxCompleted = 0
@@ -39,6 +68,16 @@ class MainViewModel : ViewModel() {
     }
 
     fun changeLanguage(language: Languages) {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                dao.saveSettings(
+                    settings = SettingsDataEntity(
+                        id = 1,
+                        languageIndex = language.ordinal
+                    )
+                )
+            }
+        }
         _settingsData.update {
             it.copy(language = language)
         }

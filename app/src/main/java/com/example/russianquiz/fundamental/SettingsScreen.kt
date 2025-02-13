@@ -43,14 +43,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.russianquiz.R
 import com.example.russianquiz.model.Languages
 import com.example.russianquiz.model.MainViewModel
 import com.example.russianquiz.model.localizedString
-import com.example.russianquiz.ui.theme.QuizAppTheme
 
 @Composable
 fun SettingsScreen(
@@ -206,13 +204,13 @@ fun LanguageOption(
     }
 }
 
-@Preview
-@Composable
-private fun SettingsScreenPreview() {
-    QuizAppTheme {
-        SettingsScreen(
-            mainViewModel = MainViewModel(),
-            widthSize = WindowWidthSizeClass.Compact
-        )
-    }
-}
+//@Preview
+//@Composable
+//private fun SettingsScreenPreview() {
+//    QuizAppTheme {
+//        SettingsScreen(
+//            mainViewModel = MainViewModel(),
+//            widthSize = WindowWidthSizeClass.Compact
+//        )
+//    }
+//}

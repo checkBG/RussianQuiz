@@ -31,6 +31,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.russianquiz.bars.MainTopAppBar
 import com.example.russianquiz.bars.NavGraph
 import com.example.russianquiz.bars.NavigationScreen
+import com.example.russianquiz.fundamental.Background
 import com.example.russianquiz.model.MainViewModel
 import com.example.russianquiz.model.localizedString
 

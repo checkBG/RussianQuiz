@@ -43,18 +43,15 @@ import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.example.russianquiz.R
 import com.example.russianquiz.bars.NavigationScreen
 import com.example.russianquiz.model.Levels
 import com.example.russianquiz.model.MainViewModel
 import com.example.russianquiz.model.localizedString
-import com.example.russianquiz.ui.theme.QuizAppTheme
 import com.example.russianquiz.utils.toTwoDigitNumber
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -274,61 +271,61 @@ fun pentagonPath(
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PentagonPreview() {
-    QuizAppTheme(darkTheme = true) {
-        Pentagon(
-            pentagonSize = 100.dp,
-            colors = listOf(
-                Color(0xFF8B4513),
-                Color(0xFFFF4D00),
-                Color(0xFFF8F32B),
-            ),
-            mainViewModel = MainViewModel(),
-            navController = rememberNavController(),
+//@Preview(showBackground = true)
+//@Composable
+//fun PentagonPreview() {
+//    QuizAppTheme(darkTheme = true) {
+//        Pentagon(
+//            pentagonSize = 100.dp,
+//            colors = listOf(
+//                Color(0xFF8B4513),
+//                Color(0xFFFF4D00),
+//                Color(0xFFF8F32B),
+//            ),
+//            mainViewModel = MainViewModel(dao = ),
+//            navController = rememberNavController(),
+////            widthSize = WindowWidthSizeClass.Compact,
+//            level = Levels.FIFTH_LEVEL,
+//            index = 5
+//        )
+//    }
+//}
+//
+//@Preview(showBackground = true)
+//@Composable
+//fun LevelsCompactPreview() {
+//    QuizAppTheme {
+//        ChooseLevel(
+//            levels = Levels.entries,
 //            widthSize = WindowWidthSizeClass.Compact,
-            level = Levels.FIFTH_LEVEL,
-            index = 5
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun CenturiesCompactPreview() {
-    QuizAppTheme {
-        ChooseLevel(
-            levels = Levels.entries,
-            widthSize = WindowWidthSizeClass.Compact,
-            navController = rememberNavController(),
-            mainViewModel = MainViewModel(),
-        )
-    }
-}
-
-@Preview(showBackground = true, widthDp = 700)
-@Composable
-fun CenturiesMediumPreview() {
-    QuizAppTheme {
-        ChooseLevel(
-            levels = Levels.entries,
-            widthSize = WindowWidthSizeClass.Medium,
-            navController = rememberNavController(),
-            mainViewModel = MainViewModel(),
-        )
-    }
-}
-
-@Preview(showBackground = true, widthDp = 1000)
-@Composable
-fun CenturiesExpandedPreview() {
-    QuizAppTheme {
-        ChooseLevel(
-            levels = Levels.entries,
-            widthSize = WindowWidthSizeClass.Expanded,
-            navController = rememberNavController(),
-            mainViewModel = MainViewModel(),
-        )
-    }
-}
+//            navController = rememberNavController(),
+//            mainViewModel = MainViewModel(),
+//        )
+//    }
+//}
+//
+//@Preview(showBackground = true, widthDp = 700)
+//@Composable
+//fun LevelsMediumPreview() {
+//    QuizAppTheme {
+//        ChooseLevel(
+//            levels = Levels.entries,
+//            widthSize = WindowWidthSizeClass.Medium,
+//            navController = rememberNavController(),
+//            mainViewModel = MainViewModel(),
+//        )
+//    }
+//}
+//
+//@Preview(showBackground = true, widthDp = 1000)
+//@Composable
+//fun LevelsExpandedPreview() {
+//    QuizAppTheme {
+//        ChooseLevel(
+//            levels = Levels.entries,
+//            widthSize = WindowWidthSizeClass.Expanded,
+//            navController = rememberNavController(),
+//            mainViewModel = MainViewModel(),
+//        )
+//    }
+//}

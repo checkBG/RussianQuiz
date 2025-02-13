@@ -51,6 +51,11 @@ android {
 }
 // can you see?
 dependencies {
+    // Koin
+    implementation(libs.koin.android)
+    implementation(libs.koin.android.compat)
+
+    // Room
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 

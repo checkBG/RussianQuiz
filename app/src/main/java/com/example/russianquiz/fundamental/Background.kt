@@ -1,4 +1,4 @@
-package com.example.russianquiz
+package com.example.russianquiz.fundamental
 
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloat
@@ -16,6 +16,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
+import com.example.russianquiz.R
 
 @Composable
 fun Background(

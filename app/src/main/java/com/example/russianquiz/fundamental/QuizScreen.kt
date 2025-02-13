@@ -728,50 +728,50 @@ private fun CrossPreview() {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-private fun AnswerOptionNeutralPreview() {
-    val quiz = Quizzes.firstLevelQuizzes[0]
-    QuizAppTheme {
-        AnswerOption(
-            mainViewModel = MainViewModel(),
-            chosenAnswer = R.string.answer_grammar_1_1,
-            answerOption = R.string.answer_grammar_1_2,
-            rightAnswer = quiz.rightAnswer,
-            isCompleted = true,
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun AnswerOptionWrongPreview() {
-    val quiz = Quizzes.firstLevelQuizzes[0]
-    QuizAppTheme {
-        AnswerOption(
-            mainViewModel = MainViewModel(),
-            chosenAnswer = R.string.answer_grammar_1_1,
-            answerOption = R.string.answer_grammar_1_1,
-            rightAnswer = quiz.rightAnswer,
-            isCompleted = true,
-        )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-private fun AnswerOptionRightPreview() {
-    val quiz = Quizzes.firstLevelQuizzes[0]
-    QuizAppTheme {
-        AnswerOption(
-            mainViewModel = MainViewModel(),
-            chosenAnswer = R.string.answer_grammar_1_1,
-            answerOption = quiz.rightAnswer,
-            rightAnswer = quiz.rightAnswer,
-            isCompleted = true,
-        )
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun AnswerOptionNeutralPreview() {
+//    val quiz = Quizzes.firstLevelQuizzes[0]
+//    QuizAppTheme {
+//        AnswerOption(
+//            mainViewModel = MainViewModel(),
+//            chosenAnswer = R.string.answer_grammar_1_1,
+//            answerOption = R.string.answer_grammar_1_2,
+//            rightAnswer = quiz.rightAnswer,
+//            isCompleted = true,
+//        )
+//    }
+//}
+//
+//@Preview(showBackground = true)
+//@Composable
+//private fun AnswerOptionWrongPreview() {
+//    val quiz = Quizzes.firstLevelQuizzes[0]
+//    QuizAppTheme {
+//        AnswerOption(
+//            mainViewModel = MainViewModel(),
+//            chosenAnswer = R.string.answer_grammar_1_1,
+//            answerOption = R.string.answer_grammar_1_1,
+//            rightAnswer = quiz.rightAnswer,
+//            isCompleted = true,
+//        )
+//    }
+//}
+//
+//@Preview(showBackground = true)
+//@Composable
+//private fun AnswerOptionRightPreview() {
+//    val quiz = Quizzes.firstLevelQuizzes[0]
+//    QuizAppTheme {
+//        AnswerOption(
+//            mainViewModel = MainViewModel(),
+//            chosenAnswer = R.string.answer_grammar_1_1,
+//            answerOption = quiz.rightAnswer,
+//            rightAnswer = quiz.rightAnswer,
+//            isCompleted = true,
+//        )
+//    }
+//}
 
 @Preview(showBackground = true)
 @Composable
