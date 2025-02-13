@@ -11,6 +11,15 @@ interface SettingsDataDao {
     @Upsert
     suspend fun saveSettings(settings: SettingsDataEntity)
 
-    @Query("SELECT * FROM user_settings WHERE user_settings.id = 1 LIMIT 1")
+    @Query("UPDATE user_settings SET right_answers = right_answers + 1 WHERE id = 1")
+    suspend fun updateRightAnswers()
+
+    @Query("UPDATE user_settings SET solved_questions = solved_questions + 1 WHERE id = 1")
+    suspend fun updateSolvedQuestions()
+
+    @Query("UPDATE user_settings SET language_index = :languageIndex WHERE id = 1")
+    suspend fun saveSelectedLanguage(languageIndex: Int)
+
+    @Query("SELECT * FROM user_settings WHERE id = 1 LIMIT 1")
     fun getSettings(): Flow<SettingsDataEntity?>
 }

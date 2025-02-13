@@ -7,7 +7,6 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.example.russianquiz.bars.NavigationScreen
 import com.example.russianquiz.model.database.dao.SettingsDataDao
-import com.example.russianquiz.model.database.entity.SettingsDataEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -29,7 +28,16 @@ class MainViewModel(
             val languageIndex = settings?.languageIndex ?: 0
             val language = Languages.entries.getOrNull(languageIndex) ?: Languages.ENGLISH
 
-            SettingsData(language = language)
+            val solvedQuestions = settings?.solvedQuestions ?: 0
+            val rightAnswers = settings?.rightAnswers ?: 0
+
+            SettingsData(
+                language = language,
+                profile = Profile(
+                    solvedQuestions = solvedQuestions,
+                    rightAnswers = rightAnswers,
+                )
+            )
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), SettingsData())
 
@@ -38,16 +46,6 @@ class MainViewModel(
     private val _quizData = MutableStateFlow(QuizData.initQuizData())
     val quizData: StateFlow<QuizData>
         get() = _quizData.asStateFlow()
-
-//    init {
-//        println("settings ${settingsData.value}")
-//        viewModelScope.launch {
-//            settingsData.collectLatest { settingsData ->
-//                _settingsData.value = settingsData
-//            }
-//        }
-//        println("settings ${settingsData.value}")
-//    }
 
     fun getFavouriteLevel(): Int {
         var maxCompleted = 0
@@ -70,16 +68,8 @@ class MainViewModel(
     fun changeLanguage(language: Languages) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                dao.saveSettings(
-                    settings = SettingsDataEntity(
-                        id = 1,
-                        languageIndex = language.ordinal
-                    )
-                )
+                dao.saveSelectedLanguage(languageIndex = language.ordinal)
             }
-        }
-        _settingsData.update {
-            it.copy(language = language)
         }
     }
 
@@ -99,26 +89,19 @@ class MainViewModel(
         chosenOption: Int,
     ) {
         _quizData.update { currentSettings ->
+            currentSettings.copy(
+                isCompleted = true,
+                chosenOption = chosenOption,
+                rightAnswers = currentSettings.rightAnswers + if (isRight) 1 else 0
+            )
+        }
+        viewModelScope.launch {
             if (isRight) {
-                currentSettings.copy(
-                    isCompleted = true,
-                    rightAnswers = currentSettings.rightAnswers + 1,
-                    chosenOption = chosenOption,
-                ).also {
-                    _settingsData.update {
-                        it.copy(
-                            profile = it.profile.copy(
-                                rightAnswers = it.profile.rightAnswers.inc()
-                            )
-                        )
-                    }
-                }
-            } else {
-                currentSettings.copy(
-                    isCompleted = true,
-                    chosenOption = chosenOption,
-                )
+                // UPDATING in db :rightAnswers
+                dao.updateRightAnswers()
             }
+            // UPDATING in db :solvedQuestions
+            dao.updateSolvedQuestions()
         }
     }
 
@@ -136,13 +119,6 @@ class MainViewModel(
             if ((quizData.value.solvedQuestions + 1) == quizData.value.quizzes.size && (!isFinished || quizData.value.chosenOption == 0)) {
                 settingsData.value.profile.completedLevel(quizData.value.chosenLevel)
             }
-            _settingsData.update {
-                it.copy(
-                    profile = it.profile.copy(
-                        solvedQuestions = it.profile.solvedQuestions.inc()
-                    )
-                )
-            }
             return
         }
 
@@ -154,14 +130,6 @@ class MainViewModel(
                 } else it.solvedQuestions,
                 chosenOption = 0,
             )
-        }.also {
-            _settingsData.update { currentSettings ->
-                currentSettings.copy(
-                    profile = currentSettings.profile.copy(
-                        solvedQuestions = currentSettings.profile.solvedQuestions.inc(),
-                    )
-                )
-            }
         }
     }
 

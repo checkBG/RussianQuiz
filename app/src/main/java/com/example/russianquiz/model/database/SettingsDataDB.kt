@@ -7,7 +7,7 @@ import com.example.russianquiz.model.database.entity.SettingsDataEntity
 
 @Database(
     entities = [SettingsDataEntity::class],
-    version = 1,
+    version = 2,
 )
 abstract class SettingsDataDB : RoomDatabase() {
     abstract val dao: SettingsDataDao
