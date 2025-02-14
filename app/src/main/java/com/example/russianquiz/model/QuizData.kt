@@ -1,7 +1,7 @@
 package com.example.russianquiz.model
 
 data class QuizData(
-    val chosenLevel: Levels,
+    val chosenLevel: Level,
     val quizzes: List<Quiz>,
     val chosenOption: Int = 0,
     val rightAnswers: Int = 0,
@@ -11,8 +11,8 @@ data class QuizData(
     companion object {
         fun initQuizData(): QuizData {
             return QuizData(
-                chosenLevel = Levels.FIRST_LEVEL,
-                quizzes = Levels.FIRST_LEVEL.quizzes.shuffled().take(10)
+                chosenLevel = Level.FIRST_LEVEL,
+                quizzes = Level.FIRST_LEVEL.quizzes.shuffled().take(10)
             )
         }
     }

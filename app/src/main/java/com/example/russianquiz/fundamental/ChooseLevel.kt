@@ -49,7 +49,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.russianquiz.R
 import com.example.russianquiz.bars.NavigationScreen
-import com.example.russianquiz.model.Levels
+import com.example.russianquiz.model.Level
 import com.example.russianquiz.model.MainViewModel
 import com.example.russianquiz.model.localizedString
 import com.example.russianquiz.utils.toTwoDigitNumber
@@ -57,7 +57,7 @@ import com.example.russianquiz.utils.toTwoDigitNumber
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ChooseLevel(
-    levels: List<Levels>,
+    levels: List<Level>,
     widthSize: WindowWidthSizeClass,
     navController: NavHostController,
     mainViewModel: MainViewModel,
@@ -99,7 +99,7 @@ fun ChooseLevel(
 fun Pentagon(
     modifier: Modifier = Modifier,
     pentagonSize: Dp,
-    level: Levels,
+    level: Level,
     index: Int,
     colors: List<Color>,
     navController: NavHostController,

@@ -1,13 +1,25 @@
 package com.example.russianquiz.model.database.dao
 
 import androidx.room.Dao
+import androidx.room.Embedded
 import androidx.room.Query
+import androidx.room.Relation
+import androidx.room.Transaction
 import androidx.room.Upsert
+import com.example.russianquiz.model.database.entity.CompletedLevelsEntity
 import com.example.russianquiz.model.database.entity.SettingsDataEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface SettingsDataDao {
+    // completed_level
+    @Query("UPDATE completed_level SET completed = completed + 1 WHERE id = :index")
+    suspend fun saveCompletedLevels(index: Int)
+
+    @Query("SELECT * FROM completed_level")
+    fun getCompletedLevels(): Flow<List<CompletedLevelsEntity>>
+
+    // user_settings
     @Upsert
     suspend fun saveSettings(settings: SettingsDataEntity)
 
@@ -20,6 +32,36 @@ interface SettingsDataDao {
     @Query("UPDATE user_settings SET language_index = :languageIndex WHERE id = 1")
     suspend fun saveSelectedLanguage(languageIndex: Int)
 
-    @Query("SELECT * FROM user_settings WHERE id = 1 LIMIT 1")
-    fun getSettings(): Flow<SettingsDataEntity?>
+    @Transaction
+    @Query("SELECT * FROM user_settings WHERE id = 1")
+    fun getSettings() : Flow<SettingsDB>
+
+//    @Query(
+//        """
+//            SELECT us.language_index, us.solved_questions, us.right_answers, cl.*
+//            FROM user_settings AS us
+//            CROSS JOIN completed_level AS cl
+//        """
+//    )
+//    fun getSettings() : Flow<SettingsDB>
+
+//    @Query("SELECT * FROM user_settings WHERE id = 1 LIMIT 1")
+//    fun getSettings(): Flow<SettingsDataEntity?>
 }
+
+data class SettingsDB(
+    @Embedded val settings: SettingsDataEntity,
+    @Relation(
+        parentColumn = "id",
+        entityColumn = "user_id",
+    )
+    val completedLevels: List<CompletedLevelsEntity>
+)
+
+//data class SettingsDB(
+//    @ColumnInfo(name = "language_index") val languageIndex: Int,
+//    @ColumnInfo(name = "solved_questions") val solvedQuestions: Int,
+//    @ColumnInfo(name = "right_answers") val rightAnswers: Int,
+//    val id: Int,
+//    val completed: Int,
+//)

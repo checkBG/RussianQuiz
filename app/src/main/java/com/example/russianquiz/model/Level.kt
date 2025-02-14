@@ -2,7 +2,7 @@ package com.example.russianquiz.model
 
 import androidx.compose.ui.graphics.Color
 
-enum class Levels(
+enum class Level(
     val colors: List<Color>,
     val quizzes: List<Quiz>,
 ) {

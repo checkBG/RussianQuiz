@@ -6,11 +6,11 @@ data class Profile(
     val chosenPhotoProfile: Bitmap? = null,
     val solvedQuestions: Int = 0,
     val rightAnswers: Int = 0,
-    val completedLevels: MutableMap<Levels, Int> = Levels.entries
+    val completedLevels: MutableMap<Level, Int> = Level.entries
         .associateWith { 0 }
         .toMutableMap(),
 ) {
-    fun completedLevel(level: Levels) {
+    fun completedLevel(level: Level) {
         completedLevels[level] = completedLevels[level]?.plus(1) ?: 0
     }
 }

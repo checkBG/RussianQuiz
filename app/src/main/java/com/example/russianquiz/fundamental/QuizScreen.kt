@@ -83,7 +83,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
 import com.example.russianquiz.R
-import com.example.russianquiz.model.Levels
+import com.example.russianquiz.model.Level
 import com.example.russianquiz.model.MainViewModel
 import com.example.russianquiz.model.QuizData
 import com.example.russianquiz.model.Quizzes
@@ -803,7 +803,7 @@ private fun QuizCardPreview() {
     QuizAppTheme {
         QuizCard(
             quizData = QuizData(
-                chosenLevel = Levels.SIXTH_LEVEL,
+                chosenLevel = Level.SIXTH_LEVEL,
                 quizzes = Quizzes.sixthLevelQuizzes,
                 rightAnswers = 1,
                 solvedQuestions = 3

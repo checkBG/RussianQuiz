@@ -21,15 +21,15 @@ import kotlinx.coroutines.withContext
 class MainViewModel(
     private val dao: SettingsDataDao,
 ) : ViewModel() {
-    val levels = Levels.entries
+    val levels = Level.entries
 
     val settingsData = dao.getSettings()
         .map { settings ->
-            val languageIndex = settings?.languageIndex ?: 0
+            val languageIndex = settings.settings.languageIndex
             val language = getLanguageByIndex(languageIndex) ?: Language.ENGLISH
 
-            val solvedQuestions = settings?.solvedQuestions ?: 0
-            val rightAnswers = settings?.rightAnswers ?: 0
+            val solvedQuestions = settings.settings.solvedQuestions
+            val rightAnswers = settings.settings.rightAnswers
 
             SettingsData(
                 language = language,
@@ -77,7 +77,7 @@ class MainViewModel(
         }
     }
 
-    fun updateCurrentLevel(level: Levels) {
+    fun updateCurrentLevel(level: Level) {
         if (level != quizData.value.chosenLevel) {
             _quizData.update {
                 QuizData(
