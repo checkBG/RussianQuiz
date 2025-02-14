@@ -12,7 +12,7 @@ import java.util.Locale
 
 val LocalAppContext = compositionLocalOf<Context> { error("No context provided") }
 
-enum class Languages(
+enum class Language(
     @StringRes val text: Int,
     @DrawableRes val flagIcon: Int,
     val locale: String

@@ -1,6 +1,6 @@
 package com.example.russianquiz.model
 
 data class SettingsData(
-    val language: Languages = Languages.ENGLISH,
+    val language: Language = Language.ENGLISH,
     val profile: Profile = Profile()
 )

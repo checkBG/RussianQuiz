@@ -26,7 +26,7 @@ class MainViewModel(
     val settingsData = dao.getSettings()
         .map { settings ->
             val languageIndex = settings?.languageIndex ?: 0
-            val language = Languages.entries.getOrNull(languageIndex) ?: Languages.ENGLISH
+            val language = getLanguageByIndex(languageIndex) ?: Language.ENGLISH
 
             val solvedQuestions = settings?.solvedQuestions ?: 0
             val rightAnswers = settings?.rightAnswers ?: 0
@@ -47,6 +47,10 @@ class MainViewModel(
     val quizData: StateFlow<QuizData>
         get() = _quizData.asStateFlow()
 
+    private fun getLanguageByIndex(index: Int) : Language? {
+        return Language.entries.getOrNull(index)
+    }
+
     fun getFavouriteLevel(): Int {
         var maxCompleted = 0
         var maxLevelCompleted = 0
@@ -65,7 +69,7 @@ class MainViewModel(
         }
     }
 
-    fun changeLanguage(language: Languages) {
+    fun changeLanguage(language: Language) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
                 dao.saveSelectedLanguage(languageIndex = language.ordinal)

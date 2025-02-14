@@ -46,7 +46,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.russianquiz.R
-import com.example.russianquiz.model.Languages
+import com.example.russianquiz.model.Language
 import com.example.russianquiz.model.MainViewModel
 import com.example.russianquiz.model.localizedString
 
@@ -141,7 +141,7 @@ fun SelectLanguage(
                 modifier = Modifier
                     .fillMaxWidth()
             ) {
-                Languages.entries.forEach { language ->
+                Language.entries.forEach { language ->
                     LanguageOption(
                         language = language,
                         currentLanguage = settingsData.language.locale,
@@ -160,7 +160,7 @@ fun SelectLanguage(
 @Composable
 fun LanguageOption(
     modifier: Modifier = Modifier,
-    language: Languages,
+    language: Language,
     currentLanguage: String,
     countInRow: Int,
     onChoosingClick: () -> Unit,
