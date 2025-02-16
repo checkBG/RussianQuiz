@@ -26,8 +26,8 @@
     <string name="extra_subject">Teile, was du erreicht hast:</string>
     <string name="choose_a_photo">ein Foto auswählen</string>
     <string name="selected_photo">das ausgewählte Foto</string>
-    <string name="total_solved_questions">Insgesamt gelöste Probleme</string>
-    <string name="solved_correct">Von diesen ist es wahr, dass</string>
+    <string name="total_solved_questions">gelöste Probleme</string>
+    <string name="solved_correct">von ihnen treu</string>
     <string name="correct_rate">Genauigkeitsgrad</string>
     <string name="favorite_level">Bevorzugtes Niveau</string>
 </resources>

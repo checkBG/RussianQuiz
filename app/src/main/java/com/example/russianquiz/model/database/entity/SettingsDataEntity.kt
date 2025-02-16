@@ -12,4 +12,5 @@ data class SettingsDataEntity(
     @ColumnInfo(name = "language_index") val languageIndex: Int = 0, // 0 is English by default
     @ColumnInfo(name = "solved_questions") val solvedQuestions: Int = 0, // 0 is a default value
     @ColumnInfo(name = "right_answers") val rightAnswers: Int = 0, // 0 is a default value
+    val avatar: ByteArray? = null, // null is default
 )

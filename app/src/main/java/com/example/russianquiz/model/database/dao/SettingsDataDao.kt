@@ -20,33 +20,24 @@ interface SettingsDataDao {
     fun getCompletedLevels(): Flow<List<CompletedLevelsEntity>>
 
     // user_settings
+    @Query("UPDATE user_settings SET avatar = :avatar WHERE id = :userId")
+    suspend fun updateChosenAvatar(userId: Int = 1, avatar: ByteArray?)
+
     @Upsert
     suspend fun saveSettings(settings: SettingsDataEntity)
 
-    @Query("UPDATE user_settings SET right_answers = right_answers + 1 WHERE id = 1")
-    suspend fun updateRightAnswers()
+    @Query("UPDATE user_settings SET right_answers = right_answers + 1 WHERE id = :userId")
+    suspend fun updateRightAnswers(userId: Int = 1)
 
-    @Query("UPDATE user_settings SET solved_questions = solved_questions + 1 WHERE id = 1")
-    suspend fun updateSolvedQuestions()
+    @Query("UPDATE user_settings SET solved_questions = solved_questions + 1 WHERE id = :userId")
+    suspend fun updateSolvedQuestions(userId: Int = 1)
 
     @Query("UPDATE user_settings SET language_index = :languageIndex WHERE id = 1")
     suspend fun saveSelectedLanguage(languageIndex: Int)
 
     @Transaction
-    @Query("SELECT * FROM user_settings WHERE id = 1")
-    fun getSettings() : Flow<SettingsDB>
-
-//    @Query(
-//        """
-//            SELECT us.language_index, us.solved_questions, us.right_answers, cl.*
-//            FROM user_settings AS us
-//            CROSS JOIN completed_level AS cl
-//        """
-//    )
-//    fun getSettings() : Flow<SettingsDB>
-
-//    @Query("SELECT * FROM user_settings WHERE id = 1 LIMIT 1")
-//    fun getSettings(): Flow<SettingsDataEntity?>
+    @Query("SELECT * FROM user_settings WHERE id = :userId")
+    fun getSettings(userId: Int = 1) : Flow<SettingsDB>
 }
 
 data class SettingsDB(
@@ -57,11 +48,3 @@ data class SettingsDB(
     )
     val completedLevels: List<CompletedLevelsEntity>
 )
-
-//data class SettingsDB(
-//    @ColumnInfo(name = "language_index") val languageIndex: Int,
-//    @ColumnInfo(name = "solved_questions") val solvedQuestions: Int,
-//    @ColumnInfo(name = "right_answers") val rightAnswers: Int,
-//    val id: Int,
-//    val completed: Int,
-//)

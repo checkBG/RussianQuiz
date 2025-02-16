@@ -26,8 +26,8 @@
     <string name="extra_subject">Поделись достигнутым:</string>
     <string name="choose_a_photo">Выберите фото</string>
     <string name="selected_photo">Выбранное фото</string>
-    <string name="total_solved_questions">Всего решено вопросов</string>
+    <string name="total_solved_questions">Решено вопросов</string>
     <string name="solved_correct">Из них верно</string>
-    <string name="correct_rate">Процент правильных ответов</string>
+    <string name="correct_rate">Процентовка</string>
     <string name="favorite_level">Любимый уровень</string>
 </resources>

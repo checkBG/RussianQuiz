@@ -7,7 +7,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import com.example.russianquiz.bars.NavigationScreen
 import com.example.russianquiz.model.database.dao.SettingsDataDao
-import kotlinx.coroutines.Dispatchers
+import com.example.russianquiz.utils.BitmapConverter
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +16,6 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class MainViewModel(
     private val dao: SettingsDataDao,
@@ -28,14 +27,18 @@ class MainViewModel(
             val languageIndex = settings.settings.languageIndex
             val language = getLanguageByIndex(languageIndex) ?: Language.ENGLISH
 
+            val chosenPhotoProfile = BitmapConverter().toBitmap(settings.settings.avatar)
             val solvedQuestions = settings.settings.solvedQuestions
             val rightAnswers = settings.settings.rightAnswers
+            val completedLevels = settings.completedLevels
 
             SettingsData(
                 language = language,
                 profile = Profile(
+                    chosenPhotoProfile = chosenPhotoProfile,
                     solvedQuestions = solvedQuestions,
                     rightAnswers = rightAnswers,
+                    completedLevels = completedLevels
                 )
             )
         }
@@ -47,33 +50,31 @@ class MainViewModel(
     val quizData: StateFlow<QuizData>
         get() = _quizData.asStateFlow()
 
-    private fun getLanguageByIndex(index: Int) : Language? {
+    private fun getLanguageByIndex(index: Int): Language? {
         return Language.entries.getOrNull(index)
     }
 
     fun getFavouriteLevel(): Int {
         var maxCompleted = 0
         var maxLevelCompleted = 0
-        settingsData.value.profile.completedLevels.forEach { (level, count) ->
-            if (count >= maxCompleted) {
-                maxCompleted = count
-                maxLevelCompleted = level.ordinal + 1
+        settingsData.value.profile.completedLevels.forEach {
+            if (it.completed >= maxCompleted) {
+                maxCompleted = it.completed
+                maxLevelCompleted = it.id + 1
             }
         }
         return maxLevelCompleted
     }
 
     fun changeChosenPhoto(bitmap: Bitmap) {
-        _settingsData.update {
-            it.copy(profile = it.profile.copy(chosenPhotoProfile = bitmap))
+        viewModelScope.launch {
+            dao.updateChosenAvatar(avatar = BitmapConverter().fromBitmap(bitmap))
         }
     }
 
     fun changeLanguage(language: Language) {
         viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                dao.saveSelectedLanguage(languageIndex = language.ordinal)
-            }
+            dao.saveSelectedLanguage(languageIndex = language.ordinal)
         }
     }
 
@@ -121,7 +122,9 @@ class MainViewModel(
                 launchSingleTop = true
             }
             if ((quizData.value.solvedQuestions + 1) == quizData.value.quizzes.size && (!isFinished || quizData.value.chosenOption == 0)) {
-                settingsData.value.profile.completedLevel(quizData.value.chosenLevel)
+                viewModelScope.launch {
+                    dao.saveCompletedLevels(quizData.value.chosenLevel.ordinal)
+                }
             }
             return
         }

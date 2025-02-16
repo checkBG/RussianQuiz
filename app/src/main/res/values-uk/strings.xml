@@ -26,8 +26,8 @@
     <string name="extra_subject">Поділися досягнутим:</string>
     <string name="choose_a_photo">вибрати фотографію</string>
     <string name="selected_photo">вибрана фотографія</string>
-    <string name="total_solved_questions">Усього вирішено питань</string>
+    <string name="total_solved_questions">Вирішено питань</string>
     <string name="solved_correct">З них правильно</string>
-    <string name="correct_rate">Відсоток правильних відповідей</string>
+    <string name="correct_rate">Процентування</string>
     <string name="favorite_level">Улюблений рівень</string>
 </resources>

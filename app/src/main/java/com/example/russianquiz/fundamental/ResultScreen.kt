@@ -28,6 +28,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -65,6 +66,7 @@ import com.example.russianquiz.utils.toTwoDigitNumber
 fun ResultScreen(
     modifier: Modifier = Modifier,
     navController: NavHostController,
+    widthSize: WindowWidthSizeClass,
     mainViewModel: MainViewModel,
 ) {
     val quizData by mainViewModel.quizData.collectAsState()
@@ -81,8 +83,16 @@ fun ResultScreen(
         percentage
     )
 
+    val cardResultWidth = when(widthSize) {
+        WindowWidthSizeClass.Compact -> 0.95f
+        WindowWidthSizeClass.Medium -> 0.8f
+        WindowWidthSizeClass.Expanded -> 0.7f
+        else -> 0.95f
+    }
+
     Box(
-        modifier = modifier
+        modifier = modifier,
+        contentAlignment = Alignment.Center
     ) {
         Column(
             verticalArrangement = Arrangement.Center,
@@ -96,13 +106,17 @@ fun ResultScreen(
             ResultsCard(
                 quizData = quizData,
                 solvedQuestions = solvedQuestions,
-                percentage = percentage
+                percentage = percentage,
+                modifier = Modifier
+                    .fillMaxWidth(cardResultWidth)
             )
             Spacer(modifier = Modifier.weight(1f))
 
             OtherFunctionButtons(
                 buttonSize = 68.dp,
-                modifier = Modifier.padding(start = 40.dp, end = 40.dp),
+                modifier = Modifier
+                    .fillMaxWidth(cardResultWidth)
+                    .padding(start = 40.dp, end = 40.dp),
                 onPlayAgainClick = {
                     val chosenLevel = quizData.chosenLevel
                     mainViewModel.resetResult()
@@ -118,7 +132,7 @@ fun ResultScreen(
                 onHomeClick = {
                     mainViewModel.resetResult()
                     navController.navigate(NavigationScreen.ChooseScreen.route)
-                }
+                },
             )
             Spacer(modifier = Modifier.weight(1f))
         }
@@ -221,7 +235,7 @@ fun ResultsCard(
             .clip(shape = RoundedCornerShape(15)),
         colors = CardDefaults.cardColors().copy(containerColor = Color.White),
     ) {
-        Row(modifier = modifier.padding(20.dp)) {
+        Row(modifier = Modifier.padding(20.dp)) {
             Column(modifier = Modifier.weight(1f)) {
                 ResultElement(
                     value = "$percentage%",
