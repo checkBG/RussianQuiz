@@ -31,9 +31,11 @@ class MainViewModel(
             val solvedQuestions = settings.settings.solvedQuestions
             val rightAnswers = settings.settings.rightAnswers
             val completedLevels = settings.completedLevels
+            val quizCount = settings.settings.quizCount
 
             SettingsData(
                 language = language,
+                quizCount = quizCount,
                 profile = Profile(
                     chosenPhotoProfile = chosenPhotoProfile,
                     solvedQuestions = solvedQuestions,
@@ -44,14 +46,83 @@ class MainViewModel(
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), SettingsData())
 
-    private val _settingsData = MutableStateFlow(settingsData.value)
-
-    private val _quizData = MutableStateFlow(QuizData.initQuizData())
+    private val _quizData =
+        MutableStateFlow(QuizData.initQuizData(count = settingsData.value.quizCount))
     val quizData: StateFlow<QuizData>
         get() = _quizData.asStateFlow()
 
-    private fun getLanguageByIndex(index: Int): Language? {
-        return Language.entries.getOrNull(index)
+    private val _uiState = MutableStateFlow(UIState())
+    val uiState: StateFlow<UIState>
+        get() = _uiState.asStateFlow()
+
+    fun onUserAction(action: UserAction) {
+        when (action) {
+            UserAction.ShowDialog -> {
+                _uiState.update {
+                    it.copy(showAlertDialog = true)
+                }
+            }
+
+            UserAction.HideDialog -> {
+                _uiState.update {
+                    it.copy(showAlertDialog = false)
+                }
+            }
+
+            UserAction.ShowExplanation -> {
+                _uiState.update {
+                    it.copy(showExplanation = true)
+                }
+            }
+
+            UserAction.HideExplanation -> {
+                _uiState.update {
+                    it.copy(showExplanation = false)
+                }
+            }
+
+            is UserAction.SelectLevel -> {
+                updateCurrentLevel(level = action.level)
+                action.navController.navigate(NavigationScreen.QuizScreen.route)
+            }
+
+            is UserAction.SelectOption -> {
+                onChoosingOption(
+                    answerOption = action.answerOption,
+                    chosenOption = action.answerOption,
+                )
+            }
+
+            is UserAction.PressNextButton -> {
+                onNextQuestionClick(
+                    navController = action.navController,
+                    isFinished = action.isFinished
+                )
+            }
+
+            is UserAction.ChangeLanguage -> {
+                changeLanguage(language = action.language)
+            }
+
+            is UserAction.PressPlayAgain -> {
+                resetResult()
+                updateCurrentLevel(level = action.chosenLevel)
+                action.navController.navigate(NavigationScreen.QuizScreen.route)
+            }
+
+            is UserAction.ResetResult -> {
+                resetResult()
+                action.navController.navigate(action.route)
+            }
+
+            is UserAction.ChangePhoto -> {
+                changeChosenPhoto(bitmap = action.bitmap)
+            }
+
+            is UserAction.ChangeQuizCount -> {
+                chooseQuizCount(count = action.count)
+            }
+        }
     }
 
     fun getFavouriteLevel(): Int {
@@ -60,39 +131,55 @@ class MainViewModel(
         settingsData.value.profile.completedLevels.forEach {
             if (it.completed >= maxCompleted) {
                 maxCompleted = it.completed
-                maxLevelCompleted = it.id + 1
+                maxLevelCompleted = it.id + 1 // increasing 1 because we have a level not its index
             }
         }
         return maxLevelCompleted
     }
 
-    fun changeChosenPhoto(bitmap: Bitmap) {
+    private fun getLanguageByIndex(index: Int): Language? {
+        return Language.entries.getOrNull(index)
+    }
+
+    private fun chooseQuizCount(count: Int) {
+        viewModelScope.launch {
+            dao.updateQuizCount(quizCount = count)
+        }
+        resetResult()
+    }
+
+    private fun changeChosenPhoto(bitmap: Bitmap) {
         viewModelScope.launch {
             dao.updateChosenAvatar(avatar = BitmapConverter().fromBitmap(bitmap))
         }
     }
 
-    fun changeLanguage(language: Language) {
-        viewModelScope.launch {
-            dao.saveSelectedLanguage(languageIndex = language.ordinal)
-        }
-    }
-
-    fun updateCurrentLevel(level: Level) {
+    private fun updateCurrentLevel(level: Level) {
         if (level != quizData.value.chosenLevel) {
             _quizData.update {
                 QuizData(
                     chosenLevel = level,
-                    quizzes = level.quizzes.shuffled().take(10),
+                    quizzes = level.quizzes.shuffled()
+                        .take(settingsData.value.quizCount), // take first $quizCount (10 by default) quizzes
                 )
             }
         }
     }
 
-    fun onChoosingOption(
-        isRight: Boolean,
+    private fun changeLanguage(language: Language) {
+        viewModelScope.launch {
+            dao.saveSelectedLanguage(languageIndex = language.ordinal)
+        }
+    }
+
+    private fun onChoosingOption(
+        answerOption: Int?,
         chosenOption: Int,
     ) {
+        val currentQuiz = quizData.value.quizzes[quizData.value.solvedQuestions]
+        val rightAnswer = currentQuiz.rightAnswer
+        val isRight = answerOption == rightAnswer
+
         _quizData.update { currentSettings ->
             currentSettings.copy(
                 isCompleted = true,
@@ -110,7 +197,7 @@ class MainViewModel(
         }
     }
 
-    fun onNextQuestionClick(
+    private fun onNextQuestionClick(
         navController: NavHostController,
         isFinished: Boolean = false,
     ) {
@@ -140,7 +227,7 @@ class MainViewModel(
         }
     }
 
-    fun resetResult() {
-        _quizData.value = QuizData.initQuizData()
+    private fun resetResult() {
+        _quizData.value = QuizData.initQuizData(count = settingsData.value.quizCount)
     }
 }

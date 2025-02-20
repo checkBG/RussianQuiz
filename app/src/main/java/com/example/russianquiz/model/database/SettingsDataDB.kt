@@ -10,7 +10,7 @@ import com.example.russianquiz.utils.BitmapConverter
 
 @Database(
     entities = [SettingsDataEntity::class, CompletedLevelsEntity::class],
-    version = 6,
+    version = 7,
 )
 @TypeConverters(BitmapConverter::class)
 abstract class SettingsDataDB : RoomDatabase() {

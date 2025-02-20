@@ -10,7 +10,8 @@ import androidx.room.PrimaryKey
 data class SettingsDataEntity(
     @PrimaryKey val id: Int = 1, // there is only one possible id
     @ColumnInfo(name = "language_index") val languageIndex: Int = 0, // 0 is English by default
+    @ColumnInfo(name = "quiz_count") val quizCount: Int = 10, // there is 10 by default
     @ColumnInfo(name = "solved_questions") val solvedQuestions: Int = 0, // 0 is a default value
     @ColumnInfo(name = "right_answers") val rightAnswers: Int = 0, // 0 is a default value
-    val avatar: ByteArray? = null, // null is default
+    val avatar: ByteArray? = null, // null is default // but actually that is Bitmap?
 )

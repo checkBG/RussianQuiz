@@ -47,6 +47,7 @@ fun NavGraph(
             QuizScreen(
                 mainViewModel = mainViewModel,
                 widthSize = widthSize,
+                navController = navController,
             )
         }
 

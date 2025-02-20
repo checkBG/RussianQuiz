@@ -9,10 +9,10 @@ data class QuizData(
     val solvedQuestions: Int = 0,
 ) {
     companion object {
-        fun initQuizData(): QuizData {
+        fun initQuizData(count: Int = 10): QuizData {
             return QuizData(
                 chosenLevel = Level.FIRST_LEVEL,
-                quizzes = Level.FIRST_LEVEL.quizzes.shuffled().take(10)
+                quizzes = Level.FIRST_LEVEL.quizzes.shuffled().take(count)
             )
         }
     }

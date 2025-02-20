@@ -1,14 +1,16 @@
 package com.example.russianquiz.fundamental
 
+import androidx.annotation.DrawableRes
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandVertically
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.slideOutVertically
+import androidx.compose.animation.shrinkVertically
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -26,9 +28,12 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Slider
+import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -39,44 +44,120 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.russianquiz.R
 import com.example.russianquiz.model.Language
+import com.example.russianquiz.model.LocalAppContext
 import com.example.russianquiz.model.MainViewModel
+import com.example.russianquiz.model.UserAction
+import com.example.russianquiz.model.database.dao.MockSettingsDataDao
 import com.example.russianquiz.model.localizedString
+import com.example.russianquiz.ui.theme.QuizAppTheme
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun SettingsScreen(
     modifier: Modifier = Modifier,
     mainViewModel: MainViewModel,
     widthSize: WindowWidthSizeClass,
 ) {
+    val settingsData by mainViewModel.settingsData.collectAsState()
+
+    val countLanguagesInRow = when (widthSize) {
+        WindowWidthSizeClass.Compact -> 1
+        WindowWidthSizeClass.Medium -> 2
+        WindowWidthSizeClass.Expanded -> 2
+        else -> 1
+    }
+
+    val sliderWidth = when (widthSize) {
+        WindowWidthSizeClass.Compact -> 0.9f
+        WindowWidthSizeClass.Medium -> 0.7f
+        WindowWidthSizeClass.Expanded -> 0.6f
+        else -> 0.9f
+    }
+
     Column(
         modifier = modifier
             .padding(top = 20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        SelectLanguage(
-            mainViewModel = mainViewModel,
+        Option(
             widthSize = widthSize,
+            textOption = localizedString(R.string.choose_language),
+            optionIcon = settingsData.language.flagIcon,
+            optionElement = {
+                FlowRow(
+                    maxItemsInEachRow = countLanguagesInRow,
+                    horizontalArrangement = Arrangement.SpaceAround,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    Language.entries.forEach { language ->
+                        LanguageOption(
+                            language = language,
+                            currentLanguage = settingsData.language.locale,
+                            onChoosingClick = {
+                                mainViewModel.onUserAction(
+                                    action = UserAction.ChangeLanguage(
+                                        language = language
+                                    )
+                                )
+                            },
+                            countInRow = countLanguagesInRow
+                        )
+                    }
+                }
+            }
+        )
+
+        Spacer(modifier = Modifier.height(10.dp))
+
+        Option(
+            widthSize = widthSize,
+            textOption = localizedString(R.string.count_of_quizzes, settingsData.quizCount),
+            optionIcon = R.drawable.quizzes,
+            optionElement = {
+                Slider(
+                    value = settingsData.quizCount.toFloat(),
+                    onValueChange = {
+                        mainViewModel.onUserAction(
+                            action = UserAction.ChangeQuizCount(
+                                count = it.toInt()
+                            )
+                        )
+                    },
+                    valueRange = 10f..30f,
+                    colors = SliderDefaults.colors(
+                        thumbColor = Color(0xFF03DAC6),
+                        activeTrackColor = Color(0xFF018786),
+                        inactiveTrackColor = Color(0xFFE0E0E0)
+                    ),
+                    modifier = Modifier
+                        .padding(start = 10.dp, end = 10.dp)
+                        .fillMaxWidth(sliderWidth)
+                )
+            },
         )
     }
 }
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun SelectLanguage(
+fun Option(
     modifier: Modifier = Modifier,
-    mainViewModel: MainViewModel,
     widthSize: WindowWidthSizeClass,
+    textOption: String,
+    @DrawableRes optionIcon: Int,
+    optionElement: @Composable () -> Unit,
 ) {
-    val settingsData by mainViewModel.settingsData.collectAsState()
-
     var dropdownMenu by remember { mutableStateOf(false) }
     val rotation by animateFloatAsState(
         targetValue = if (dropdownMenu) 180f else 0f,
@@ -89,13 +170,6 @@ fun SelectLanguage(
         WindowWidthSizeClass.Medium -> 0.8f
         WindowWidthSizeClass.Expanded -> 0.7f
         else -> 1f
-    }
-
-    val countLanguagesInRow = when (widthSize) {
-        WindowWidthSizeClass.Compact -> 1
-        WindowWidthSizeClass.Medium -> 2
-        WindowWidthSizeClass.Expanded -> 2
-        else -> 1
     }
 
     Column(
@@ -114,9 +188,30 @@ fun SelectLanguage(
                     .background(color = Color.White)
                     .padding(10.dp)
             ) {
+                Image(
+                    painter = painterResource(id = optionIcon),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clipToBounds()
+                        .clip(shape = RoundedCornerShape(100))
+                        .border(
+                            3.dp,
+                            brush = Brush.radialGradient(
+                                colorStops = arrayOf(
+                                    0.8f to Color.Transparent,
+                                    1f to Color.Black,
+                                )
+                            ),
+                            shape = RoundedCornerShape(100)
+                        )
+                )
+
+                Spacer(modifier = Modifier.weight(1f))
                 Text(
-                    text = localizedString(R.string.choose_language),
-                    fontSize = 30.sp,
+                    text = textOption,
+                    fontSize = 25.sp,
                     fontFamily = FontFamily.Serif
                 )
                 Spacer(modifier = Modifier.weight(1f))
@@ -131,27 +226,15 @@ fun SelectLanguage(
         }
         AnimatedVisibility(
             visible = dropdownMenu,
-            enter = slideInVertically(initialOffsetY = { -it }) + fadeIn(),
-            exit = slideOutVertically(targetOffsetY = { -it }) + fadeOut()
+            enter = expandVertically(animationSpec = tween(300))
+                    + fadeIn(),
+            exit = shrinkVertically(animationSpec = tween(300))
+                    + fadeOut(),
         ) {
             Spacer(modifier = Modifier.height(10.dp))
-            FlowRow(
-                maxItemsInEachRow = countLanguagesInRow,
-                horizontalArrangement = Arrangement.SpaceAround,
-                modifier = Modifier
-                    .fillMaxWidth()
-            ) {
-                Language.entries.forEach { language ->
-                    LanguageOption(
-                        language = language,
-                        currentLanguage = settingsData.language.locale,
-                        onChoosingClick = {
-                            mainViewModel.changeLanguage(language = language)
-                        },
-                        countInRow = countLanguagesInRow
-                    )
-                }
-            }
+
+            optionElement()
+
             Spacer(modifier = Modifier.height(10.dp))
         }
     }
@@ -189,7 +272,7 @@ fun LanguageOption(
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .size(60.dp)
+                    .size(50.dp)
                     .clipToBounds()
                     .clip(shape = RoundedCornerShape(100))
             )
@@ -199,18 +282,19 @@ fun LanguageOption(
                 fontSize = 30.sp,
                 color = Color.White
             )
-
         }
     }
 }
 
-//@Preview
-//@Composable
-//private fun SettingsScreenPreview() {
-//    QuizAppTheme {
-//        SettingsScreen(
-//            mainViewModel = MainViewModel(),
-//            widthSize = WindowWidthSizeClass.Compact
-//        )
-//    }
-//}
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+private fun SettingsScreenPreview() {
+    CompositionLocalProvider(LocalAppContext provides LocalContext.current) {
+        QuizAppTheme {
+            SettingsScreen(
+                mainViewModel = MainViewModel(MockSettingsDataDao()),
+                widthSize = WindowWidthSizeClass.Compact
+            )
+        }
+    }
+}

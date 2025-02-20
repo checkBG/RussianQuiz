@@ -57,6 +57,7 @@ import com.canhub.cropper.CropImageView
 import com.example.russianquiz.R
 import com.example.russianquiz.model.MainViewModel
 import com.example.russianquiz.model.Profile
+import com.example.russianquiz.model.UserAction
 import com.example.russianquiz.model.localizedString
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -266,7 +267,7 @@ fun SinglePicker(
                             .createSource(context.contentResolver, it)
                         ImageDecoder.decodeBitmap(source)
                     }
-                    mainViewModel.changeChosenPhoto(bitmap = newBitmap)
+                    mainViewModel.onUserAction(action = UserAction.ChangePhoto(bitmap = newBitmap))
                 }
             }
         }

@@ -20,6 +20,9 @@ interface SettingsDataDao {
     fun getCompletedLevels(): Flow<List<CompletedLevelsEntity>>
 
     // user_settings
+    @Query("UPDATE user_settings SET quiz_count = :quizCount WHERE id = :userId")
+    suspend fun updateQuizCount(userId: Int = 1, quizCount: Int)
+
     @Query("UPDATE user_settings SET avatar = :avatar WHERE id = :userId")
     suspend fun updateChosenAvatar(userId: Int = 1, avatar: ByteArray?)
 

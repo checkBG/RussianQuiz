@@ -48,9 +48,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.example.russianquiz.R
-import com.example.russianquiz.bars.NavigationScreen
 import com.example.russianquiz.model.Level
 import com.example.russianquiz.model.MainViewModel
+import com.example.russianquiz.model.UserAction
 import com.example.russianquiz.model.localizedString
 import com.example.russianquiz.utils.toTwoDigitNumber
 
@@ -171,8 +171,12 @@ fun Pentagon(
                     interactionSource = interactionSource,
                     indication = null,
                 ) {
-                    mainViewModel.updateCurrentLevel(level = level)
-                    navController.navigate(NavigationScreen.QuizScreen.route)
+                    mainViewModel.onUserAction(
+                        action = UserAction.SelectLevel(
+                            level = level,
+                            navController = navController
+                        )
+                    )
                 }
         ) {
             drawPath(

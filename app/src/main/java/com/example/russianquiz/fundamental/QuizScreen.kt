@@ -44,6 +44,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -54,6 +55,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -82,11 +84,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
+import androidx.navigation.NavHostController
 import com.example.russianquiz.R
+import com.example.russianquiz.bars.CustomAlertDialog
+import com.example.russianquiz.bars.NavigationScreen
 import com.example.russianquiz.model.Level
+import com.example.russianquiz.model.LocalAppContext
 import com.example.russianquiz.model.MainViewModel
 import com.example.russianquiz.model.QuizData
 import com.example.russianquiz.model.Quizzes
+import com.example.russianquiz.model.UserAction
+import com.example.russianquiz.model.database.dao.MockSettingsDataDao
 import com.example.russianquiz.model.localizedString
 import com.example.russianquiz.ui.theme.QuizAppTheme
 import com.example.russianquiz.utils.createVibration
@@ -96,8 +104,10 @@ import com.example.russianquiz.utils.toTwoDigitNumber
 fun QuizScreen(
     modifier: Modifier = Modifier,
     mainViewModel: MainViewModel,
+    navController: NavHostController,
     widthSize: WindowWidthSizeClass,
 ) {
+    val uiState by mainViewModel.uiState.collectAsState()
     val quizData by mainViewModel.quizData.collectAsState()
     val currentQuiz = quizData.quizzes[quizData.solvedQuestions]
 
@@ -129,6 +139,7 @@ fun QuizScreen(
             item {
                 QuizCard(
                     quizData = quizData,
+                    mainViewModel = mainViewModel,
                     modifier = Modifier.fillMaxWidth(quizCardWidthScale)
                 )
             }
@@ -149,6 +160,31 @@ fun QuizScreen(
                 Spacer(modifier = Modifier.height(10.dp))
             }
         }
+
+        if (uiState.showAlertDialog) {
+            CustomAlertDialog(
+                onDismiss = { mainViewModel.onUserAction(action = UserAction.HideDialog) },
+                onConfirm = {
+                    mainViewModel.onUserAction(action = UserAction.HideDialog)
+                    if (quizData.solvedQuestions == 0 && quizData.chosenOption == 0) {
+                        navController.navigate(NavigationScreen.ChooseScreen.route)
+                    } else {
+                        mainViewModel.onUserAction(
+                            action = UserAction.PressNextButton(
+                                navController = navController,
+                                isFinished = true
+                            )
+                        )
+                    }
+                },
+                title = R.string.finish_quiz,
+                description = if (quizData.solvedQuestions == 0 && quizData.chosenOption == 0) {
+                    R.string.no_progress_finish_quiz_details
+                } else {
+                    R.string.finish_quiz_details
+                },
+            )
+        }
     }
 }
 
@@ -163,15 +199,12 @@ fun AnswerOption(
 ) {
     val isTick = isCompleted && (answerOption == rightAnswer)
     val isRadio = !isCompleted || (answerOption != chosenAnswer)
-    val context = LocalContext.current
+    val context = LocalAppContext.current
 
     ElevatedCard(
         onClick = {
             {
-                mainViewModel.onChoosingOption(
-                    isRight = rightAnswer == answerOption,
-                    chosenOption = answerOption,
-                )
+                mainViewModel.onUserAction(action = UserAction.SelectOption(answerOption = answerOption))
             }.createVibration(context = context)
         },
         enabled = !isCompleted,
@@ -244,6 +277,7 @@ fun AnswerOption(
 @Composable
 fun QuizCard(
     modifier: Modifier = Modifier,
+    mainViewModel: MainViewModel,
     quizData: QuizData,
 ) {
     val currentQuiz = quizData.quizzes[quizData.solvedQuestions]
@@ -318,6 +352,7 @@ fun QuizCard(
             ),
             isCompleted = quizData.isCompleted,
             explanationResId = currentQuiz.explanation,
+            mainViewModel = mainViewModel,
             modifier = Modifier
                 .align(alignment = Alignment.TopCenter)
                 .offset(0.dp, (-20).dp)
@@ -474,18 +509,18 @@ fun Score(
     brushRight: Brush,
     brushLeft: Brush,
     isCompleted: Boolean,
+    mainViewModel: MainViewModel,
     @StringRes explanationResId: Int,
     initialValue: Float = 0f,
     targetValue: Float = 360f,
 ) {
+    val openDialog by mainViewModel.uiState.collectAsState()
     var isScale by remember { mutableStateOf(false) }
     val scale by animateFloatAsState(
         targetValue = if (isScale && isCompleted) 0.94f else 1f,
         label = ""
     )
     val interactionSource = remember { MutableInteractionSource() }
-
-    var openDialog by remember { mutableStateOf(false) }
 
     val lightBulbColor by animateColorAsState(
         targetValue = if (isCompleted) Color(0xFFffc261) else Color.Black,
@@ -559,21 +594,21 @@ fun Score(
                     .clickable(
                         interactionSource = interactionSource,
                         indication = null,
-                        enabled = isCompleted && !openDialog
+                        enabled = isCompleted && !openDialog.showExplanation
                     ) {
-                        openDialog = true
+                        mainViewModel.onUserAction(action = UserAction.ShowExplanation)
                     }
             )
         }
 
         AnimatedVisibility(
-            visible = openDialog,
+            visible = openDialog.showExplanation,
             exit = ExitTransition.None,
         ) {
             Spacer(modifier = Modifier.height(10.dp))
 
             PopupWindowDialog(
-                onDismissRequest = { openDialog = false },
+                onDismissRequest = { mainViewModel.onUserAction(action = UserAction.HideExplanation) },
                 explanationResId = explanationResId,
                 modifier = Modifier
             )
@@ -653,45 +688,64 @@ fun PopupWindowDialog(
     @StringRes explanationResId: Int,
 ) {
     Box(
-        modifier = modifier
-            .fillMaxSize()
+        modifier = modifier.fillMaxSize(),
+        contentAlignment = Alignment.TopCenter
     ) {
         Popup(
             alignment = Alignment.TopCenter,
             onDismissRequest = onDismissRequest,
-            properties = PopupProperties(),
+            properties = PopupProperties()
         ) {
             Box(
                 modifier = Modifier
-                    .padding(15.dp)
-                    .clip(shape = RoundedCornerShape(20))
+                    .padding(10.dp)
+                    .shadow(12.dp, RoundedCornerShape(20.dp))
+                    .clip(RoundedCornerShape(20.dp))
                     .border(
-                        width = 3.dp,
-                        color = Color(0xFFFFC261),
-                        shape = RoundedCornerShape(20)
+                        width = 2.dp,
+                        brush = Brush.horizontalGradient(
+                            colors = listOf(Color(0xFF7F00FF), Color(0xFF00BFFF))
+                        ),
+                        shape = RoundedCornerShape(20.dp)
                     )
-                    .background(color = Color(0xE52E8B57))
-                    .padding(12.dp)
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(Color(0xFF292B3A), Color(0xEC2A2A2A))
+                        )
+                    )
+                    .padding(18.dp)
             ) {
-                Text(
-                    text = localizedString(id = explanationResId),
-                    color = Color(0xFFFFFFFF),
-                    textAlign = TextAlign.Justify,
-                    modifier = Modifier
-                )
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    AnimatedVisibility(visible = true) {
+                        Text(
+                            text = localizedString(id = explanationResId),
+                            color = Color.White,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.padding(horizontal = 12.dp)
+                        )
+                    }
+                }
             }
         }
     }
 }
 
+
 @Preview(showBackground = true)
 @Composable
 private fun PopupDialogPreview() {
-    QuizAppTheme {
-        PopupWindowDialog(
-            onDismissRequest = { },
-            explanationResId = R.string.explanation_tenses_5
-        )
+    CompositionLocalProvider(value = LocalAppContext provides LocalContext.current) {
+        QuizAppTheme {
+            PopupWindowDialog(
+                onDismissRequest = { },
+                explanationResId = R.string.explanation_tenses_5
+            )
+        }
     }
 }
 
@@ -728,86 +782,98 @@ private fun CrossPreview() {
     }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//private fun AnswerOptionNeutralPreview() {
-//    val quiz = Quizzes.firstLevelQuizzes[0]
-//    QuizAppTheme {
-//        AnswerOption(
-//            mainViewModel = MainViewModel(),
-//            chosenAnswer = R.string.answer_grammar_1_1,
-//            answerOption = R.string.answer_grammar_1_2,
-//            rightAnswer = quiz.rightAnswer,
-//            isCompleted = true,
-//        )
-//    }
-//}
-//
-//@Preview(showBackground = true)
-//@Composable
-//private fun AnswerOptionWrongPreview() {
-//    val quiz = Quizzes.firstLevelQuizzes[0]
-//    QuizAppTheme {
-//        AnswerOption(
-//            mainViewModel = MainViewModel(),
-//            chosenAnswer = R.string.answer_grammar_1_1,
-//            answerOption = R.string.answer_grammar_1_1,
-//            rightAnswer = quiz.rightAnswer,
-//            isCompleted = true,
-//        )
-//    }
-//}
-//
-//@Preview(showBackground = true)
-//@Composable
-//private fun AnswerOptionRightPreview() {
-//    val quiz = Quizzes.firstLevelQuizzes[0]
-//    QuizAppTheme {
-//        AnswerOption(
-//            mainViewModel = MainViewModel(),
-//            chosenAnswer = R.string.answer_grammar_1_1,
-//            answerOption = quiz.rightAnswer,
-//            rightAnswer = quiz.rightAnswer,
-//            isCompleted = true,
-//        )
-//    }
-//}
+@Preview(showBackground = true)
+@Composable
+private fun AnswerOptionNeutralPreview() {
+    val quiz = Quizzes.firstLevelQuizzes[0]
+    CompositionLocalProvider(value = LocalAppContext provides LocalContext.current) {
+        QuizAppTheme {
+            AnswerOption(
+                mainViewModel = MainViewModel(MockSettingsDataDao()),
+                chosenAnswer = R.string.answer_grammar_1_1,
+                answerOption = R.string.answer_grammar_1_2,
+                rightAnswer = quiz.rightAnswer,
+                isCompleted = true,
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun AnswerOptionWrongPreview() {
+    val quiz = Quizzes.firstLevelQuizzes[0]
+    CompositionLocalProvider(value = LocalAppContext provides LocalContext.current) {
+        QuizAppTheme {
+            AnswerOption(
+                mainViewModel = MainViewModel(MockSettingsDataDao()),
+                chosenAnswer = R.string.answer_grammar_1_1,
+                answerOption = R.string.answer_grammar_1_1,
+                rightAnswer = quiz.rightAnswer,
+                isCompleted = true,
+            )
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun AnswerOptionRightPreview() {
+    val quiz = Quizzes.firstLevelQuizzes[0]
+    CompositionLocalProvider(value = LocalAppContext provides LocalContext.current) {
+        QuizAppTheme {
+            AnswerOption(
+                mainViewModel = MainViewModel(MockSettingsDataDao()),
+                chosenAnswer = R.string.answer_grammar_1_1,
+                answerOption = quiz.rightAnswer,
+                rightAnswer = quiz.rightAnswer,
+                isCompleted = true,
+            )
+        }
+    }
+}
 
 @Preview(showBackground = true)
 @Composable
 private fun ScorePreview() {
-    QuizAppTheme {
-        Score(
-            modifier = Modifier.size(80.dp),
-            brushRight = Brush.linearGradient(
-                listOf(
-                    Color(0xFFFF9900),
-                    Color(0xFF00FF99)
-                )
-            ),
-            brushLeft = Brush.linearGradient(
-                listOf(
-                    Color(0xFF87CEFA),
-                    Color(0xFFB0E0E6),
-                )
-            ),
-            isCompleted = false,
-            explanationResId = R.string.explanation_tenses_5
-        )
+    CompositionLocalProvider(value = LocalAppContext provides LocalContext.current) {
+        QuizAppTheme {
+            Score(
+                modifier = Modifier.size(80.dp),
+                brushRight = Brush.linearGradient(
+                    listOf(
+                        Color(0xFFFF9900),
+                        Color(0xFF00FF99)
+                    )
+                ),
+                brushLeft = Brush.linearGradient(
+                    listOf(
+                        Color(0xFF87CEFA),
+                        Color(0xFFB0E0E6),
+                    )
+                ),
+                isCompleted = false,
+                mainViewModel = MainViewModel(MockSettingsDataDao()),
+                explanationResId = R.string.explanation_tenses_5
+            )
+        }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 private fun QuizCardPreview() {
-    QuizAppTheme {
-        QuizCard(
-            quizData = QuizData(
-                chosenLevel = Level.SIXTH_LEVEL,
-                quizzes = Quizzes.sixthLevelQuizzes,
-                rightAnswers = 1,
-                solvedQuestions = 3
-            ),
-        )
+    CompositionLocalProvider(value = LocalAppContext provides LocalContext.current) {
+        QuizAppTheme {
+            QuizCard(
+                quizData = QuizData(
+                    chosenLevel = Level.SIXTH_LEVEL,
+                    quizzes = Quizzes.sixthLevelQuizzes,
+                    rightAnswers = 1,
+                    solvedQuestions = 3
+                ),
+                mainViewModel = MainViewModel(MockSettingsDataDao())
+            )
+        }
     }
 }

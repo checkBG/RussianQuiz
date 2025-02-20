@@ -74,8 +74,18 @@ val MIGRATION_4_5 = object : Migration(4, 5) {
 
 val MIGRATION_5_6 = object : Migration(5, 6) {
     override fun migrate(db: SupportSQLiteDatabase) {
-        Log.d("Migration", "Applying migration from version 4 to 5")
+        Log.d("Migration", "Applying migration from version 5 to 6")
         db.execSQL("ALTER TABLE user_settings ADD COLUMN avatar BLOB")
+
+        Log.d("Migration", "Migration applied successfully.")
+    }
+}
+
+val MIGRATION_6_7 = object : Migration(6, 7) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        Log.d("Migration", "Applying migration from version 6 to 7")
+
+        db.execSQL("ALTER TABLE user_settings ADD COLUMN quiz_count INTEGER NOT NULL DEFAULT 10")
 
         Log.d("Migration", "Migration applied successfully.")
     }

@@ -33,6 +33,7 @@ import com.example.russianquiz.bars.NavGraph
 import com.example.russianquiz.bars.NavigationScreen
 import com.example.russianquiz.fundamental.Background
 import com.example.russianquiz.model.MainViewModel
+import com.example.russianquiz.model.UserAction
 import com.example.russianquiz.model.localizedString
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
@@ -51,14 +52,12 @@ fun MainScreen(
         floatingActionButton = {
             AnimatedVisibility(
                 visible = (currentScreen?.route == NavigationScreen.QuizScreen.route) && quizData.isCompleted,
-                enter = slideInVertically (initialOffsetY = { it }) + fadeIn(),
+                enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
                 exit = slideOutHorizontally(targetOffsetX = { it }) + fadeOut(),
             ) {
                 MediumFloatingActionButton(
                     onClick = {
-                        mainViewModel.onNextQuestionClick(
-                            navController = navController,
-                        )
+                        mainViewModel.onUserAction(action = UserAction.PressNextButton(navController = navController))
                     },
                     containerColor = Color(0xFF9400d3),
                     contentColor = Color.White,

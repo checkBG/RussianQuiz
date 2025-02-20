@@ -58,6 +58,7 @@ import com.example.russianquiz.R
 import com.example.russianquiz.bars.NavigationScreen
 import com.example.russianquiz.model.MainViewModel
 import com.example.russianquiz.model.QuizData
+import com.example.russianquiz.model.UserAction
 import com.example.russianquiz.model.localizedString
 import com.example.russianquiz.ui.theme.QuizAppTheme
 import com.example.russianquiz.utils.toTwoDigitNumber
@@ -83,7 +84,7 @@ fun ResultScreen(
         percentage
     )
 
-    val cardResultWidth = when(widthSize) {
+    val cardResultWidth = when (widthSize) {
         WindowWidthSizeClass.Compact -> 0.95f
         WindowWidthSizeClass.Medium -> 0.8f
         WindowWidthSizeClass.Expanded -> 0.7f
@@ -119,9 +120,12 @@ fun ResultScreen(
                     .padding(start = 40.dp, end = 40.dp),
                 onPlayAgainClick = {
                     val chosenLevel = quizData.chosenLevel
-                    mainViewModel.resetResult()
-                    mainViewModel.updateCurrentLevel(level = chosenLevel)
-                    navController.navigate(NavigationScreen.QuizScreen.route)
+                    mainViewModel.onUserAction(
+                        action = UserAction.PressPlayAgain(
+                            chosenLevel = chosenLevel,
+                            navController = navController
+                        )
+                    )
                 },
                 onShareScoreClick = {
                     shareQuizData(
@@ -130,8 +134,12 @@ fun ResultScreen(
                     )
                 },
                 onHomeClick = {
-                    mainViewModel.resetResult()
-                    navController.navigate(NavigationScreen.ChooseScreen.route)
+                    mainViewModel.onUserAction(
+                        action = UserAction.ResetResult(
+                            navController = navController,
+                            route = NavigationScreen.ChooseScreen.route
+                        )
+                    )
                 },
             )
             Spacer(modifier = Modifier.weight(1f))

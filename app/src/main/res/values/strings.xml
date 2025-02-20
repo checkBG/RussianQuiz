@@ -4,7 +4,7 @@
     <string name="ru" translatable="false">Русский</string>
     <string name="uk" translatable="false">Українська</string>
     <string name="de" translatable="false">Deutsch</string>
-    <string name="choose_language">Choose a language</string>
+    <string name="choose_language">Language</string>
     <string name="navigate_up">Navigate up</string>
     <string name="settings">Settings</string>
     <string name="profile">Profile</string>
@@ -471,4 +471,5 @@
     <string name="answer_tenses_5_8" translatable="false">The second and the sixth sentences are correct</string>
     <string name="answer_tenses_5_9" translatable="false">The third and the fifth sentences are correct</string>
     <string name="explanation_tenses_5" translatable="false">The Past Perfect tense is used in this case. Therefore, we need to use \"had\" if there is the Past Simple one.</string>
+    <string name="count_of_quizzes">Quizzes (%s)</string>
 </resources>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="choose_language">Sprache auswählen</string>
+    <string name="choose_language">Sprache (Language)</string>
     <string name="navigate_up">Zurück navigieren</string>
     <string name="settings">Einstellungen</string>
     <string name="profile">Profil</string>
@@ -30,4 +30,5 @@
     <string name="solved_correct">von ihnen treu</string>
     <string name="correct_rate">Genauigkeitsgrad</string>
     <string name="favorite_level">Bevorzugtes Niveau</string>
+    <string name="count_of_quizzes">Quizze (%s)</string>
 </resources>
