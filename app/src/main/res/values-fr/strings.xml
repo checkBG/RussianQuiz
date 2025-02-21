@@ -1,0 +1,34 @@
+<resources>
+    <string name="navigate_up">Retour</string>
+    <string name="settings">Paramètres</string>
+    <string name="profile">Profil</string>
+    <string name="question">Question</string>
+    <string name="result_screen">Résultats</string>
+    <string name="continue_string">Continuer</string>
+    <string name="level">NIVEAU</string>
+    <string name="right_answer">Bonne réponse. Vous avez répondu correctement</string>
+    <string name="wrong_answer">Mauvaise réponse. Vous avez répondu incorrectement</string>
+    <string name="possible_option">Option possible</string>
+    <string name="cancel">Annuler</string>
+    <string name="finish_quiz">Terminer le quiz?</string>
+    <string name="finish_quiz_details">Voulez-vous vraiment terminer le quiz et voir les résultats? Votre progression sera perdue et ne pourra pas être récupérée</string>
+    <string name="no_progress_finish_quiz_details">Voulez-vous vraiment terminer le quiz et revenir à l\'accueil?</string>
+    <string name="completed_level">Niveau terminé</string>
+    <string name="completion">Complété</string>
+    <string name="correct">Correct</string>
+    <string name="total_question">Total des questions</string>
+    <string name="wrong">Incorrect</string>
+    <string name="play_again">Rejouer</string>
+    <string name="share">Partager</string>
+    <string name="home">Accueil</string>
+    <string name="choose_language">Langue (Language)</string>
+    <string name="result_text">Hé! Regarde mes résultats!\nJ\'ai terminé le niveau %1$d et répondu correctement à %2$d sur %3$d.\nC\'est %4$d%% des questions</string>
+    <string name="extra_subject">Partagez votre score:</string>
+    <string name="choose_a_photo">Choisir une photo</string>
+    <string name="selected_photo">Photo sélectionnée</string>
+    <string name="total_solved_questions">Questions résolues</string>
+    <string name="solved_correct">Dont correctes</string>
+    <string name="correct_rate">Taux de réussite</string>
+    <string name="favorite_level">Niveau préféré</string>
+    <string name="count_of_quizzes">Quiz (%s)</string>
+</resources>

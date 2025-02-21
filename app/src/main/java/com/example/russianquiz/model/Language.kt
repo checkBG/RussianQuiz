@@ -27,6 +27,11 @@ enum class Language(
         flagIcon = R.drawable.de,
         locale = "de"
     ),
+    FRENCH(
+        text = R.string.fr,
+        flagIcon = R.drawable.fr,
+        locale = "fr",
+    ),
     RUSSIAN(
         text = R.string.ru,
         flagIcon = R.drawable.ru,

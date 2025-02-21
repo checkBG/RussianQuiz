@@ -53,6 +53,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -198,6 +199,7 @@ fun CustomAlertDialog(
                 Text(
                     text = localizedString(id = title),
                     fontSize = 20.sp,
+                    letterSpacing = 0.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
                     modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -210,6 +212,7 @@ fun CustomAlertDialog(
                     text = localizedString(id = description),
                     fontSize = 14.sp,
                     color = Color(0xFFCCCCCC),
+                    letterSpacing = 1.5.sp,
                     textAlign = TextAlign.Center,
                     modifier = Modifier.align(Alignment.CenterHorizontally)
                 )
@@ -230,12 +233,15 @@ fun CustomAlertDialog(
                         modifier = Modifier
                             .weight(1f)
                             .height(48.dp),
-                        shape = RoundedCornerShape(12.dp)
+                        shape = RoundedCornerShape(12.dp),
+                        contentPadding = PaddingValues()
                     ) {
                         Text(
                             localizedString(R.string.cancel),
                             color = Color.White,
-                            fontSize = 16.sp
+                            fontSize = 16.sp,
+                            maxLines = 1,
+                            overflow = TextOverflow.Visible,
                         )
                     }
 
@@ -266,7 +272,8 @@ fun CustomAlertDialog(
                                 localizedString(R.string.continue_string),
                                 color = Color.White,
                                 fontSize = 16.sp,
-                                fontWeight = FontWeight.Bold
+                                fontWeight = FontWeight.Bold,
+                                overflow = TextOverflow.Visible
                             )
                         }
                     }

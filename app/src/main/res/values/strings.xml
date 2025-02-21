@@ -4,12 +4,13 @@
     <string name="ru" translatable="false">Русский</string>
     <string name="uk" translatable="false">Українська</string>
     <string name="de" translatable="false">Deutsch</string>
+    <string name="fr" translatable="false">Français</string>
     <string name="choose_language">Language</string>
     <string name="navigate_up">Navigate up</string>
     <string name="settings">Settings</string>
     <string name="profile">Profile</string>
     <string name="question">Question</string>
-    <string name="result_screen">results</string>
+    <string name="result_screen">Results</string>
     <string name="continue_string">Continue</string>
     <string name="level">LEVEL</string>
     <string name="right_answer">It\'s the right answer. You\'ve answered correctly</string>
