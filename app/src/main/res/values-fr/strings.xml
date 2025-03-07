@@ -16,7 +16,7 @@
     <string name="completed_level">Niveau terminé</string>
     <string name="completion">Complété</string>
     <string name="correct">Correct</string>
-    <string name="total_question">Total des questions</string>
+    <string name="total_question">Nb. questions</string>
     <string name="wrong">Incorrect</string>
     <string name="play_again">Rejouer</string>
     <string name="share">Partager</string>

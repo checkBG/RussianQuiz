@@ -36,6 +36,7 @@
     <string name="solved_correct">Correct out of them</string>
     <string name="correct_rate">Correct rate</string>
     <string name="favorite_level">Favorite level</string>
+    <string name="count_of_quizzes">Quizzes (%s)</string>
     <string name="all_correct" translatable="false">All the sentences above are correct</string>
     <string name="all_incorrect" translatable="false">All the sentences above are incorrect</string>
 
@@ -472,5 +473,95 @@
     <string name="answer_tenses_5_8" translatable="false">The second and the sixth sentences are correct</string>
     <string name="answer_tenses_5_9" translatable="false">The third and the fifth sentences are correct</string>
     <string name="explanation_tenses_5" translatable="false">The Past Perfect tense is used in this case. Therefore, we need to use \"had\" if there is the Past Simple one.</string>
-    <string name="count_of_quizzes">Quizzes (%s)</string>
+
+    <string name="question_grammar_20" translatable="false">It ______ raining for a while, but now it\'s raining again.</string>
+    <string name="answer_grammar_20_1" translatable="false">stopped</string>
+    <string name="answer_grammar_20_2" translatable="false">was stopped</string>
+    <string name="answer_grammar_20_3" translatable="false">has stopped</string>
+    <string name="answer_grammar_20_4" translatable="false">is stopped</string>
+    <string name="explanation_grammar_20" translatable="false">It has stopped raining now, so we don\'t need the umbrella. (It is not raining now) It stopped raining for a while, but now it\'s raining again.</string>
+
+    <string name="question_phrasal_verbs_12" translatable="false">PHRASAL VERBS: please, fill in the gaps in the sentence\n\nI met one girl in that park the day before yesterday. She\'s so beautiful and impressive, I swear! And I want to ask her __ grab some coffee, order some food and hang at my place.</string>
+    <string name="answer_phrasal_verbs_12_1" translatable="false">away, out</string>
+    <string name="answer_phrasal_verbs_12_2" translatable="false">in, out</string>
+    <string name="answer_phrasal_verbs_12_3" translatable="false">off, off</string>
+    <string name="answer_phrasal_verbs_12_4" translatable="false">out, off</string>
+    <string name="answer_phrasal_verbs_12_5" translatable="false">in, away</string>
+    <string name="answer_phrasal_verbs_12_6" translatable="false">out, out</string>
+    <string name="explanation_phrasal_verbs_12" translatable="false">To ask out (someone) is a phrasal verb that means \"to invite a person on a date\"; \"to hang out\" is a phrasal verb that means \"to spend time having so much fun\".</string>
+
+    <string name="question_vocabulary_15" translatable="false">VOCABULARY: These pants are too ___! I need a smaller size.</string>
+    <string name="answer_vocabulary_15_1" translatable="false">loose</string>
+    <string name="answer_vocabulary_15_2" translatable="false">lose</string>
+    <string name="explanation_vocabulary_15" translatable="false">Loose /lu.S/ (adjective) - not tightly fastened or pulled tight; not tight fitting. Lose /lu.Z/ (verb).\nLose-lost-lost;</string>
+
+    <string name="question_pronunciation_3" translatable="false">PRONUNCIATION: What\'s the correct transcription of the word yacht?\n\n- Kate, look at that yacht! It\'s so gorgeous!\nOh, yeah! I\'d like to have a yacht, too. I wonder how much it costs.</string>
+    <string name="answer_pronunciation_3_1" translatable="false">UK [jɒ:t]</string>
+    <string name="answer_pronunciation_3_2" translatable="false">US [jɑ:t]</string>
+    <string name="explanation_pronunciation_3" translatable="false">1) UK [jɒ:t]; 2) US: [jɑ:t]</string>
+
+    <string name="question_pronunciation_4" translatable="false">PRONUNCIATION (American English): How would you pronounce the word \'liar\'?\n\n-Jessica, listen! You shouldn\'t trust a word Max says! He\'s such a liar!</string>
+    <string name="answer_pronunciation_4_1" translatable="false">[l\'iar]</string>
+    <string name="answer_pronunciation_4_2" translatable="false">[l\'iar]</string>
+    <string name="answer_pronunciation_4_3" translatable="false">[\'lerer]</string>
+    <string name="answer_pronunciation_4_4" translatable="false">[\'laɪər]</string>
+    <string name="explanation_pronunciation_4" translatable="false">UK-[ˈlaɪə] US-[ˈlaɪər]</string>
+
+    <string name="question_phrasal_verbs_13" translatable="false">PHRASAL VERBS: which preposition is used instead of the gap?\n\n\"Sir, could you drop me right there?\"</string>
+    <string name="answer_phrasal_verbs_13_1" translatable="false">away</string>
+    <string name="answer_phrasal_verbs_13_2" translatable="false">out</string>
+    <string name="answer_phrasal_verbs_13_3" translatable="false">off</string>
+    <string name="explanation_phrasal_verbs_13" translatable="false">To drop off is a phrasal verb that means \"to take someone (or something) to any place by car\".</string>
+
+    <string name="question_verb_forms_2" translatable="false">VERB FORMS: Fill in the gaps:\n\n\"- Michael, you have the tickets, don\'t you?\nYou\'ve ... (get) them from your boss. - Oh! I\'m really sorry! I\'ve ... (forget) them. We\'ll have to go back home.\"</string>
+    <string name="answer_verb_forms_2_1" translatable="false">got, forgot</string>
+    <string name="answer_verb_forms_2_2" translatable="false">gotten, forgot</string>
+    <string name="answer_verb_forms_2_3" translatable="false">got, forgotten</string>
+    <string name="explanation_verb_forms_2" translatable="false">1) get - got - got (UK)/gotten (US); 2) forget - forgot - forgotten; 3) Those actions are connected with the present. We see \"ve\". We use the Present Perfect subject + have/has + 3rd verb form.</string>
+
+    <string name="question_verb_forms_3" translatable="false">VERB FORMS: Choose the wrong sentence, if any:</string>
+    <string name="answer_verb_forms_3_1" translatable="false">I cut the grass every Sunday.</string>
+    <string name="answer_verb_forms_3_2" translatable="false">I cut the grass yesterday.</string>
+    <string name="answer_verb_forms_3_3" translatable="false">Look at this beauty - I\'ve just cut the grass!</string>
+    <string name="explanation_verb_forms_3" translatable="false">cut-cut-cut 1) Present Simple: it\'s a repeated action 2) Past Simple: it happened at a definite time in the past (yesterday) 3) Present Perfect: we see the result of the action (the place is clean).</string>
+
+    <string name="question_grammar_21" translatable="false">GRAMMAR: Are the sentences right?\n\n\"- I read this comics yesterday. I did like it because it was extremely exciting.\"</string>
+    <string name="answer_grammar_21_1" translatable="false">1 - right; 2 - wrong</string>
+    <string name="answer_grammar_21_2" translatable="false">1 - wrong; 2 - right</string>
+    <string name="explanation_grammar_21" translatable="false">1) a comic (singular) - comics (plural): one comic, two comics, three comics; 2) this + singular, these + plural; 3) I did like it = I really liked it; 4) a comic = a comic book (also mainly US).</string>
+
+    <string name="question_idioms_4" translatable="false">IDIOMS: please, continue the sentence\n\n\"It\'s high time...</string>
+    <string name="answer_idioms_4_1" translatable="false">...to go to the grocery store</string>
+    <string name="answer_idioms_4_2" translatable="false">...we go to the grocery store</string>
+    <string name="answer_idioms_4_3" translatable="false">...we went to the grocery store</string>
+    <string name="answer_idioms_4_4" translatable="false">...we would go to the grocery store</string>
+    <string name="explanation_idioms_4" translatable="false">It\'s (high) time\' is an idiom that goes with V2 (the second form of a verb). For example: It\'s high time I started learning English and left for the USA.</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </resources>

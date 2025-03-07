@@ -460,4 +460,70 @@
         <item>@string/answer_tenses_5_9</item>
         <item>@string/all_correct</item>
     </string-array>
+
+    <array name="options_grammar_20">
+        <item>@string/answer_grammar_20_1</item>
+        <item>@string/answer_grammar_20_2</item>
+        <item>@string/answer_grammar_20_3</item>
+        <item>@string/answer_grammar_20_4</item>
+    </array>
+
+    <array name="options_phrasal_verbs_12">
+        <item>@string/answer_phrasal_verbs_12_1</item>
+        <item>@string/answer_phrasal_verbs_12_2</item>
+        <item>@string/answer_phrasal_verbs_12_3</item>
+        <item>@string/answer_phrasal_verbs_12_4</item>
+        <item>@string/answer_phrasal_verbs_12_5</item>
+        <item>@string/answer_phrasal_verbs_12_6</item>
+    </array>
+
+    <array name="options_vocabulary_15">
+        <item>@string/answer_vocabulary_15_1</item>
+        <item>@string/answer_vocabulary_15_2</item>
+    </array>
+
+    <array name="options_pronunciation_3">
+        <item>@string/answer_pronunciation_3_1</item>
+        <item>@string/answer_pronunciation_3_2</item>
+    </array>
+
+    <array name="options_pronunciation_4">
+        <item>@string/answer_pronunciation_4_1</item>
+        <item>@string/answer_pronunciation_4_2</item>
+        <item>@string/answer_pronunciation_4_3</item>
+        <item>@string/answer_pronunciation_4_4</item>
+    </array>
+
+    <array name="options_phrasal_verbs_13">
+        <item>@string/answer_phrasal_verbs_13_1</item>
+        <item>@string/answer_phrasal_verbs_13_2</item>
+        <item>@string/answer_phrasal_verbs_13_3</item>
+    </array>
+
+    <array name="options_verb_forms_2">
+        <item>@string/answer_verb_forms_2_1</item>
+        <item>@string/answer_verb_forms_2_2</item>
+        <item>@string/answer_verb_forms_2_3</item>
+    </array>
+
+    <array name="options_verb_forms_3">
+        <item>@string/answer_verb_forms_3_1</item>
+        <item>@string/answer_verb_forms_3_2</item>
+        <item>@string/answer_verb_forms_3_3</item>
+        <item>@string/all_correct</item>
+    </array>
+
+    <array name="options_grammar_21">
+        <item>@string/answer_grammar_21_1</item>
+        <item>@string/answer_grammar_21_2</item>
+        <item>@string/all_correct</item>
+        <item>@string/all_incorrect</item>
+    </array>
+
+    <array name="options_idioms_4">
+        <item>@string/answer_idioms_4_1</item>
+        <item>@string/answer_idioms_4_2</item>
+        <item>@string/answer_idioms_4_3</item>
+        <item>@string/answer_idioms_4_4</item>
+    </array>
 </resources>

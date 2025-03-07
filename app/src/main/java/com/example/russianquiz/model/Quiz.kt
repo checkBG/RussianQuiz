@@ -14,6 +14,12 @@ data class Quiz(
 object Quizzes {
     val firstLevelQuizzes = listOf(
         Quiz(
+            question = R.string.question_pronunciation_4,
+            options = R.array.options_pronunciation_4,
+            explanation = R.string.explanation_pronunciation_4,
+            rightAnswer = R.string.answer_pronunciation_4_4
+        ),
+        Quiz(
             question = R.string.question_vocabulary_1,
             rightAnswer = R.string.answer_vocabulary_1_3,
             options = R.array.quiz_options_vocabulary_1,
@@ -75,6 +81,18 @@ object Quizzes {
         ),
     )
     val secondLevelQuizzes = listOf(
+        Quiz(
+            question = R.string.question_verb_forms_3,
+            options = R.array.options_verb_forms_3,
+            explanation = R.string.explanation_verb_forms_3,
+            rightAnswer = R.string.all_correct
+        ),
+        Quiz(
+            question = R.string.question_verb_forms_2,
+            options = R.array.options_verb_forms_2,
+            explanation = R.string.explanation_verb_forms_2,
+            rightAnswer = R.string.answer_verb_forms_2_3
+        ),
         Quiz(
             question = R.string.question_vocabulary_14,
             options = R.array.options_vocabulary_14,
@@ -194,6 +212,12 @@ object Quizzes {
     )
     val fourthLevelQuizzes = listOf(
         Quiz(
+            question = R.string.question_vocabulary_15,
+            options = R.array.options_vocabulary_15,
+            explanation = R.string.explanation_vocabulary_15,
+            rightAnswer = R.string.answer_vocabulary_15_1
+        ),
+        Quiz(
             question = R.string.question_vocabulary_7,
             options = R.array.options_vocabulary_7,
             explanation = R.string.explanation_vocabulary_7,
@@ -231,6 +255,12 @@ object Quizzes {
         ),
     )
     val fifthLevelQuizzes = listOf(
+        Quiz(
+            question = R.string.question_grammar_20,
+            options = R.array.options_grammar_20,
+            explanation = R.string.explanation_grammar_20,
+            rightAnswer = R.string.answer_grammar_20_1,
+        ),
         Quiz(
             question = R.string.question_vocabulary_6,
             options = R.array.options_vocabulary_6,
@@ -342,6 +372,18 @@ object Quizzes {
     )
     val sixthLevelQuizzes = listOf(
         Quiz(
+            question = R.string.question_phrasal_verbs_13,
+            options = R.array.options_phrasal_verbs_13,
+            explanation = R.string.explanation_phrasal_verbs_13,
+            rightAnswer = R.string.answer_phrasal_verbs_13_3
+        ),
+        Quiz(
+            question = R.string.question_pronunciation_3,
+            options = R.array.options_pronunciation_3,
+            explanation = R.string.explanation_pronunciation_3,
+            rightAnswer = R.string.answer_pronunciation_3_1,
+        ),
+        Quiz(
             question = R.string.question_phrasal_verbs_7,
             options = R.array.options_phrasal_verbs_7,
             explanation = R.string.explanation_phrasal_verbs_7,
@@ -367,6 +409,18 @@ object Quizzes {
         ),
     )
     val seventhLevelQuizzes = listOf(
+        Quiz(
+            question = R.string.question_grammar_21,
+            options = R.array.options_grammar_21,
+            explanation = R.string.explanation_grammar_21,
+            rightAnswer = R.string.answer_grammar_21_2
+        ),
+        Quiz(
+            question = R.string.question_phrasal_verbs_12,
+            options = R.array.options_phrasal_verbs_12,
+            explanation = R.string.explanation_phrasal_verbs_12,
+            rightAnswer = R.string.answer_phrasal_verbs_12_6
+        ),
         Quiz(
             question = R.string.question_grammar_3,
             options = R.array.quiz_options_grammar_3,
@@ -420,6 +474,12 @@ object Quizzes {
             options = R.array.options_slang_1,
             explanation = R.string.explanation_slang_1,
             rightAnswer = R.string.answer_slang_1_2,
+        ),
+        Quiz(
+            question = R.string.question_idioms_4,
+            options = R.array.options_idioms_4,
+            explanation = R.string.explanation_idioms_4,
+            rightAnswer = R.string.answer_idioms_4_3
         ),
     )
 }
