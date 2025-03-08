@@ -11,7 +11,7 @@ val MIGRATION_1_2 = object : Migration(1, 2) {
         db.execSQL("ALTER TABLE user_settings ADD COLUMN solved_questions INTEGER NOT NULL DEFAULT 0")
         db.execSQL("ALTER TABLE user_settings ADD COLUMN right_answers INTEGER NOT NULL DEFAULT 0")
 
-        db.execSQL("INSERT OR IGNORE INTO user_settings (id) VALUES (1)")
+        db.execSQL("INSERT OR IGNORE INTO user_settings (id, language_index, quiz_count, solved_questions, right_answers) VALUES (1, 0, 10, 0, 0)")
         Log.d("Migration", "Migration applied successfully.")
     }
 }

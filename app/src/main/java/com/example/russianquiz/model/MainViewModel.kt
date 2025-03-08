@@ -24,25 +24,37 @@ class MainViewModel(
 
     val settingsData = dao.getSettings()
         .map { settings ->
-            val languageIndex = settings.settings.languageIndex
-            val language = getLanguageByIndex(languageIndex) ?: Language.ENGLISH
+            if (settings != null) {
+                val languageIndex = settings.settings.languageIndex
+                val language = getLanguageByIndex(languageIndex) ?: Language.ENGLISH
 
-            val chosenPhotoProfile = BitmapConverter().toBitmap(settings.settings.avatar)
-            val solvedQuestions = settings.settings.solvedQuestions
-            val rightAnswers = settings.settings.rightAnswers
-            val completedLevels = settings.completedLevels
-            val quizCount = settings.settings.quizCount
+                val chosenPhotoProfile = BitmapConverter().toBitmap(settings.settings.avatar)
+                val solvedQuestions = settings.settings.solvedQuestions
+                val rightAnswers = settings.settings.rightAnswers
+                val completedLevels = settings.completedLevels
+                val quizCount = settings.settings.quizCount
 
-            SettingsData(
-                language = language,
-                quizCount = quizCount,
-                profile = Profile(
-                    chosenPhotoProfile = chosenPhotoProfile,
-                    solvedQuestions = solvedQuestions,
-                    rightAnswers = rightAnswers,
-                    completedLevels = completedLevels
+                println(languageIndex)
+                println(language)
+                println(chosenPhotoProfile)
+                println(solvedQuestions)
+                println(rightAnswers)
+                println(completedLevels)
+                println(quizCount)
+
+                SettingsData(
+                    language = language,
+                    quizCount = quizCount,
+                    profile = Profile(
+                        chosenPhotoProfile = chosenPhotoProfile,
+                        solvedQuestions = solvedQuestions,
+                        rightAnswers = rightAnswers,
+                        completedLevels = completedLevels
+                    )
                 )
-            )
+            } else {
+                SettingsData()
+            }
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), SettingsData())
 

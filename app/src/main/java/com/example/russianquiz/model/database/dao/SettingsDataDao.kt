@@ -40,7 +40,7 @@ interface SettingsDataDao {
 
     @Transaction
     @Query("SELECT * FROM user_settings WHERE id = :userId")
-    fun getSettings(userId: Int = 1) : Flow<SettingsDB>
+    fun getSettings(userId: Int = 1) : Flow<SettingsDB?>
 }
 
 data class SettingsDB(
